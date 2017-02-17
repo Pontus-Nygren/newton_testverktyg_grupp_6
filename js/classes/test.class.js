@@ -42,7 +42,7 @@ class Test extends Base {
     //
     return {
       all: `
-        select * from students 
+        select * from students
       `,
       byFullName: `
         select * from students
