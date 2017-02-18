@@ -1,15 +1,36 @@
 template.choiseQuestion = `
 <div class="container space-above">
 	<div class="row">
-		<div class="col-sm-6 col-md-4">
-			<div class="thumbnail">
-				<img src="" alt="...">
-				<div data-price="30" class="caption">
-				<h3>Fråga</h3>
+		<div class="col-sm-12 col-md-8">
+			<div class="choise-question">
+				<img src="http://placehold.it/350x150" alt="...">
+				<div class="question">
+					<h3>Fråga {questionNumber} av {testQuestions.length()}</h3>
 					<p>
-						
+						Fråga: {questionText}
 					</p>
-					<p>30 kr<a data-toggle="modal" data-target="#cart" class="btn btn-primary buy" role="button">Köp</a></p>
+					<div class="row">
+						<div class="col-lg-6">
+							<div class="input-group">
+								<div class="panel panel-default">
+									<div class="panel-body">
+										<input type="checkbox" aria-label="...">
+									    A: {question.option[0]}
+									</div>
+								</div>
+							</div><!-- /input-group -->
+						</div><!-- /.col-lg-6 -->
+						<div class="col-lg-6">
+							<div class="input-group">
+								<div class="panel panel-default">
+									<div class="panel-body">
+										<input type="checkbox" aria-label="...">
+									    B: {question.option[1]}
+									</div>
+								</div>
+							</div><!-- /input-group -->
+						</div><!-- /.col-lg-6 -->
+					</div>
 				</div>
 			</div>
 		</div>
