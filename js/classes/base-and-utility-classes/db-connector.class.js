@@ -1,9 +1,9 @@
-class Base {
-
-  get db(){
+class DbConnector {
+  
+  static db(){
     var _class = this.constructor;
     var className = _class.name;
-    if(_class.dbqs){ return _class.dbqs; };
+    if(_class.dbqs){ return _class.dbqs; }
     var obj = {};
     for(var i in _class.sqlQueries){
       (()=>{
