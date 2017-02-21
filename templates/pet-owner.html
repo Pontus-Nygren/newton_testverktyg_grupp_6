@@ -7,10 +7,10 @@ PetOwner.addTemplate('default', function(){return `
             <span class="glyphicon glyphicon-user"></span>
             <input style="color:#000" data-bind="name" type="text" value="${this.name}">&nbsp;
             <span data-click="talk">${this.name}</span>
-            <span class="pull-right" data-show="${this.firstName != 'John'}">Age: ${this.age}</span>
+            <span class="pull-right">Age: ${this.age}</span>
           </h3>
         </div>
-        <div class="panel-body" data-show="${this.lastName != 'Doe'}">
+        <div class="panel-body">
           ${this.pets.display()}
         </div>
       </div>

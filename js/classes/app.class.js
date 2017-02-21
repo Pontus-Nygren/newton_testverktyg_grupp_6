@@ -2,27 +2,42 @@ class App {
 
   constructor(){
 
-    // Development tool
-    new BootstrapSize().display('body');
-
-    //Create a petowner
-    var a = new PetOwner({
-    	firstName: 'Esmeralda',
-    	lastName: 'Efraimsdotter',
-    	birthDate: '1997-02-28',
-    	pets: [
-    		{'name': 'Py', 'birthDate': '2017-02-20'},
-    		{'name': 'Po', 'birthDate': '1975-06-17'}
-    	]
+    // Create some test data then start the app
+    new TestDataGenerator((petOwnerView)=>{
+      this.start(petOwnerView);
     });
 
-    //a.display('body');
-    window.a = a;
+  }
 
-    new Login().display('body');
+  start(petOwnerView){
 
-    // Try
-    //var testDataGen = new TestDataGenerator();
+    // Instantiate som objects
+    this.bootstrapSizeTool = new BootstrapSize();
+    this.navbar = new Navbar();
+    this.startPage = new StartPage();
+    this.petOwnerView = petOwnerView;
+    this.aboutPage = new AboutUs();
+
+    // Show the navbar and the bootstrapSizeTool
+    this.navbar.display('body');
+    this.bootstrapSizeTool.display('body');
+
+    // Add a page-content area in the DOM
+    $('body').append('<div class="page-content"/>');
+
+    // Some routes
+    var router = new Router({
+      '/': ()=>{ this.showPage(this.startPage); },
+      '/petowners': ()=> { this.showPage(this.petOwnerView); },
+      '/about-us': ()=> { this.showPage(this.aboutPage); }
+    });
 
   }
+
+  showPage(page){
+    $('.page-content').empty();
+    page.display('.page-content');
+    this.navbar.setActiveLink();
+  }
+
 }

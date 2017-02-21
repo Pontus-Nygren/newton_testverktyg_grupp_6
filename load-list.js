@@ -31,8 +31,13 @@ window.load = `
     pet-owner-list.class.js
     pet-owner-view.class.js
     test-data-generator.class.js
-    login.class.js
     app.class.js
+    navbar.class.js
+    startpage.class.js
+    about-us.class.js
+    login.class.js
+    
+    
 
   templates/
     bootstrap-size.html
@@ -40,7 +45,11 @@ window.load = `
     pet.html
     pet-owner.html
     pet-owner-view.html
+    navbar.html
+    startpage.html
+    about-us.html
     login.html
+    
 
   js/main.js
 

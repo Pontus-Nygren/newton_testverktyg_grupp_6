@@ -1,3 +1,0 @@
-newton_testverktyg_grupp_6
-Testar
-Test 2 Befkadu

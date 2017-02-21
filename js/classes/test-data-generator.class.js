@@ -1,11 +1,11 @@
 class TestDataGenerator extends Base {
 
-  constructor(){
+  constructor(callback){
     super();
-    this.dropPetowners(()=>{
+    this.callback = callback;
+    this.dropTables(()=>{
       this.generatePetOwners();
     });
-
   }
 
   randomItemFromArray(arr){
@@ -14,11 +14,13 @@ class TestDataGenerator extends Base {
 
   randomNum(min,max){
     var diff = max - min;
-    return min + Math.round(0.5 + Math.random()*diff);
+    return min + Math.round(0.5 + Math.random()*(diff+1)) - 1;
   }
 
-  dropPetowners(callback){
-    this.db.dropPetowners(callback);
+  dropTables(callback){
+    this.db.dropPets(()=>{
+      this.db.dropPetowners(callback);
+    });
   }
 
   generatePetOwners(howMany = 10){
@@ -42,7 +44,7 @@ class TestDataGenerator extends Base {
         birthDate: 
           this.randomNum(1920,2010) + '-' +
           this.randomNum(1,12) + '-' + 
-          this.randomNum(0,28)
+          this.randomNum(1,28)
       });
     }
 
@@ -54,6 +56,70 @@ class TestDataGenerator extends Base {
       var listFromDb = new PetOwnerList();
       listFromDb.readAllFromDb(()=>{
         console.log("Read from DB",listFromDb);
+        this.generatePets();
+      });
+
+    });
+  }
+
+  generatePets(howMany = 20, largestPetOwnerId = 10){
+
+    var petNames = [
+      "Fluffy",
+      "Duffy",
+      "Puh",
+      "Garfield",
+      "Hobs",
+      "Pluto",
+      "Caro",
+      "Missy",
+      "Inga-Greta",
+      "Brunte"
+    ];
+
+    // Create a new list of pets
+    var list = new PetList();
+    for(var i = 0; i < howMany; i++){
+      list.push({
+        owner_id: this.randomNum(1,largestPetOwnerId),
+        name: this.randomItemFromArray(petNames),
+        birthDate: 
+          this.randomNum(1995,2010) + '-' +
+          this.randomNum(1,12) + '-' + 
+          this.randomNum(1,28)
+      });
+    }
+    
+
+    // Write the list to DB
+    list.writeToDb(()=>{
+
+      console.log("Written to DB!",list);
+      // Now read it back into a list to confirm
+      var listFromDb = new PetList();
+      listFromDb.readAllFromDb(()=>{
+        console.log("Read from DB",listFromDb);
+        
+        // Create a PetOwnerList with
+        // the correct pets attached to each owner
+        var listOwnersWithPets = new PetOwnerList();
+        listOwnersWithPets.readAllFromDBWithPets(()=>{
+          
+          console.log(
+            "Nice list of owners and pets from the DB",
+            listOwnersWithPets
+          );
+
+          var thePetOwnerView = new PetOwnerView({
+            petOwners: listOwnersWithPets
+          });
+
+          // All testdata is generated, so run the 
+          // callback and send thePetOwnerView to it
+          this.callback(thePetOwnerView);
+
+        });
+
       });
 
     });
@@ -63,6 +129,9 @@ class TestDataGenerator extends Base {
     return {
       dropPetowners: `
         DROP TABLE IF EXISTS petowners 
+      `,
+      dropPets: `
+        DROP TABLE IF EXISTS pets 
       `
     }
   }

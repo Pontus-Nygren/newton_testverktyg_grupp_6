@@ -23,6 +23,45 @@ class PetOwnerList extends List {
     });
   }
 
+  readAllFromDBWithPets(callback){
+    this.db.readAllWithPets((data)=>{
+      console.log(data);
+
+      // collect all pet owners in a new array
+      var petownersById = {};
+      
+      /*
+      for(let item of data){
+
+        // create petowner and store by id
+        petownersById[item.id] = petownersById[item.id] || {
+          id: item.id,
+          firstName: item.firstName,
+          lastName: item.lastName,
+          birthDate: item.birthDate,
+          pets: []
+        }
+        // add the current pet
+        if(item.petId){
+          petownersById[item.id].pets.push({
+            id: item.petId,
+            name: item.petName,
+            birthDate: item.petBirthdate
+          });
+        }
+
+      }
+*/
+      // Loop through petownersById
+      // and push the petowner to this list
+      for(let id in petownersById){
+        this.push(petownersById[id]);
+      }
+
+      callback();
+    });
+  }
+
   static get sqlQueries(){
     return {
       createTableIfNeeded: `
@@ -36,6 +75,9 @@ class PetOwnerList extends List {
       `,
       readAll: `
         SELECT * FROM petowners
+      `,
+      readAllWithPets: `
+        SELECT * FROM petownersWithPets
       `
     }
   }

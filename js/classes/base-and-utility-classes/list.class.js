@@ -87,12 +87,14 @@ class List extends Array {
   }
 
   display(selector, template = 'default',that){
-    return (that || this).map((item)=>{
+    var x =  (that || this).map((item,i)=>{
       return !item.display ? '' :
         item.display().replace(/([^-])>/,`$1
           data-list-id="${this.memId}"
         >`);
     }).join('\n');
+    $(selector).append(x);
+    return x;
   }
 
   get memId(){ return Base.mem.indexOf(this); }

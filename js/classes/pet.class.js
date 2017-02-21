@@ -3,7 +3,8 @@ class Pet extends Organism {
   static defaultPropertyValues(){
     return {
       name: 'Fluffy',
-      birthDate: new Date('2010-01-01')
+      birthDate: new Date('2010-01-01'),
+      owner_id: 0
     }
   }
 
@@ -31,6 +32,22 @@ class Pet extends Organism {
       content: `Jag är ${this.age} gammal...`
     });
     e.stopPropagation();
+  }
+
+  insertInDb(callback){
+    this.db.newPet({
+      name: this.name,
+      birthDate: this.birthDate,
+      owner_id: this.owner_id
+    },callback);
+  }
+
+  static get sqlQueries(){
+    return {
+      newPet: `
+        INSERT pets SET ?
+      ` 
+    }
   }
 
 }
