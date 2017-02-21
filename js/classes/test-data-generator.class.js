@@ -38,13 +38,15 @@ class TestDataGenerator extends Base {
     // Create a new list of petowners
     var list = new PetOwnerList();
     for(var i = 0; i < howMany; i++){
+      var date = 
+          this.randomNum(1920,2010) + '-' +
+          this.randomNum(1,12) + '-' + 
+          this.randomNum(1,28);
       list.push({
         firstName: this.randomItemFromArray(firstNames),
         lastName: this.randomItemFromArray(lastNames),
-        birthDate: 
-          this.randomNum(1920,2010) + '-' +
-          this.randomNum(1,12) + '-' + 
-          this.randomNum(1,28)
+        birthDate: dateTimeForMySQL(date)
+          
       });
     }
 
@@ -80,13 +82,14 @@ class TestDataGenerator extends Base {
     // Create a new list of pets
     var list = new PetList();
     for(var i = 0; i < howMany; i++){
+      var date = 
+          this.randomNum(1995,2010) + '-' +
+          this.randomNum(1,12) + '-' + 
+          this.randomNum(1,28);
       list.push({
         owner_id: this.randomNum(1,largestPetOwnerId),
         name: this.randomItemFromArray(petNames),
-        birthDate: 
-          this.randomNum(1995,2010) + '-' +
-          this.randomNum(1,12) + '-' + 
-          this.randomNum(1,28)
+        birthDate: dateTimeForMySQL(date)
       });
     }
     

@@ -30,7 +30,7 @@ class PetOwnerList extends List {
       // collect all pet owners in a new array
       var petownersById = {};
       
-      /*
+      
       for(let item of data){
 
         // create petowner and store by id
@@ -51,7 +51,7 @@ class PetOwnerList extends List {
         }
 
       }
-*/
+
       // Loop through petownersById
       // and push the petowner to this list
       for(let id in petownersById){

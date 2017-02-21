@@ -3,7 +3,7 @@ class Pet extends Organism {
   static defaultPropertyValues(){
     return {
       name: 'Fluffy',
-      birthDate: new Date('2010-01-01'),
+      birthDate: dateTimeForMySQL('2010-01-01'),
       owner_id: 0
     }
   }
@@ -14,7 +14,7 @@ class Pet extends Organism {
     // Convert the birthDate property
     // from String to Date if needed
     if(typeof this.birthDate == 'string'){
-      this.birthDate = new Date(this.birthDate);
+      this.birthDate = dateTimeForMySQL(this.birthDate);
     }
   }
 

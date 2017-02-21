@@ -5,7 +5,7 @@ class PetOwner extends Organism {
       id: 0,
       firstName: 'John',
       lastName: 'Doe',
-      birthDate: new Date('2000-01-01'),
+      birthDate: dateTimeForMySQL('2000-01-01'),
       pets: new PetList()
     }
   }
@@ -16,7 +16,7 @@ class PetOwner extends Organism {
     // If needed convert the birthDate property
     // from String to Date
     if(typeof this.birthDate == 'string'){
-      this.birthDate = new Date(this.birthDate);
+      this.birthDate = dateTimeForMySQL(this.birthDate);
     }
 
     // If needed convert the pets property 
