@@ -1,0 +1,43 @@
+template.choiseQuestion = `
+<div class="container space-above">
+	<div class="row">
+		<div class="col-sm-12 col-md-8">
+			<div class="choise-question">
+				<img src="http://placehold.it/350x150" alt="...">
+				<div class="question">
+					<h3>Fråga {questionNumber} av {testQuestions.length()}</h3>
+					<p>
+						Fråga: {questionText}
+					</p>
+					<div class="row">
+						<div class="col-lg-6">
+							<div class="input-group">
+								<div class="panel panel-default">
+									<div class="panel-body">
+										<input type="checkbox" aria-label="...">
+									    A: {question.option[0]}
+									</div>
+								</div>
+							</div><!-- /input-group -->
+						</div><!-- /.col-lg-6 -->
+						<div class="col-lg-6">
+							<div class="input-group">
+								<div class="panel panel-default">
+									<div class="panel-body">
+										<input type="checkbox" aria-label="...">
+									    B: {question.option[1]}
+									</div>
+								</div>
+							</div><!-- /input-group -->
+						</div><!-- /.col-lg-6 -->
+					</div>
+				</div>
+			</div>
+			<div class="btn-group pull-right" role="group" aria-label="...">
+				<button type="button" id="back" class="btn btn-default">Back</button>
+		    	<button type="button" id="next" class="btn btn-default">Next</button>
+			</div>
+		</div>
+	</div>
+</div>
+`
