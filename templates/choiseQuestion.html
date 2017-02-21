@@ -1,13 +1,13 @@
-choiseQuestion.addTemplate('default', function(){return `
+Question.addTemplate('default', function(){return `
 <div class="container space-above">
 	<div class="row">
 		<div class="col-sm-12 col-md-8">
 			<div class="choise-question">
-				<img src="http://placehold.it/350x150" alt="...">
+				<img src="${this.imageURL}" alt="...">
 				<div class="question">
-					<h3>Fråga {questionNumber} av {testQuestions.length()}</h3>
+					<h3>Fråga ${this.id} av {testQuestions.length()}</h3>
 					<p>
-						Fråga: {questionText}
+						Fråga: ${this.text}
 					</p>
 					<div class="row">
 						<div class="col-lg-6">

@@ -5,4 +5,12 @@ function dateTimeForMySQL(d){
 
 
 // Create the app on DOM ready
-$(()=>{new App()});
+$(()=>{
+	//new App()
+	/*
+	var login = new Login();
+	login.display('body');
+	*/
+	var question = new Question();
+	question.display('body');
+});
