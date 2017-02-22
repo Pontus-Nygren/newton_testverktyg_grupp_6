@@ -33,4 +33,22 @@ class Question extends Base{
 	      this.options = new OptionList(this.options);
 	    }
 	}
+
+	insertInDb(callback){
+		this.db.newQuestion({
+			imageURL: this.imageURL,
+			test_id: this.test_id,
+			text: this.text
+		},callback);
+	}
+
+	static get sqlQueries(){
+		return {
+			newQuestion: `
+			INSERT questions SET ?
+			` 
+		}
+	}
+
+
 }

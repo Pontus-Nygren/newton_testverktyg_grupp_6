@@ -11,7 +11,7 @@ $(()=>{
 	var login = new Login();
 	login.display('body');
 	*/
-	var test = new Test({
+	var tests = new TestList([{
 		id: 1,
 		startingTime: '2017-02-02 09:00', //dateTimeForMySQL(2017-01-01 09:00:00),
 	    endingTime: '2017-02-02 16:00', //dateTimeForMySQL(2017-01-01 16:00:00),
@@ -59,6 +59,16 @@ $(()=>{
 			}]
 		}
 		]
-	});
-	test.display('body');
+	}]);
+	tests.writeToDb(()=>{
+
+      console.log("Written to DB!",tests);
+      // Now read it back into a list to confirm
+      var listFromDb = new TestList();
+      listFromDb.readAllFromDb(()=>{
+        console.log("Read from DB",listFromDb);
+      });
+
+    });
+	//test.display('body');
 });

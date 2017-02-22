@@ -50,6 +50,7 @@ window.load = `
   
   js/classes/
     login.class.js
+    test-list.class.js
     question-list.class.js
     option-list.class.js
     option.class.js

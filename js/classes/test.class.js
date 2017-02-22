@@ -34,4 +34,20 @@ class Test extends Base{
 			this.currentQuestionIndex--;
 		}
 	}
+
+	insertInDb(callback){
+		this.db.newTest({
+			startingTime: this.startingTime,
+			endingTime: this.endingTime,
+			allowedTime: this.allowedTime
+		},callback);
+	}
+
+	static get sqlQueries(){
+		return {
+			newTest: `
+			INSERT tests SET ?
+			` 
+		}
+	}
 }
