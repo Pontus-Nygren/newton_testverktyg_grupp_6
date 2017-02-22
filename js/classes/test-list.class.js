@@ -67,8 +67,8 @@ writeToDb(callback){
       createTableIfNeeded: `
         CREATE TABLE IF NOT EXISTS tests (
 		  test_id int(11) NOT NULL AUTO_INCREMENT,
-		  startingTime datetime DEFAULT 'CURRENT_TIMESTAMP',
-		  endingTime datetime DEFAULT 'CURRENT_TIMESTAMP',
+		  startingTime datetime,
+		  endingTime datetime,
 		  allowedTime int(11) DEFAULT 0,
 		  PRIMARY KEY (test_id)
 		)

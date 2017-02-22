@@ -28,23 +28,26 @@ class OptionList extends List {
 		return {
 			createTableIfNeeded: `
 			CREATE TABLE IF NOT EXISTS options (
-			option_id int(11) NOT NULL AUTO_INCREMENT,
-			text longtext DEFAULT 'No',
-			questions_question_id int(11) NOT NULL,
-			points int(11) DEFAULT 0,
+				option_id int(11) NOT NULL AUTO_INCREMENT,
+				option_text longtext,
+				questions_question_id int(11),
+				points int(11),
 			PRIMARY KEY (option_id),
 			KEY fk_options_questions1_idx (questions_question_id),
-			CONSTRAINT fk_options_questions1 FOREIGN KEY (questions_question_id) REFERENCES questions (question_id) ON DELETE NO ACTION ON UPDATE NO ACTION
+			CONSTRAINT fk_options_questions1 
+			FOREIGN KEY (questions_question_id) 
+			REFERENCES questions (question_id) 
+			ON DELETE NO ACTION ON UPDATE NO ACTION
 			) 
 			`,
 			createQuestionsWithOptionsView: `
 			CREATE OR REPLACE VIEW questionsWithOptions 
 			AS SELECT 
 			questions.question_id,
-			questions.text,
-			questions.open,
+			questions.question_text,
+			questions.isOpen,
 			options.option_id,
-			options.text AS option_text,
+			options.option_text,
 			options.points
 			FROM questions 
 			LEFT JOIN options 

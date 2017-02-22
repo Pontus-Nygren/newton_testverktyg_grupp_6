@@ -68,13 +68,14 @@ class QuestionList extends List {
 		return {
 			createTableIfNeeded: `
 			CREATE TABLE IF NOT EXISTS questions (
-			question_id int(11) NOT NULL AUTO_INCREMENT,
-			'text' longtext DEFAULT 'What is a question?',
-			open tinyint(1) DEFAULT '0',
-			KEY 'fk_questions_tests_idx' ('tests_test_id'),
-			CONSTRAINT 'fk_questions_tests' FOREIGN KEY ('tests_test_id') 
-			REFERENCES 'tests' ('test_id') 
-			ON DELETE NO ACTION ON UPDATE NO ACTION
+			  question_id int(11) NOT NULL AUTO_INCREMENT,
+			  tests_test_id int(11),
+			  question_text longtext,
+			  isOpen tinyint(1),
+			PRIMARY KEY (question_id),
+		  	KEY fk_questions_tests_idx (tests_test_id),
+		  	CONSTRAINT fk_questions_tests FOREIGN KEY (tests_test_id) REFERENCES tests (test_id)
+		  	ON DELETE NO ACTION ON UPDATE NO ACTION
 			)
 			`,
 			createTestsWithQuestionsView: `
@@ -85,8 +86,8 @@ class QuestionList extends List {
 			tests.endingTime,
 			tests.allowedTime,
 			questions.question_id,
-			questions.text,
-			questions.open 
+			questions.question_text,
+			questions.isOpen 
 			FROM tests 
 			LEFT JOIN questions 
 			ON tests.test_id = questions.tests_test_id
