@@ -38,7 +38,7 @@ class Question extends Base{
 		this.db.newQuestion({
 			imageURL: this.imageURL,
 			test_id: this.test_id,
-			text: this.text
+			test_text: this.text
 		},callback);
 	}
 

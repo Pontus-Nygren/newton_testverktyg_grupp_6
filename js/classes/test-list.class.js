@@ -36,8 +36,8 @@ writeToDb(callback){
         // create test and store by id
         testsById[item.test_id] = testsById[item.test_id] || {
           id: item.test_id,
-          startingTime: item.startingTime,
-          endingTime: item.endingTime,
+          //startingTime: item.startingTime,
+          //endingTime: item.endingTime,
           allowedTime: item.allowedTime,
           questions: []
         }
@@ -63,12 +63,14 @@ writeToDb(callback){
   }
 
   static get sqlQueries(){
+  	/*
+  		startingTime datetime,
+		endingTime datetime,
+  	*/
     return {
       createTableIfNeeded: `
         CREATE TABLE IF NOT EXISTS tests (
 		  test_id int(11) NOT NULL AUTO_INCREMENT,
-		  startingTime datetime,
-		  endingTime datetime,
 		  allowedTime int(11) DEFAULT 0,
 		  PRIMARY KEY (test_id)
 		)

@@ -65,6 +65,10 @@ class QuestionList extends List {
 
 
 	static get sqlQueries(){
+		/*
+			tests.startingTime,
+			tests.endingTime,
+		*/
 		return {
 			createTableIfNeeded: `
 			CREATE TABLE IF NOT EXISTS questions (
@@ -82,8 +86,6 @@ class QuestionList extends List {
 			CREATE OR REPLACE VIEW testsWithQuestions 
 			AS SELECT 
 			tests.test_id,
-			tests.startingTime,
-			tests.endingTime,
 			tests.allowedTime,
 			questions.question_id,
 			questions.question_text,

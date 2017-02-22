@@ -13,8 +13,8 @@ $(()=>{
 	*/
 	var tests = new TestList([{
 		id: 1,
-		startingTime: '2017-02-02 09:00', //dateTimeForMySQL(2017-01-01 09:00:00),
-	    endingTime: '2017-02-02 16:00', //dateTimeForMySQL(2017-01-01 16:00:00),
+		//startingTime: '2017-02-02 09:00:00', //dateTimeForMySQL(2017-01-01 09:00:00),
+	    //endingTime: '2017-02-02 16:00:00', //dateTimeForMySQL(2017-01-01 16:00:00),
 	    allowedTime: 3,
 	    questions: [{
 			id: 1, 

@@ -16,7 +16,7 @@ class Option extends Base{
 	insertInDb(callback){
 		this.db.newOption({
 			question_id: this.question_id,
-			text: this.text,
+			option_text: this.text,
 			points: this.points
 		},callback);
 	}
