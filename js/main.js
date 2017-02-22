@@ -11,7 +11,7 @@ $(()=>{
 	var login = new Login();
 	login.display('body');
 	*/
-	var quiz = new Quiz({
+	var test = new Test({
 		id: 1,
 		startingTime: '2017-02-02 09:00', //dateTimeForMySQL(2017-01-01 09:00:00),
 	    endingTime: '2017-02-02 16:00', //dateTimeForMySQL(2017-01-01 16:00:00),
@@ -20,7 +20,7 @@ $(()=>{
 			id: 1, 
 			imageURL: 'https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcR0pcNSyjJILQeqWiSRLr6U8Qhmvs9YGo_AguL2f8O9snFFSX2OIg',
 			test_id: 1,
-			text: 'What are you going to eat today?'/*,
+			text: 'What are you going to eat today?',
 			options: [{
 				id: 1,
 				question_id: 1,
@@ -38,33 +38,27 @@ $(()=>{
 				question_id: 1,
 				text: 'Salad',
 				points: 0
-			}]*/
+			}]
 		},
 		{
 			id: 2, 
 			imageURL: 'https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcR0pcNSyjJILQeqWiSRLr6U8Qhmvs9YGo_AguL2f8O9snFFSX2OIg',
 			test_id: 1,
-			text: 'How hungry are you?'/*,
+			text: 'How hungry are you?',
 			options: [{
 				id: 1,
 				question_id: 1,
-				text: 'Hamburgers',
-				points: 1
+				text: 'Not at all',
+				points: 0
 			},
 			{
 				id: 2,
 				question_id: 1,
-				text: 'Pizza',
+				text: 'Very much',
 				points: 1
-			},
-			{
-				id: 3,
-				question_id: 1,
-				text: 'Salad',
-				points: 0
-			}]*/
+			}]
 		}
 		]
 	});
-	quiz.display('body');
+	test.display('body');
 });

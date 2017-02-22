@@ -11,5 +11,10 @@ class Test extends Base{
 
 	constructor(propertyValues = {}){ 
 		super(propertyValues);
+		// If needed convert the questions property 
+	    // from Array to QuestionList
+	    if(!(this.questions instanceof QuestionList)){
+	      this.questions = new QuestionList(this.questions);
+	    }
 	}
 }

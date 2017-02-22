@@ -5,22 +5,13 @@ Test.addTemplate('default', function(){return `
 			<div class="choise-question">
 				<img src="${this.questions[1].imageURL}" alt="...">
 				<div class="question">
+				${console.log(this.questions[1])} 
 					<h3>Fråga ${this.questions[1].id} av ${this.questions.length}</h3>
 					<p>
 						Fråga: ${this.questions[1].text}
 					</p>
 					<div class="row">
-						{this.questions[0].options.display()}
-						<div class="col-lg-6">
-							<div class="input-group">
-								<div class="panel panel-default">
-									<div class="panel-body">
-										<input type="checkbox" aria-label="...">
-									    B: {question.option[1]}
-									</div>
-								</div>
-							</div><!-- /input-group -->
-						</div><!-- /.col-lg-6 -->
+						${this.questions[1].options.display()}
 					</div>
 				</div>
 			</div>

@@ -11,8 +11,5 @@ class Option extends Base{
 
 	constructor(propertyValues = {}){ 
 		super(propertyValues);
-
-		//Push the question the question bank
-		theQuestionList.push(this);
 	}
 }

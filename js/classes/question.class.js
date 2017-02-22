@@ -20,12 +20,17 @@ class Question extends Base{
 	      id: 0,
 	      imageURL: 'http://www.sallytylerhayes.net/file/2016/08/thinking_of_fifty_or_more_questions_to_ask_a_guy_on_a_first_date.jpg',
 	      test_id: 0,
-	      text: 'What is a question?'//,
-	      //options: new OptionList()
+	      text: 'What is a question?',
+	      options: new OptionList()
     	}
   	}
 
 	constructor(propertyValues = {}){ 
 		super(propertyValues);
+		// If needed convert the options property 
+	    // from Array to OptionList
+	    if(!(this.options instanceof OptionList)){
+	      this.options = new OptionList(this.options);
+	    }
 	}
 }
