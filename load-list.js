@@ -55,6 +55,11 @@ window.load = `
     option.class.js
     question.class.js
     test.class.js
+
+    bootstrap-size.js
+    navbar.class.js
+    about-us.class.js
+    show-test-menu.class.js
     
     
 
@@ -62,7 +67,11 @@ window.load = `
     login.html
     test.html
     option.html
-    
+
+    navbar.html
+    bootstrap-size.html
+    about-us.html
+    show-test-menu.html
 
   js/main.js
 
