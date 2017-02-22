@@ -50,13 +50,18 @@ window.load = `
   
   js/classes/
     login.class.js
+    question-list.class.js
+    option-list.class.js
+    option.class.js
     question.class.js
+    test.class.js
     
     
 
   templates/
     login.html
-    choiseQuestion.html
+    test.html
+    option.html
     
 
   js/main.js

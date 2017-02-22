@@ -1,25 +1,16 @@
-Question.addTemplate('default', function(){return `
+Test.addTemplate('default', function(){return `
 <div class="container space-above">
 	<div class="row">
 		<div class="col-sm-12 col-md-8">
 			<div class="choise-question">
-				<img src="${this.imageURL}" alt="...">
+				<img src="${this.questions[1].imageURL}" alt="...">
 				<div class="question">
-					<h3>Fråga ${this.id} av {testQuestions.length()}</h3>
+					<h3>Fråga ${this.questions[1].id} av ${this.questions.length}</h3>
 					<p>
-						Fråga: ${this.text}
+						Fråga: ${this.questions[1].text}
 					</p>
 					<div class="row">
-						<div class="col-lg-6">
-							<div class="input-group">
-								<div class="panel panel-default">
-									<div class="panel-body">
-										<input type="checkbox" aria-label="...">
-									    A: {question.option[0]}
-									</div>
-								</div>
-							</div><!-- /input-group -->
-						</div><!-- /.col-lg-6 -->
+						{this.questions[0].options.display()}
 						<div class="col-lg-6">
 							<div class="input-group">
 								<div class="panel panel-default">
