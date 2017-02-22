@@ -68,7 +68,7 @@ $(()=>{
 // Instantiate som objects
     this.bootstrapSizeTool = new BootstrapSize();
     this.navbar = new Navbar();
-    //this.login = new Login();
+    this.login = new Login();
     this.tasksMenu = new ShowTestMenu();
     this.aboutPage = new AboutUs();
 
@@ -81,7 +81,14 @@ $(()=>{
 
     // Some routes
     var router = new Router({
-    //  '/': ()=>{ this.showPage(this.startPage); },
+      '/': ()=>{ 
+      	$('.page-content').empty();
+	    this.login.display('.page-content');
+	    this.navbar.setActiveLink();
+
+
+
+      },
       '/tasksMenu': ()=> { 
         $('.page-content').empty();
 	    this.tasksMenu.display('.page-content');
