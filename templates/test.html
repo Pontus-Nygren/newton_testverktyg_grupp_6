@@ -3,21 +3,20 @@ Test.addTemplate('default', function(){return `
 	<div class="row">
 		<div class="col-sm-12 col-md-8">
 			<div class="choise-question">
-				<img src="${this.questions[1].imageURL}" alt="...">
+				<img src="${this.question.imageURL}" alt="...">
 				<div class="question">
-				${console.log(this.questions[1])} 
-					<h3>Fråga ${this.questions[1].id} av ${this.questions.length}</h3>
+					<h3>Fråga ${this.question.id} av ${this.questions.length}</h3>
 					<p>
-						Fråga: ${this.questions[1].text}
+						Fråga: ${this.question.text}
 					</p>
 					<div class="row">
-						${this.questions[1].options.display()}
+						${this.question.options.display()}
 					</div>
 				</div>
 			</div>
 			<div class="btn-group pull-right" role="group" aria-label="...">
-				<button type="button" id="back" class="btn btn-default">Back</button>
-		    	<button type="button" id="next" class="btn btn-default">Next</button>
+				<button data-click="prevQuestion" type="button" id="back" class="btn btn-default">Back</button>
+		    	<button data-click="nextQuestion" type="button" id="next" class="btn btn-default">Next</button>
 			</div>
 		</div>
 	</div>
