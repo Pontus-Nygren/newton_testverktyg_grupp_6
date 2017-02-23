@@ -55,6 +55,10 @@ window.load = `
     option.class.js
     question.class.js
     test.class.js
+    test-list.class.js
+    freetext-grading.class.js
+    freetext.class.js
+    response.class.js
 
     bootstrap-size.js
     navbar.class.js

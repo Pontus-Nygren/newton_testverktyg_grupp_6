@@ -1,4 +1,4 @@
-class Response extends Base{
+class Response extends Base {
 		static defaultPropertyValues(){
     return {
 	      user_id: 0,
@@ -9,5 +9,5 @@ class Response extends Base{
 	constructor(propertyValues = {}){ 
 		super(propertyValues);
 	}
-	}
+	
 }

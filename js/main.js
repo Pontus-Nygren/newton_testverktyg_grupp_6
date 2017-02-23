@@ -103,6 +103,7 @@ $(()=>{
 	    this.navbar.setActiveLink();
 
         }
+
     });
 
 

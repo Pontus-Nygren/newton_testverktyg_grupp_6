@@ -1,4 +1,4 @@
-class Freetext-grading extends Base{
+class FreetextGrading extends Base {
 	static defaultPropertyValues(){
     return {
 	      id: 0,

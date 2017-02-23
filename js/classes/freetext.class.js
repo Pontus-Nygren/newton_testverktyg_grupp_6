@@ -1,4 +1,4 @@
-class Freetext extends Base{
+class Freetext extends Base {
 	static defaultPropertyValues(){
     return {
 	      id: 0,
@@ -10,6 +10,5 @@ class Freetext extends Base{
 
 	constructor(propertyValues = {}){ 
 		super(propertyValues);
-	}
 	}
 }
