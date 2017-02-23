@@ -29,7 +29,7 @@ class ShowTestMenu extends Base {
 		      listFromDb.readAllFromDb(()=>{
 		      	tests = listFromDb;
 		      	console.log("Read from DB!!!",tests);
-		      	this.writeQuestionsToDatabase(tests[0].test_id);
+		      	this.writeQuestionsToDatabase(tests[tests.length - 1].test_id);
 		      });
 		  });
 	}
@@ -63,15 +63,11 @@ class ShowTestMenu extends Base {
 	    	console.log("Written to DB!",list);
 
 	      // Now read it back into a list to confirm
-	      tests[test_id_fromDB].questions = new QuestionList();
-	      tests[test_id_fromDB].questions.readAllFromDb(()=>{
-	      	//for(var i = 0; i<listFromDb.length; i++)
-	      //	{
-	      	console.log("Read from DB",tests[test_id_fromDB].questions);
-	      	tests[test_id_fromDB].display('body');
-	      //  this.generatePets();
-	  	//}
-	 	//$('body').append(listFromDb[0].text);
+	      tests[0].questions = new QuestionList();
+	      tests[0].questions.readAllFromDb(()=>{
+
+	      	console.log("Read from DB",tests[0].questions);
+	      	tests[0].display('body');
 		});
 
 		});

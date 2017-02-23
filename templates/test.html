@@ -5,7 +5,7 @@ Test.addTemplate('default', function(){return `
 			<div class="choise-question">
 				<img src="${this.question.imageURL}" alt="...">
 				<div class="question">
-					<h3>Fråga ${this.question.question_id} av ${this.questions.length}</h3>
+					<h3>Fråga ${this.questions.indexOf(this.question) + 1} av ${this.questions.length}</h3>
 					<p>
 						Fråga: ${this.question.question_text}
 					</p>
