@@ -50,16 +50,15 @@ window.load = `
   
   js/classes/
     login.class.js
+    test-list.class.js
     question-list.class.js
     option-list.class.js
     option.class.js
     question.class.js
     test.class.js
-    test-list.class.js
     freetext-grading.class.js
     freetext.class.js
     response.class.js
-
     bootstrap-size.js
     navbar.class.js
     about-us.class.js
@@ -71,7 +70,6 @@ window.load = `
     login.html
     test.html
     option.html
-
     navbar.html
     bootstrap-size.html
     about-us.html

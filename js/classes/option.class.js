@@ -12,4 +12,20 @@ class Option extends Base{
 	constructor(propertyValues = {}){ 
 		super(propertyValues);
 	}
+
+	insertInDb(callback){
+		this.db.newOption({
+			question_id: this.question_id,
+			option_text: this.text,
+			points: this.points
+		},callback);
+	}
+
+	static get sqlQueries(){
+		return {
+			newOption: `
+			INSERT options SET ?
+			` 
+		}
+	}
 }

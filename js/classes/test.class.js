@@ -1,11 +1,11 @@
-class Test extends Base{ 
+class Test extends Base { 
 	static defaultPropertyValues(){
     return {
-	      id: 0,
+	      test_id: 0,
 	      currentQuestionIndex: 0,
 	      startingTime: '2017-01-01 09:00', //dateTimeForMySQL(2017-01-01 09:00:00),
 	      endingTime: '2017-01-01 16:00', //dateTimeForMySQL(2017-01-01 16:00:00),
-	      allowedTime: 3,
+	      allowedTime: 0,
 	      questions: new QuestionList()
     	}
   	}
@@ -32,6 +32,22 @@ class Test extends Base{
 	prevQuestion(){
 		if(this.currentQuestionIndex > 0){
 			this.currentQuestionIndex--;
+		}
+	}
+
+	insertInDb(callback){
+		this.db.newTest({
+			startingTime: this.startingTime,
+			endingTime: this.endingTime,
+			allowedTime: this.allowedTime
+		},callback);
+	}
+
+	static get sqlQueries(){
+		return {
+			newTest: `
+			INSERT tests SET ?
+			` 
 		}
 	}
 }
