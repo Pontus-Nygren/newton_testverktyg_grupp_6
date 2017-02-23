@@ -40,4 +40,6 @@ class App {
     this.navbar.setActiveLink();
   }
 
+  
+
 }

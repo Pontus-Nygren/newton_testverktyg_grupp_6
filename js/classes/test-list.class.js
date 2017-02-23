@@ -35,18 +35,20 @@ writeToDb(callback){
 
         // create test and store by id
         testsById[item.test_id] = testsById[item.test_id] || {
-          id: item.test_id,
-          //startingTime: item.startingTime,
-          //endingTime: item.endingTime,
+          test_id: item.test_id,
+          startingTime: item.startingTime,
+          endingTime: item.endingTime,
           allowedTime: item.allowedTime,
           questions: []
         }
         // add the current question
         if(item.question_id){
           testsById[item.test_id].questions.push({
-            id: item.question_id,
+            question_id: item.question_id,
             imageURL: item.imageURL,
-            text: item.text
+            test_id: item.test_id,
+            question_text: item.question_text,
+            isOpen: item.isOpen
           });
         }
 
@@ -64,13 +66,14 @@ writeToDb(callback){
 
   static get sqlQueries(){
   	/*
-  		startingTime datetime,
-		endingTime datetime,
+  		
   	*/
     return {
       createTableIfNeeded: `
         CREATE TABLE IF NOT EXISTS tests (
 		  test_id int(11) NOT NULL AUTO_INCREMENT,
+      startingTime datetime,
+      endingTime datetime,
 		  allowedTime int(11) DEFAULT 0,
 		  PRIMARY KEY (test_id)
 		)

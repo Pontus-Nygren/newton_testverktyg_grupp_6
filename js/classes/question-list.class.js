@@ -63,16 +63,12 @@ class QuestionList extends List {
     });
   }
 
-
-	static get sqlQueries(){
-		/*
-			tests.startingTime,
-			tests.endingTime,
-		*/
+	static get sqlQueries() {
 		return {
 			createTableIfNeeded: `
 			CREATE TABLE IF NOT EXISTS questions (
 			  question_id int(11) NOT NULL AUTO_INCREMENT,
+			  imageURL VARCHAR(255),
 			  tests_test_id int(11),
 			  question_text longtext,
 			  isOpen tinyint(1),
@@ -86,8 +82,11 @@ class QuestionList extends List {
 			CREATE OR REPLACE VIEW testsWithQuestions 
 			AS SELECT 
 			tests.test_id,
+			tests.startingTime,
+			tests.endingTime,
 			tests.allowedTime,
 			questions.question_id,
+			questions.imageURL,
 			questions.question_text,
 			questions.isOpen 
 			FROM tests 

@@ -44,6 +44,7 @@ class OptionList extends List {
 			CREATE OR REPLACE VIEW questionsWithOptions 
 			AS SELECT 
 			questions.question_id,
+			questions.imageURL,
 			questions.question_text,
 			questions.isOpen,
 			options.option_id,
