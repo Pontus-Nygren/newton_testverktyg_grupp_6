@@ -1,4 +1,4 @@
-class Question extends Base{ 
+class Question extends Base { 
 	/*
 	options: [
 	      	{
@@ -26,11 +26,31 @@ class Question extends Base{
   	}
 
 	constructor(propertyValues = {}){ 
-		super(propertyValues);
+		super(propertyValues);		
 		// If needed convert the options property 
 	    // from Array to OptionList
 	    if(!(this.options instanceof OptionList)){
 	      this.options = new OptionList(this.options);
 	    }
 	}
+
+
+insertInDb(callback){
+    this.db.newQuestion ({
+      //imageURL: this.imageURL,
+      tests_test_id: 1,
+      text: this.text,      
+      open:this.open
+    },callback);
+    
+  }
+
+static get sqlQueries() {
+    return {
+      newQuestion: `
+        INSERT questions SET ?
+      ` 
+    }
+  }
+
 }
