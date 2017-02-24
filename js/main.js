@@ -72,12 +72,15 @@ $(()=>{
     this.bootstrapSizeTool = new BootstrapSize();
     this.navbar = new Navbar();
     this.login = new Login();
+    this.footer = new Footer();
     this.tasksMenu = new ShowTestMenu();
     this.aboutPage = new AboutUs();
 
     // Show the navbar and the bootstrapSizeTool
     this.navbar.display('body');
     this.bootstrapSizeTool.display('body');
+   // this.bootstrapSizeTool.display('body');
+    this.footer.display('body');
 
     // Add a page-content area in the DOM
     $('body').append('<div class="page-content"/>');
