@@ -35,8 +35,7 @@ class QuestionList extends List {
       for(let item of data){
 
         // create question and store by id
-        
-        if(questionsById != undefined && questionsById.indexOf(item.question_id) != -1){
+        if(questionsById.length > 0 && questionsById[i].test_id != item.question_id){
         	console.log('HEJEHJ');
         	i++;
         }

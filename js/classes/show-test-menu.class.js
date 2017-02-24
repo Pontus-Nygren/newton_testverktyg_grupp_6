@@ -166,7 +166,7 @@ class ShowTestMenu extends Base {
 		      	for(let test of testsFromDb){
 		      		//console.log('test!!!!',test);
 		      		for(let question of test.questions){
-		      			//console.log('question!!!!',question);
+		      			console.log('question!!!!',question);
 		      			//listOfQuestionId.push(question);
 		      			for(let q2 of questionsFromDb){
 		      				if(question.question_id == q2.question_id){
@@ -190,7 +190,7 @@ class ShowTestMenu extends Base {
 		    }
 		      	
 			console.log('TESTING:', testsFromDb[0]);
-			testsFromDb[0].display('body');
+			testsFromDb[1].display('body');
 			});
 		
 	}
