@@ -24,29 +24,36 @@ class QuestionList extends List {
 		});
 	}
 
-	readAllFromDBWithQuestions(callback){
-    this.db.readAllWithQuestions((data)=>{
-      console.log(data);
+	readAllFromDBWithOptions(callback){
+    this.db.readAllWithOptions((data)=>{
+      console.log('DATA question-list',data);
 
       // collect all questions in a new array
-      var questionsById = {};
-      
+      var questionsById = [];
+      var i = 0;
       
       for(let item of data){
 
         // create question and store by id
-        questionsById[item.question_id] = questionsById[item.question_id] || {
-          id: item.question_id,
+        
+        if(questionsById != undefined && questionsById.indexOf(item.question_id) != -1){
+        	console.log('HEJEHJ');
+        	i++;
+        }
+        questionsById[i] = questionsById[i] || {
+          question_id: item.question_id,
           imageURL: item.imageURL,
           test_id: item.test_id,
-          text: item.text,
+          question_text: item.text,
+          isOpen: item.isOpen,
           options: []
         }
         // add the current option
         if(item.option_id){
-          questionsById[item.question_id].questions.push({
-            id: item.option_id,
-            text: item.option_text,
+          questionsById[i].options.push({
+            option_id: item.option_id,
+            option_text: item.option_text,
+            question_id: item.question_id,
             points: item.points
           });
         }
@@ -95,6 +102,9 @@ class QuestionList extends List {
 			`,
 			readAll: `
 			SELECT * FROM questions
+			`,
+			readAllWithOptions: `
+			SELECT * FROM questionsWithOptions
 			`
 		}
 	}  

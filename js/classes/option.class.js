@@ -1,10 +1,10 @@
-class Option extends Base{ 
+class Option extends Base { 
 
 	static defaultPropertyValues(){
     return {
-	      id: 0,
+	      option_id: 0,
 	      question_id: 0,
-	      text: 'No',
+	      option_text: 'No',
 	      points: 0
     	}
   	}
@@ -15,8 +15,9 @@ class Option extends Base{
 
 	insertInDb(callback){
 		this.db.newOption({
-			question_id: this.question_id,
-			option_text: this.text,
+			option_id: this.option_id,
+			option_text: this.option_text,
+			questions_question_id: this.question_id,
 			points: this.points
 		},callback);
 	}

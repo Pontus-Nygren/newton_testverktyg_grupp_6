@@ -1,4 +1,4 @@
-class Student extends User{
+class Student extends User {
 
    constructor(firstName, lastName,user_id, email,course, role){
 

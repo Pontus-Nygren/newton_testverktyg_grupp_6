@@ -1,4 +1,4 @@
-class User extends Base{
+class User extends Base {
 	constructor (firstName, lastName, user_id,email,course,role){
 		super();
 		this.firstName= firstName;
