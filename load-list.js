@@ -56,6 +56,7 @@ window.load = `
     option.class.js
     question.class.js
     test.class.js
+    data-generator.class.js
     freetext-grading.class.js
     freetext.class.js
     response.class.js

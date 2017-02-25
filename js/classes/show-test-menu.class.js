@@ -6,9 +6,11 @@ class ShowTestMenu extends Base {
 
 	takeTest(index){
 		$('.page-content').empty();
-		//test.display('body');
-		this.getTestFromDB(0,(test)=>{
-			test.display('body');
+		// Skriver in indexet på testet man vill visa manuellt än så länge,
+		// sen kan man använda index från när man klickar på test från en lista
+		this.getTestFromDB(1,(test)=>{
+			$('.page-content').html('');
+			test.display('.page-content');
 		});
 	}
 
@@ -65,131 +67,4 @@ class ShowTestMenu extends Base {
 	    	callback(testsFromDb);
 		});
 	}
-
-
-	writeTestsToDatabase(){
-		var startingTime, endingTime, allowedTime;
-
-		var list = new TestList();
-		list.push({
-			startingTime: '2017-12-12 12:00:00',
-			endingTime: '2017-12-13 15:00:00',
-			allowedTime: 5
-		})
-
-	// Write the list to DB
-	/*
-	list.writeToDb(()=>{
-		console.log("Written to DB!",list);
-
-		      // Now read it back into a list to confirm
-		      var listFromDb = new TestList();
-		      listFromDb.readAllFromDb(()=>{
-		      	tests = listFromDb;
-		      	console.log("Read from DB!!!",tests);
-		      	this.writeQuestionsToDatabase(tests[tests.length - 1].test_id);
-		      });
-		  });
-	*/
-
-	// Testar att bara läsa från databasen
-	// den här kodsnutten kan tas bort och avkommentera det ovan om man vill
-	// både generera och läsa
-	var listFromDb = new TestList();
-	listFromDb.readAllFromDb(()=>{
-      	tests = listFromDb;
-      	console.log("Read from DB!!!",tests);
-      	this.writeQuestionsToDatabase(tests[tests.length - 1]);
-	});
-
-
-	}
-
-	writeQuestionsToDatabase(lasts_test_fromDB) {
-		var imageURL;
-		var test_id, text, open; 
-
-		// Create a new list of questions
-		var list = new QuestionList();
-
-		list.push({
-			imageURL: 'http://www.magicalmaths.org/wp-content/uploads/2012/11/questions_answers_2.jpg',
-			test_id : lasts_test_fromDB.test_id,
-			question_text: 'What are you going to eat today?',
-			isOpen : 0
-
-		},
-		{
-			imageURL: 'http://www.magicalmaths.org/wp-content/uploads/2012/11/questions_answers_2.jpg',
-			test_id : lasts_test_fromDB.test_id,
-			question_text: 'Are you cool?',
-			isOpen : 0
-		}
-		);
-
-
-	    // Write the list to DB
-	    /*
-	    list.writeToDb(()=>{
-
-	    	console.log("Written to DB!",list);
-
-	      // Now read it back into a list to confirm
-	      tests[0].questions = new QuestionList();
-	      tests[0].questions.readAllFromDb(()=>{
-
-	      	console.log("Read from DB",tests[0].questions);
-	      	tests[0].display('body');
-		});
-		});
-		*/
-		// Testar att bara läsa från databasen
-		// den här kodsnutten kan tas bort och avkommentera det ovan om man vill
-		// både generera och läsa
-		
-	}
-
-	writeOptionsToDatabase(testsFromDb) {
-		var question_id, option_text, points; 
-
-		// Create a new list of options
-		/*
-		var list = new OptionList();
-
-		list.push({
-			question_id: question_id_fromDB,
-			option_text: 'Yes',
-			points: 1
-		},
-		{
-			question_id: question_id_fromDB,
-			option_text: 'Maybe',
-			points: 0
-		},
-		{
-			question_id: question_id_fromDB,
-			points: 0
-		}
-		);
-
-		*/
-	    // Write the list to DB
-	    /*
-	    list.writeToDb(()=>{
-
-	    	console.log("Written to DB!",list);
-
-		    // Now read it back into a list to confirm
-		    tests[0].questions[0].options = new OptionList();
-		    tests[0].questions[0].options.readAllFromDb(()=>{
-
-		      	console.log("Read from DB",tests[0].questions[0].options);
-			});
-	      
-		});
-		*/
-		
-	}
-
-
 }

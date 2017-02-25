@@ -12,8 +12,8 @@ $(()=>{
 	login.display('body');
 	*/
 	
-	window.tests = new TestList();
-	
+	//window.tests = new TestList();
+	/*
 	test = new Test({
 		id: 1,
 		startingTime: '2017-02-02 09:00:00', //dateTimeForMySQL(2017-01-01 09:00:00),
@@ -66,13 +66,20 @@ $(()=>{
 		]
 
 });
-
+*/
 
 // Instantiate som objects
     this.bootstrapSizeTool = new BootstrapSize();
     this.navbar = new Navbar();
     this.login = new Login();
     this.tasksMenu = new ShowTestMenu();
+    //Kommentera ut DataGenerator efter första körningen
+    // pga dropTable-funktionen fungerar inte
+    /*
+    new DataGenerator((callback)=>{
+    	//this.tasksMenu = new ShowTestMenu();
+    });
+	*/
     this.aboutPage = new AboutUs();
 
     // Show the navbar and the bootstrapSizeTool
