@@ -4,11 +4,68 @@ class ShowTestMenu extends Base {
 		super(propertyValues);
 	}
 
-	takeTest(){
+	takeTest(index){
 		$('.page-content').empty();
 		//test.display('body');
-		this.writeTestsToDatabase();
+		this.getTestFromDB(0,(test)=>{
+			test.display('body');
+		});
 	}
+
+	getTestFromDB(index, callback){
+		this.getTestListFromDB((testList)=>{
+			callback(testList[index]);
+		});
+	}
+
+	// Hämtar först alla test tillsammans med frågor, men inga men inga svarsalternativ
+	// Kallar på readQuestionsAndOptionsFromDB som returnerar en
+	// ---- lista över alla test ----
+	getTestListFromDB(callback){
+		var testsFromDb = new TestList();
+		testsFromDb.readAllFromDBWithQuestions(()=>{
+
+	      	this.readQuestionsAndOptionsFromDB(testsFromDb, (testList)=>{
+	      		callback(testList);
+	      	});
+		});
+	}
+
+	// ----- Ska bara kallas på från getWholeTestListFromDB -----
+	// Hämtar alla frågor tillsammans med svarsalternativ, men inga test
+	// Kopplar sen ihop allt så man får en lista med test>frågor>svarsalternativ
+	readQuestionsAndOptionsFromDB(testsFromDb, callback){
+		var questionsFromDb = new QuestionList();
+		questionsFromDb.readAllFromDBWithOptions(()=>{
+			// ----- Kopplar ihop test>frågor>svarsalternativ -----
+			// Vi har hämtat test som har frågor, men inga svarsalternativ
+			// och frågor som har svarsalternativ, men inga test
+			// Nu måste vi koppla ihop alla objekten
+			
+			// Loopar igenom alla test som hämtats från DB
+	      	for(let test of testsFromDb){
+	      		// Loopar igenom alla testets frågor
+	      		for(let question of test.questions){
+	      			// Loopar igenom alla frågor som hämtats från DB
+	      			for(let q2 of questionsFromDb){
+	      				// Kollar om frågorna från test-objekten och de från fråge-objekten är samma
+	      				if(question.question_id == q2.question_id){
+	      					// Loopar igenom alla svarsalternativ från fråge-objekten
+	      					for(let option of q2.options){
+		      					// Kollar om svarsalternativen hör ihop med frågorna
+								if(question.question_id == option.question_id){
+									test.questions[test.questions.indexOf(question)].options.push(option);
+								}
+	      					}
+						}
+	      			}
+				}
+	    	}
+	    	// Returnerar hela testlistan
+	    	callback(testsFromDb);
+		});
+	}
+
 
 	writeTestsToDatabase(){
 		var startingTime, endingTime, allowedTime;
@@ -89,32 +146,7 @@ class ShowTestMenu extends Base {
 		// Testar att bara läsa från databasen
 		// den här kodsnutten kan tas bort och avkommentera det ovan om man vill
 		// både generera och läsa
-		var testsFromDb = new TestList();
-		testsFromDb.readAllFromDBWithQuestions(()=>{
-			// Måste kolla vilket test_id frågan har innan man väljer vilket test som ska få frågan
-			// tests[test_id_fromDB].questions
-			/*
-			for(let question of testsFromDb){
-				for(let test of tests){
-					console.log('test.test_id',test.test_id);
-					console.log('question.test_id',question.test_id);
-					console.log('123question',question);
-					if(test.test_id == question.test_id){
-						console.log('QUESTION',question);
-						test.questions.push(question);
-					}
-				}
-			}
-			*/
-	      	console.log("12334567Read from DB",testsFromDb);
-	      	this.writeOptionsToDatabase(testsFromDb);
-	      	console.log('tests', tests);
-	      	console.log('test_id_fromDB',lasts_test_fromDB.test_id);
-	      	console.log('indexOf',tests.indexOf(lasts_test_fromDB));
-	      	console.log(tests[tests.indexOf(lasts_test_fromDB)]);
-	      	console.log(tests[0]);
-	      	//tests[tests.indexOf(lasts_test_fromDB)].display('body');
-		});
+		
 	}
 
 	writeOptionsToDatabase(testsFromDb) {
@@ -156,42 +188,6 @@ class ShowTestMenu extends Base {
 	      
 		});
 		*/
-		var questionsFromDb = new QuestionList();
-		questionsFromDb.readAllFromDBWithOptions(()=>{
-		      	//console.log("Read from DB12345",questionsFromDb);
-		      	//console.log('tests from DB:',testsFromDb);
-		      	//console.log('questions from DB:',questionsFromDb);
-		      	//var listOfQuestions = [];
-
-		      	for(let test of testsFromDb){
-		      		//console.log('test!!!!',test);
-		      		for(let question of test.questions){
-		      			console.log('question!!!!',question);
-		      			//listOfQuestionId.push(question);
-		      			for(let q2 of questionsFromDb){
-		      				if(question.question_id == q2.question_id){
-		      					for(let option of q2.options){
-			      				//console.log('option!!!!!', option);
-								//console.log('question.question_id',question.question_id);
-								//console.log('option.question_id',option.question_id);
-								//console.log('123question',question);
-
-								if(question.question_id == option.question_id){
-									console.log('QUESTION',question);
-									//console.log('the question', testsFromDb[0].questions[0]);
-									test.questions[test.questions.indexOf(question)].options.push(option);
-								}
-		      				}
-		      				//console.log('second question!!!', q2);
-		      				
-						}
-		      		}
-				}
-		    }
-		      	
-			console.log('TESTING:', testsFromDb[0]);
-			testsFromDb[1].display('body');
-			});
 		
 	}
 
