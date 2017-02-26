@@ -1,6 +1,7 @@
 class Option extends Base { 
 
 	static defaultPropertyValues(){
+
     return {
 	      option_id: 0,
 	      question_id: 0,
@@ -9,10 +10,15 @@ class Option extends Base {
     	}
   	}
 
+
+
 	constructor(propertyValues = {}){ 
 		super(propertyValues);
-	}
+		var counter = 0; //to count the number of questions
+		window.sum = 0;
+	}		
 
+		
 	insertInDb(callback){
 		this.db.newOption({
 			option_id: this.option_id,

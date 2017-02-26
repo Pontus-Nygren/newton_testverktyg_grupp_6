@@ -3,9 +3,10 @@ function dateTimeForMySQL(d){
 	return new Date(d).toISOString().slice(0,19).replace('T', ' ');
 }
 var test;
-
+		
 // Create the app on DOM ready
 $(()=>{
+	
 	//new App()
 	/*
 	var login = new Login();
@@ -13,6 +14,8 @@ $(()=>{
 	*/
 	
 	window.tests = new TestList();
+   
+	
 	
 	test = new Test({
 		id: 1,
@@ -67,6 +70,14 @@ $(()=>{
 
 });
 
+//event handler works here in the menu, couldnt work in other classes, 
+//the code below is to test log in
+$( 'body' ).on( 'click', ' #submit', function(event) {
+    event.stopPropagation(); // prevent default bootstrap behavior
+       login.validate();
+    alert( $(this).hasClass( 'active' ) ); // button state AFTER the click
+});
+
 
 // Instantiate som objects
     this.bootstrapSizeTool = new BootstrapSize();
@@ -81,6 +92,8 @@ $(()=>{
 
     // Add a page-content area in the DOM
     $('body').append('<div class="page-content"/>');
+
+    
 
     // Some routes
     var router = new Router({
