@@ -64,6 +64,9 @@ window.load = `
     navbar.class.js
     about-us.class.js
     show-test-menu.class.js
+    user-list.class.js
+    user.class.js
+    responses-list.class.js
     
     
 

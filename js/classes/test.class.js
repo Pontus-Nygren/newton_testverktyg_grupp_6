@@ -16,8 +16,11 @@ class Test extends Base {
 	    // from Array to QuestionList
 	    if(!(this.questions instanceof QuestionList)){
 	      this.questions = new QuestionList(this.questions);
+
+	     
 	    }
 	}
+
 
 	get question(){
 		var question = this.questions[this.currentQuestionIndex];
@@ -26,15 +29,24 @@ class Test extends Base {
 
 	nextQuestion(){
 		if(this.questions.length > this.currentQuestionIndex){
+			$('.optionPoint').prop('checked', false);
+			console.log(this.questions.length, this.currentQuestionIndex )
 			this.currentQuestionIndex++;
 		}
 	}
 	prevQuestion(){
 		if(this.currentQuestionIndex > 0){
+			$('.optionPoint').prop('checked', false);
+			console.log( this.currentQuestionIndex )
 			this.currentQuestionIndex--;
 		}
 	}
 
+    submit(){
+		if(this.questions.length !== this.currentQuestionIndex){
+
+		}
+	}
 	insertInDb(callback){
 		this.db.newTest({
 			startingTime: this.startingTime,

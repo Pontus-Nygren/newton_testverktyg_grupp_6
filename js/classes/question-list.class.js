@@ -95,7 +95,7 @@ class QuestionList extends List {
 			questions.imageURL,
 			questions.question_text,
 			questions.isOpen 
-			FROM tests 
+			FROM tests
 			LEFT JOIN questions 
 			ON tests.test_id = questions.tests_test_id
 			`,
