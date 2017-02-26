@@ -8,7 +8,7 @@ class ShowTestMenu extends Base {
 		$('.page-content').empty();
 		// Skriver in indexet på testet man vill visa manuellt än så länge,
 		// sen kan man använda index från när man klickar på test från en lista
-		this.getTestFromDB(1,(test)=>{
+		this.getTestFromDB(0,(test)=>{
 			$('.page-content').html('');
 			test.display('.page-content');
 		});

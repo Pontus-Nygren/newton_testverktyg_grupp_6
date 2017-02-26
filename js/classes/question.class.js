@@ -1,20 +1,5 @@
 class Question extends Base { 
-	/*
-	options: [
-	      	{
-	      		id: 0,
-	      		question_id: 0,
-	      		text: 'Yes',
-	      		points: 0
-	      	},
-	      	{
-	      		id: 0,
-	      		question_id: 0,
-	      		text: 'No',
-	      		points: 0
-	      	}
-	      ]
-	*/
+
 	static defaultPropertyValues(){
     return {
 	      question_id: 0,
