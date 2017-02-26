@@ -58,3 +58,10 @@ body {
 	  border-top-right-radius: 0;
 	}
 }
+
+#bs-example-navbar-collapse-1 .navbar-nav >.studentName {
+    position: relative;
+    display: block;
+    position: relative;
+    text-align: -webkit-match-parent;
+}

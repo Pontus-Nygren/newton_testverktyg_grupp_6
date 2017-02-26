@@ -67,6 +67,7 @@ window.load = `
     user-list.class.js
     user.class.js
     responses-list.class.js
+    student.class.js
     
     
 
@@ -78,6 +79,7 @@ window.load = `
     bootstrap-size.html
     about-us.html
     show-test-menu.html
+    student.html
 
   js/main.js
 

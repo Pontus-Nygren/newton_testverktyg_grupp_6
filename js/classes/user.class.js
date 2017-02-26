@@ -23,7 +23,7 @@ class User extends Base {
 	}
 	
 
-/*	get name(){
+	get name(){
 		return this.firstName + ' ' + this.lastName;
 	}
 
@@ -78,7 +78,7 @@ get userRole(){
 
 set userRole(userRole){
 	this.role = userRole;
-}*/
+}
 
 insertInDb(callback){
     this.db.newUser({

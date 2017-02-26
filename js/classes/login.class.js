@@ -15,14 +15,16 @@ var users = new UserList();
 users.readAllFromDb(()=>{
   for(var list of users)
   {
-    console.log("users", list.firstName.firstName);
-    if(usernamed===list.firstName.firstName && passworded === list.firstName.password){
-      if(list.firstName.role ==='teacher'){
+    console.log("user logged in ", list.firstName);
+    if(usernamed===list.firstName && passworded === list.password){
+      if(list.role ==='teacher'){
         window.location = "/tasksMenu"; // Redirecting to other page.
-        //('.tasksMenu').show();
       }
-      else if(list.firstName.role ==='student') {
-        window.location = "/about-us";
+      else if(list.role ==='student') {
+         console.log("************"  + $('#bs-example-navbar-collapse-1').attr('class'));
+          window.location = "/student";
+   
+//$("#bs-example-navbar-collapse-1 .navbar-nav .taskMenu").hide()
 
       }
       else{

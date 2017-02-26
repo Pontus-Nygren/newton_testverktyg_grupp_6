@@ -18,6 +18,12 @@ Navbar.addTemplate('default', function(){return `
         <li class="active"><a href="/">Start page<span class="sr-only">(current)</span></a></li>
         <li class = "taskMenu" ><a href="/tasksMenu">Tests<span class="sr-only">(current)</span></a></li>
         <li><a href="/about-us">About us</a></li>
+        
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+         <li class = "studentName" ><a href="/student">${this.firstName}</a></li>
+         <li class = "logOut" ><a href="/#">Logout</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
