@@ -3,7 +3,7 @@ class ResponsesList extends List {
 	constructor(items){
 		super(Response,items);
 		this.db.createTableIfNeeded();
-		this.db.createUsersWithResponsesView();
+		this.db.createUsersWithResponsesView(); //not necessary, to be removed
 
 	}
 

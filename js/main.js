@@ -72,11 +72,10 @@ $(()=>{
 
 //event handler works here in the menu, couldnt work in other classes, 
 //the code below is to test log in
-$( 'body' ).on( 'click', ' #submit', function(event) {
+/*$( 'body' ).on( 'click', ' #submit', function(event) {
     event.stopPropagation(); // prevent default bootstrap behavior
-       login.validate();
-    alert( $(this).hasClass( 'active' ) ); // button state AFTER the click
-});
+    //alert( $(this).hasClass( 'active' ) ); // button state AFTER the click
+});*/
 
 
 // Instantiate som objects
@@ -85,6 +84,8 @@ $( 'body' ).on( 'click', ' #submit', function(event) {
     this.login = new Login();
     this.tasksMenu = new ShowTestMenu();
     this.aboutPage = new AboutUs();
+    this.student = new Student();
+    console.log("student", this.student.name);
 
     // Show the navbar and the bootstrapSizeTool
     this.navbar.display('body');
@@ -111,6 +112,13 @@ $( 'body' ).on( 'click', ' #submit', function(event) {
 	    this.navbar.setActiveLink();
 
       },
+      '/student': ()=> {
+        $("#bs-example-navbar-collapse-1 .navbar-nav .tasksMenu").remove();
+	    $('.page-content').empty();
+	    this.student.display('.page-content');
+	    //this.navbar.setActiveLink();
+
+        },
 
       '/about-us': ()=> {
 

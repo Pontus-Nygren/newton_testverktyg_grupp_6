@@ -3,8 +3,8 @@ class Student extends User {
    constructor(firstName, lastName,user_id, email,course, role){
 
    	//We must call the constructor of the parent class before we can refer to the this keyword
-    super( firstName, lastName,user_id, ssn, email,course, role);
-
+    super( firstName, lastName,user_id, email,course, role);
+     
    }
 
 
@@ -21,13 +21,16 @@ class Student extends User {
            <p>Course name: ${this.course}</p>
            <p>Role: ${this.role}</p>
         </div>
-   `}
+   `
+ }
 
    display(selector){
    	//$(selector).append(this.template);
     //We expect a separate file to add the static property 
     //template to our Student class (js/templates/student/html)
+    $("#bs-example-navbar-collapse-1 .navbar-nav .studentName").text(this.firstName);
     $(selector).append(Student.template.apply(this));
+
    }
 
 
