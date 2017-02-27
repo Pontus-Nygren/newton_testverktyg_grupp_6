@@ -28,14 +28,22 @@ class Test extends Base {
 	}
 
 	nextQuestion(){
-		if(this.questions.length > this.currentQuestionIndex){
+		var atLeastOneIsChecked = $('input[name="chk[]"]:checked').length > 0;
+		console.log('atLeastOneIsChecked',atLeastOneIsChecked);
+
+		if(this.questions.length > this.currentQuestionIndex && atLeastOneIsChecked){
+			$('.alert').remove();
 			$('.optionPoint').prop('checked', false);
 			console.log(this.questions.length, this.currentQuestionIndex )
 			this.currentQuestionIndex++;
+		} else if(!atLeastOneIsChecked){
+			$('.alert').remove();
+			$('.choise-question').append('<div class="alert alert-warning" role="alert">You need to select at least one option. Remember - you can always go back and change your answer before you submit.</div>')
 		}
 	}
 	prevQuestion(){
 		if(this.currentQuestionIndex > 0){
+			$('.alert').remove();
 			$('.optionPoint').prop('checked', false);
 			console.log( this.currentQuestionIndex )
 			this.currentQuestionIndex--;

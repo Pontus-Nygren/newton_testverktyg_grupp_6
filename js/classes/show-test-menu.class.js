@@ -28,6 +28,8 @@ class ShowTestMenu extends Base {
 		testsFromDb.readAllFromDBWithQuestions(()=>{
 
 	      	this.readQuestionsAndOptionsFromDB(testsFromDb, (testList)=>{
+	      		//var testView = new TestView(testList);
+	      		//testView.display('body');
 	      		callback(testList);
 	      	});
 		});

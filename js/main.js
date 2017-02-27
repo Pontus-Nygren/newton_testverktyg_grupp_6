@@ -23,6 +23,7 @@ $(()=>{
 });*/
 
 	//Create some users
+	/*
 	var userList = new UserList([{
 		firstName:"Joel",
 		lastName: "Nilsson",
@@ -42,12 +43,12 @@ $(()=>{
 	    role: "Teacher"
 	}
 	]);
-
+	
 	userList.writeToDb(()=>{
 		console.log('Written to DB!',userList);
 
 	});
-
+	*/
 
 // Instantiate som objects
     this.bootstrapSizeTool = new BootstrapSize();
@@ -95,7 +96,7 @@ $(()=>{
 	    $('.page-content').empty();
 	    this.student.display('.page-content');
 	    //this.navbar.setActiveLink();
-
+	    //this.testView.display('.page-content');
         },
 
       '/about-us': ()=> {

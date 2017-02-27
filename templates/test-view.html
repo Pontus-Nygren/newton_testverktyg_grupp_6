@@ -1,0 +1,9 @@
+TestView.addTemplate('default', function(){return `
+  <div class="container">
+    <div class="page-header">
+      <h1>Available tests</h1>
+    </div>
+    	${this[0].test_id}
+    	${this[1].test_id}
+  </div>
+`});
