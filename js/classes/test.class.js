@@ -38,7 +38,7 @@ class Test extends Base {
 			this.currentQuestionIndex++;
 		} else if(!atLeastOneIsChecked){
 			$('.alert').remove();
-			$('.choise-question').append('<div class="alert alert-warning" role="alert">You need to select at least one option. Remember - you can always go back and change your answer before you submit.</div>')
+			$('.question-container').append('<div class="alert alert-warning" role="alert">You need to select at least one option. Remember - you can always go back and change your answer before you submit.</div>')
 		}
 	}
 	prevQuestion(){

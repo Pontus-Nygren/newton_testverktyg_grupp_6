@@ -1,7 +1,8 @@
 /* Add your own css */
 
-.pet-box, .pet-owner-name {
-  cursor:pointer;
+html {
+  position: relative;
+  min-height: 100%;
 }
 
 .big-border {
@@ -67,12 +68,6 @@ body {
     text-align: -webkit-match-parent;
 }
 
-
-html {
-  position: relative;
-  min-height: 100%;
-}
-
 footer {
   position: absolute;
   bottom: 0;
@@ -83,3 +78,24 @@ footer {
   height: 40px;
 }
 
+.question-img {
+	width: 100%;
+	max-width: 500px;
+}
+
+.question-img>img{
+	max-width: 100%;
+	display: inline-block;	
+}
+
+.option-container{
+	margin-left: 10px;
+}
+
+.questions-nav{
+	margin-bottom: 10px;
+}
+
+label{
+	font-weight: normal;
+}

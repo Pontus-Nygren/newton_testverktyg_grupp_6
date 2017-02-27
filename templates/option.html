@@ -1,10 +1,10 @@
 Option.addTemplate('default', function(){return `
 <div class=""col-sm-12 col-md-12 col-lg-12">
-	<div class="input-group">
+	<div class="input-group option-container">
 		<div class="panel panel-default optionPoint">
 			<div class="panel-body">
-				<input data-click = "pointCalculate" class = "optionPoint" name="chk[]" type="checkbox" " aria-label="...">
-			    ${this.option_text}
+				<input data-click = "pointCalculate" id="${this.option_text}" class = "optionPoint" name="chk[]" type="checkbox" aria-label="...">
+			    <label for="${this.option_text}">${this.option_text}</label>
 			</div>
 		</div>
 	</div><!-- /input-group -->
