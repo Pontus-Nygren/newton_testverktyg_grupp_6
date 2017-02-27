@@ -1,8 +1,8 @@
-class PetOwnerView extends Base {
+class TestView extends Base {
 
   defaultPropertyValues(){
     return {
-      petOwners: new PetOwnerList()
+      tests: new TestList()
     }
   }
 

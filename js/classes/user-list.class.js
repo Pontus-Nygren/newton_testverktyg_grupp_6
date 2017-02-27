@@ -91,6 +91,9 @@ class UserList extends List {
       `,
       readAllWithResponses: `
       SELECT * FROM usersWithResponsesView
+      `,
+      getUserByEmail: `
+      SELECT * FROM users WHERE email = ? AND password = ?
       `
 
     }
