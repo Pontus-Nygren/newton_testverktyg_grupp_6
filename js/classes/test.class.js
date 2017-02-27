@@ -2,6 +2,7 @@ class Test extends Base {
 	static defaultPropertyValues(){
     return {
 	      test_id: 0,
+	      test_name: '',
 	      currentQuestionIndex: 0,
 	      startingTime: '2017-01-01 09:00', //dateTimeForMySQL(2017-01-01 09:00:00),
 	      endingTime: '2017-01-01 16:00', //dateTimeForMySQL(2017-01-01 16:00:00),
@@ -57,6 +58,7 @@ class Test extends Base {
 	}
 	insertInDb(callback){
 		this.db.newTest({
+			test_name: this.test_name,
 			startingTime: this.startingTime,
 			endingTime: this.endingTime,
 			allowedTime: this.allowedTime

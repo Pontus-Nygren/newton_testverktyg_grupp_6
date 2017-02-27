@@ -88,6 +88,7 @@ class QuestionList extends List {
 			CREATE OR REPLACE VIEW testsWithQuestions 
 			AS SELECT 
 			tests.test_id,
+			tests.test_name,
 			tests.startingTime,
 			tests.endingTime,
 			tests.allowedTime,

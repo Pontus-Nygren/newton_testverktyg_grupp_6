@@ -63,7 +63,7 @@ $(()=>{
     	//this.tasksMenu = new ShowTestMenu();
     });
 	*/
-    this.aboutPage = new AboutUs();
+    //this.aboutPage = new AboutUs();
     this.student = new Student();
     console.log("student", this.student.name);
 
@@ -100,8 +100,8 @@ $(()=>{
 	    this.student.display('.page-content');
 	    //this.navbar.setActiveLink();
 	    //this.testView.display('.page-content');
-        },
-
+        }//,
+        /*
       '/about-us': ()=> {
 
 	    $('.page-content').empty();
@@ -109,7 +109,7 @@ $(()=>{
 	    this.navbar.setActiveLink();
 
         }
-
+*/
     });
 
 

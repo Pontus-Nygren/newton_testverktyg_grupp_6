@@ -4,6 +4,7 @@ class OptionList extends List {
 		super(Option,items);
 		this.db.createTableIfNeeded();
 		this.db.createQuestionsWithOptionsView();
+		this.db.createTestsWithQuestionsAndOptionsView();
 	}
 
 	writeToDb(callback){
@@ -53,6 +54,27 @@ class OptionList extends List {
 			FROM questions 
 			LEFT JOIN options 
 			ON questions.question_id = options.questions_question_id
+			`,
+			createTestsWithQuestionsAndOptionsView: `
+			CREATE OR REPLACE VIEW testsWithQuestionsAndOptions 
+			AS SELECT 
+			tests.test_id,
+			tests.test_name,
+			tests.startingTime,
+			tests.endingTime,
+			tests.allowedTime,
+			questions.question_id,
+			questions.imageURL,
+			questions.question_text,
+			questions.isOpen,
+			options.option_id,
+			options.option_text,
+			options.points
+			FROM options 
+			INNER JOIN questions
+			ON options.questions_question_id = questions.question_id
+			INNER JOIN tests
+			ON questions.tests_test_id = tests.test_id
 			`,
 			readAll: `
 			SELECT * FROM options
