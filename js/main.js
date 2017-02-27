@@ -63,7 +63,6 @@ $(()=>{
     	//this.tasksMenu = new ShowTestMenu();
     });
 	*/
-    this.aboutPage = new AboutUs();
     this.student = new Student();
     console.log("student", this.student.name);
 
