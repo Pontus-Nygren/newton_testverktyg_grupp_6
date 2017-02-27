@@ -30,8 +30,8 @@ writeToDb(callback){
       // collect all tests in a new array
       var testsById = [];
       var i = 0;
-      
-      for(let item of data){
+      if(data[0] !== undefined){
+        for(let item of data){
 
         // create test and store by id
         if(testsById.length > 0 && testsById[i].test_id != item.test_id){
@@ -65,6 +65,12 @@ writeToDb(callback){
       }
 
       callback();
+      }
+      else{
+        // Only for testing
+        $('body').append('<div class="alert alert-danger" role="alert">There are no tests in the database. Uncomment the section in main that initializes the data generator. Only run it once and then comment the section out again.</div>');
+      }
+      
     });
   }
 

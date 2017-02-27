@@ -7,20 +7,20 @@ class Login extends Base {
 validate() {
 
   //there is no username column in my table and used firstname as a username
-var usernamed = document.getElementById("firstName").value;
+var email = document.getElementById("email").value;
 var passworded = document.getElementById("password").value;
 
-//this.db.usernameCheck([usernamed, passworded],(data));
+//this.db.usernameCheck([email, passworded],(data));
 var users = new UserList();
 users.readAllFromDb(()=>{
   for(var list of users)
   {
     console.log("user logged in ", list.firstName);
-    if(usernamed===list.firstName && passworded === list.password){
-      if(list.role ==='teacher'){
+    if(email.toLowerCase()===list.email.toLowerCase() && passworded.toLowerCase() === list.password.toLowerCase()){
+      if(list.role.toLowerCase() ==='teacher'){
         window.location = "/tasksMenu"; // Redirecting to other page.
       }
-      else if(list.role ==='student') {
+      else if(list.role.toLowerCase() ==='student') {
          console.log("************"  + $('#bs-example-navbar-collapse-1').attr('class'));
           window.location = "/student";
    
@@ -35,7 +35,7 @@ users.readAllFromDb(()=>{
     }
   });
 
-/*if ( usernamed == "abc" && passworded == "123")
+/*if ( email == "abc" && passworded == "123")
    {
 alert ("Login successfully");
 window.location = "http://localhost:3000/tasksMenu"; // Redirecting to other page.

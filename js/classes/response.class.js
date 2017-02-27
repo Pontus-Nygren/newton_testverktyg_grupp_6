@@ -22,7 +22,7 @@ class Response extends Base {
 	static get sqlQueries(){
 		return {
 			newResponse: `
-			INSERT pets SET ?
+			INSERT response SET ?
 			` 
 		}
 	}
