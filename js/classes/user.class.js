@@ -82,9 +82,9 @@ set userRole(userRole){
 
 insertInDb(callback){
     this.db.newUser({
+      user_id: this.user_id,
       firstName: this.firstName,
       lastName: this.lastName,
-      user_id: this.user_id,
       password: this.password,
 	  email: this.email,
 	  course: this.course,
@@ -96,7 +96,7 @@ insertInDb(callback){
     return {
       newUser: `
         INSERT users SET ?
-      ` 
+      `
     }
   }
 

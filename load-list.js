@@ -51,11 +51,13 @@ window.load = `
   js/classes/
     login.class.js
     test-list.class.js
+    test-view.class.js
     question-list.class.js
     option-list.class.js
     option.class.js
     question.class.js
     test.class.js
+    data-generator.class.js
     freetext-grading.class.js
     freetext.class.js
     response.class.js
@@ -73,6 +75,7 @@ window.load = `
 
   templates/
     login.html
+    test-view.html
     test.html
     option.html
     navbar.html
