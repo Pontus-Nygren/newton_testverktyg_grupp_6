@@ -3,9 +3,10 @@ function dateTimeForMySQL(d){
 	return new Date(d).toISOString().slice(0,19).replace('T', ' ');
 }
 var test;
-
+		
 // Create the app on DOM ready
 $(()=>{
+	
 	//new App()
 	/*
 	var login = new Login();
@@ -13,6 +14,8 @@ $(()=>{
 	*/
 	
 	window.tests = new TestList();
+   
+	
 	
 	test = new Test({
 		id: 1,
@@ -67,6 +70,13 @@ $(()=>{
 
 });
 
+//event handler works here in the menu, couldnt work in other classes, 
+//the code below is to test log in
+/*$( 'body' ).on( 'click', ' #submit', function(event) {
+    event.stopPropagation(); // prevent default bootstrap behavior
+    //alert( $(this).hasClass( 'active' ) ); // button state AFTER the click
+});*/
+
 
 // Instantiate som objects
     this.bootstrapSizeTool = new BootstrapSize();
@@ -75,6 +85,8 @@ $(()=>{
     this.footer = new Footer();
     this.tasksMenu = new ShowTestMenu();
     this.aboutPage = new AboutUs();
+    this.student = new Student();
+    console.log("student", this.student.name);
 
     // Show the navbar and the bootstrapSizeTool
     this.navbar.display('body');
@@ -84,6 +96,8 @@ $(()=>{
 
     // Add a page-content area in the DOM
     $('body').append('<div class="page-content"/>');
+
+    
 
     // Some routes
     var router = new Router({
@@ -101,6 +115,13 @@ $(()=>{
 	    this.navbar.setActiveLink();
 
       },
+      '/student': ()=> {
+        $("#bs-example-navbar-collapse-1 .navbar-nav .tasksMenu").remove();
+	    $('.page-content').empty();
+	    this.student.display('.page-content');
+	    //this.navbar.setActiveLink();
+
+        },
 
       '/about-us': ()=> {
 

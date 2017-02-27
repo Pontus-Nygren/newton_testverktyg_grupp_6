@@ -63,6 +63,10 @@ window.load = `
     navbar.class.js
     about-us.class.js
     show-test-menu.class.js
+    user-list.class.js
+    user.class.js
+    responses-list.class.js
+    student.class.js
     footer.class.js
     
     
@@ -75,6 +79,7 @@ window.load = `
     bootstrap-size.html
     about-us.html
     show-test-menu.html
+    student.html
     footer.html
 
   js/main.js

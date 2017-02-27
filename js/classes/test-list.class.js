@@ -28,13 +28,17 @@ writeToDb(callback){
       console.log(data);
 
       // collect all tests in a new array
-      var testsById = {};
-      
+      var testsById = [];
+      var i = 0;
       
       for(let item of data){
 
         // create test and store by id
-        testsById[item.test_id] = testsById[item.test_id] || {
+        if(testsById.length > 0 && testsById[i].test_id != item.test_id){
+          console.log('HEJEHJ');
+          i++;
+        }
+        testsById[i] = testsById[i] || {
           test_id: item.test_id,
           startingTime: item.startingTime,
           endingTime: item.endingTime,
@@ -43,7 +47,7 @@ writeToDb(callback){
         }
         // add the current question
         if(item.question_id){
-          testsById[item.test_id].questions.push({
+          testsById[i].questions.push({
             question_id: item.question_id,
             imageURL: item.imageURL,
             test_id: item.test_id,

@@ -1,17 +1,32 @@
-class User extends Base{
-	constructor (firstName, lastName, user_id,email,course,role){
-		super();
-		this.firstName= firstName;
-		this.lastName = lastName;
-		this.user_id = user_id;
-		this.email = email;
-		this.course = course;
-		this.role = role;
+class User extends Base {
+
+	static defaultPropertyValues(){
+		return {
+		  firstName:"Befkadu",
+		  lastName: "Degefa",
+	      user_id: 1111, 
+	      password: 1111, 
+	      email: "befat",
+	      course: "SYSJ2",
+	      role: "Student",
+	      response: new ResponsesList()
+	  }
 	}
+
+	constructor(propertyValues = {}){ 
+		super(propertyValues);		
+		// If needed convert the responses property 
+	    // from Array to responsesList
+	    if(!(this.response instanceof ResponsesList)){
+	      this.response = new ResponsesList(this.response);
+	    }
+	}
+	
 
 	get name(){
 		return this.firstName + ' ' + this.lastName;
 	}
+
 	set name(fullName){
 		fullName = fullName.split(' ');
 		if(
@@ -41,6 +56,14 @@ set userEmail(userEmail){
 	this.email = userEmail;
 }
 
+get userPassword(){
+	return this.password;
+}
+
+set userPassword(userPassword){
+	this.password = userPassword;
+}
+
 get userCourse(){
 	return this.course;
 }
@@ -56,4 +79,25 @@ get userRole(){
 set userRole(userRole){
 	this.role = userRole;
 }
+
+insertInDb(callback){
+    this.db.newUser({
+      firstName: this.firstName,
+      lastName: this.lastName,
+      user_id: this.user_id,
+      password: this.password,
+	  email: this.email,
+	  course: this.course,
+	  role: this.role
+    },callback);
+  }
+
+  static get sqlQueries(){
+    return {
+      newUser: `
+        INSERT users SET ?
+      ` 
+    }
+  }
+
 }
