@@ -6,8 +6,8 @@ function dateTimeForMySQL(d){
 // Create the app on DOM ready
 $(()=>{
 	
-	new App()
-	
+	new App();
+
 });
 
 		

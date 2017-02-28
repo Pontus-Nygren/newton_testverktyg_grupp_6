@@ -44,6 +44,7 @@ class App {
     this.login = new Login();
     this.footer = new Footer();
     this.tasksMenu = new ShowTestMenu();
+    this.aboutPage = new AboutUs();
 
     //this.aboutPage = new AboutUs();
     this.student = new Student();
@@ -63,26 +64,21 @@ class App {
     var router = new Router({
       '/': ()=>{ 
         $('.page-content').empty();
-      this.login.display('.page-content');
-      this.navbar.setActiveLink();
+        this.login.display('.page-content');
+        this.navbar.setActiveLink();
       },
+
       '/tasksMenu': ()=> { 
         $('.page-content').empty();
-      this.tasksMenu.display('.page-content');
-      this.navbar.setActiveLink();
+        this.tasksMenu.display('.page-content');
+        this.navbar.setActiveLink();
       },
-      '/student': ()=> {
-        $("#bs-example-navbar-collapse-1 .navbar-nav .tasksMenu").remove();
-      $('.page-content').empty();
-      this.student.display('.page-content');
-      //this.navbar.setActiveLink();
-      //this.testView.display('.page-content');
-        },
+
       '/about-us': ()=> {
-      $('.page-content').empty();
-      this.aboutPage.display('.page-content');
-      this.navbar.setActiveLink();
-        }
+        $('.page-content').empty();
+        this.aboutPage.display('.page-content');
+        this.navbar.setActiveLink();
+      }
     });
     // ****** Change to the new router below ******
      /*

@@ -16,6 +16,17 @@ class QuestionList extends List {
 		}
 	}
 
+		insertInDb(callback){
+		this.db.questions({
+		  question_id: this.question_id,
+          imageURL: this.imageURL,
+          test_id: this.test_id,
+          question_text: this.text,
+          isOpen: this.isOpen,
+			
+		},callback);
+	}
+
 	readAllFromDb(callback){
 		this.db.readAll((data)=>{
 			this.push.apply(this,data);

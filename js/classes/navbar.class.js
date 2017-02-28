@@ -1,8 +1,10 @@
-class Navbar extends Base {
+ class Navbar extends Base {
+
 
   constructor(propertyValues){
     super(propertyValues);
-  }
+   }
+
 
   setActiveLink(){
     // move active link to the one active

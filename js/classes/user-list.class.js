@@ -75,7 +75,7 @@ class UserList extends List {
     return {
       createUsersTableIfNeeded: `
         CREATE TABLE IF NOT EXISTS users (
-          user_id int(11) unsigned NOT NULL AUTO_INCREMENT,
+          user_id int(11) NOT NULL AUTO_INCREMENT,
           firstName longtext,
           lastName longtext,
           password varchar(255) DEFAULT NULL,
