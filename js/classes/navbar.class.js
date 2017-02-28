@@ -1,8 +1,12 @@
-class Navbar extends Base {
+ class Navbar extends Base {
+
 
   constructor(propertyValues){
     super(propertyValues);
-  }
+    //this.showTests = window.loggedInUser? (window.loggedInUser.role == 'teacher') : false;
+    
+   }
+
 
   setActiveLink(){
     // move active link to the one active

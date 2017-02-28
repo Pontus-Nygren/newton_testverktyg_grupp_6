@@ -1,11 +1,11 @@
-Test.addTemplate('default', function(){return `
+StudentTest.addTemplate('default', function(){return `
 <div class="container space-above">
 	<div class="row">
 		<div class="col-sm-12 col-md-8 below-row">
 			<div class="choise-question">
 				<img src="${this.question.imageURL}" alt="...">
 				<div class="question">
-				<!--${this.question.question_id}-->
+				    ${this.question.question_id}
 					<h3>Fråga ${this.questions.indexOf(this.question) + 1} av ${this.questions.length}</h3>
 					<p>
 						Fråga: ${this.question.question_text}
@@ -16,9 +16,9 @@ Test.addTemplate('default', function(){return `
 				</div>
 			</div>
 			<div class="btn-group pull-right" role="group" aria-label="...">
-				<button data-click="prevQuestion" type="button" id="back" class="btn btn-default">Back</button>
-		    	<button data-click="nextQuestion" type="button" id="next" class="btn btn-default">Next</button>
-		    	<button data-click="submitTest" type="button" id="submitTest" class="btn btn-default">Submit</button>
+				<button data-click="prevQuestionStudent" type="button" id="backButtonStudent" class="btn btn-default">Back</button>
+		    	<button data-click="nextQuestionStudent" type="button" id="nextButtonStudent" class="btn btn-default">Next</button>
+		    	<button data-click="submitTestStudent" type="button" id="submitTestButtonStudent" class="btn btn-default">Submit</button>
 			</div>
 		</div>
 	</div>

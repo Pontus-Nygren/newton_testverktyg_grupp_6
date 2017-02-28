@@ -55,30 +55,33 @@ window.load = `
     option-list.class.js
     option.class.js
     question.class.js
-    test.class.js
     freetext-grading.class.js
     freetext.class.js
     response.class.js
     bootstrap-size.js
     navbar.class.js
     about-us.class.js
-    show-test-menu.class.js
     user-list.class.js
     user.class.js
     responses-list.class.js
     student.class.js
-    
+    result.class.js
+    result-list.class.js
+    show-test-menu.class.js
+    test.class.js
+
     
 
   templates/
     login.html
-    test.html
     option.html
     navbar.html
     bootstrap-size.html
     about-us.html
-    show-test-menu.html
     student.html
+    result.html
+    show-test-menu.html
+    test.html
 
   js/main.js
 

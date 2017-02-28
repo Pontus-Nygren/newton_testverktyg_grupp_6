@@ -65,3 +65,34 @@ body {
     position: relative;
     text-align: -webkit-match-parent;
 }
+
+.below-row {
+  background-color: white;
+  padding: : 10px;
+  border: 0px solid grey;
+  
+}
+.choise-question .question >h3,p {
+	background-color: #ededed;
+	padding: 10px 10px;
+	margin: 0px 20px;
+	border-radius: 8px 8px 0px 0px;
+}
+.choise-question .question > p {
+	background-color: #f6f6f6;
+	border-radius: 0px 0px 8px 8px;
+	font-size: 18px;
+}
+.choise-question .question >  .row {
+	padding: 10px 0px;
+	margin: 20px 20px;
+
+}
+
+.below-row .btn-group > #back,#next,#submitTest {
+    border-radius: 10px;
+    padding: 12px 28px;
+    margin-left: 5px;
+    margin-bottom: 5px;
+}
+

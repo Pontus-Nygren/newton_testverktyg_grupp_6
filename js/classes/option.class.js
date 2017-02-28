@@ -10,34 +10,32 @@ class Option extends Base {
     	}
   	}
 
-/*pointCalculate(){
-	var i,j,temp;
-	 var result = new ResponsesList();
-  	result.readAllFromDb(()=>{
-  		console.log("result", result[0].options_option_id);
-  		var optionTable = new OptionList();
-  		for(i = 0; i < result.length; i++){  
-  		   optionTable.readAllFromDb(()=>{
-  		   	temp = result[i].options_option_id;
-  		   for(j = 0; j< optionTable.length;j++){
-  		   	console.log("optionTable", optionTable[j].option_id);
-  		      if( temp === optionTable[j].option_id){
-  		      	console.log("Read point", optionTable[j].points);
-
-  			  }
-
-  		  }
-  		});
-  	}
-
-	      	});
-}*/
-
 	constructor(propertyValues = {}){ 
 		super(propertyValues);
-		var counter = 0; //to count the number of questions
-		window.sum = 0;
-	}		
+
+
+				var user_id;
+
+	}
+
+	   pointCalculate(){
+	   		var user = JSON.parse(localStorage.getItem('user'));
+			var u_id = user.user_id;
+			console.log("u_id", u_id);
+
+			//this.users_user_id = user_id;
+			console.log(this.option_text);
+			//This algorithm is to insert the student's options to db, for every question there is
+			//a connection with db which is a bad design.
+			//Another method can be, saving an object of the options in to an array(text, user_id and option_id) 
+		var response = new Response({
+			users_user_id: u_id,
+			options_option_id: this.option_id,
+			response_text: this.option_text
+		});
+
+		response.insertInDb(console.log);
+	}	
 
 		
 	insertInDb(callback){
