@@ -23,58 +23,6 @@ writeToDb(callback){
     });
   }
 
-  readAllFromDBWithQuestions(callback){
-    this.db.readAllWithQuestions((data)=>{
-      console.log(data);
-
-      // collect all tests in a new array
-      var testsById = [];
-      var i = 0;
-      if(data[0] !== undefined){
-        for(let item of data){
-
-        // create test and store by id
-        if(testsById.length > 0 && testsById[i].test_id != item.test_id){
-          console.log('HEJEHJ');
-          i++;
-        }
-        testsById[i] = testsById[i] || {
-          test_id: item.test_id,
-          test_name: item.test_name,
-          startingTime: item.startingTime,
-          endingTime: item.endingTime,
-          allowedTime: item.allowedTime,
-          questions: []
-        }
-        // add the current question
-        if(item.question_id){
-          testsById[i].questions.push({
-            question_id: item.question_id,
-            imageURL: item.imageURL,
-            test_id: item.test_id,
-            question_text: item.question_text,
-            isOpen: item.isOpen
-          });
-        }
-
-      }
-
-      // Loop through testsById
-      // and push the test to this list
-      for(let id in testsById){
-        this.push(testsById[id]);
-      }
-
-      callback();
-      }
-      else{
-        // Only for testing
-        $('body').append('<div class="alert alert-danger" role="alert">There are no tests in the database. Uncomment the section in main that initializes the data generator. Only run it once and then comment the section out again.</div>');
-      }
-      
-    });
-  }
-
   readAllFromDBWithQuestionsAndOptions(callback){
     this.db.readAllWithQuestionsAndOptions((data)=>{
       console.log(data);
@@ -152,9 +100,6 @@ writeToDb(callback){
       `,
       readAll: `
         SELECT * FROM tests
-      `,
-      readAllWithQuestions: `
-        SELECT * FROM testsWithQuestions
       `,
       readAllWithQuestionsAndOptions: `
         SELECT * FROM testsWithQuestionsAndOptions

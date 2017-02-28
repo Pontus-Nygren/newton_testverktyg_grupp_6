@@ -3,7 +3,6 @@ class OptionList extends List {
 	constructor(items){
 		super(Option,items);
 		this.db.createTableIfNeeded();
-		this.db.createQuestionsWithOptionsView();
 		this.db.createTestsWithQuestionsAndOptionsView();
 	}
 
@@ -40,20 +39,6 @@ class OptionList extends List {
 			REFERENCES questions (question_id) 
 			ON DELETE NO ACTION ON UPDATE NO ACTION
 			) 
-			`,
-			createQuestionsWithOptionsView: `
-			CREATE OR REPLACE VIEW questionsWithOptions 
-			AS SELECT 
-			questions.question_id,
-			questions.imageURL,
-			questions.question_text,
-			questions.isOpen,
-			options.option_id,
-			options.option_text,
-			options.points
-			FROM questions 
-			LEFT JOIN options 
-			ON questions.question_id = options.questions_question_id
 			`,
 			createTestsWithQuestionsAndOptionsView: `
 			CREATE OR REPLACE VIEW testsWithQuestionsAndOptions 

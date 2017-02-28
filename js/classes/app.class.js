@@ -2,35 +2,104 @@ class App {
 
   constructor(){
 
-    // Create some test data then start the app
-    new TestDataGenerator((petOwnerView)=>{
-      this.start(petOwnerView);
+    //Kommentera ut DataGenerator efter första körningen
+    // pga dropTable-funktionen fungerar inte
+    /*
+    new DataGenerator((callback)=>{
+      //this.tasksMenu = new ShowTestMenu();
     });
+  */
 
+  // --- If we want to create some users ---
+  /*
+  var userList = new UserList([{
+    firstName:"Joel",
+    lastName: "Nilsson",
+      user_id: 2222, 
+      password: 'hejsan', 
+      email: "joel.o.nilsson@gmail.com",
+      course: "SYSJ2",
+      role: "Student"
+  },
+  {
+    firstName:"Pelle",
+    lastName: "Svensson",
+      user_id: 3333, 
+      password: 'hej', 
+      email: "pellesvensson@mail.com",
+      course: "",
+      role: "Teacher"
   }
+  ]);
+  
+  userList.writeToDb(()=>{
+    console.log('Written to DB!',userList);
 
-  start(petOwnerView){
+  });
+  */
 
-    // Instantiate som objects
+// Instantiate som objects
     this.bootstrapSizeTool = new BootstrapSize();
     this.navbar = new Navbar();
-    this.startPage = new StartPage();
-    this.petOwnerView = petOwnerView;
-    this.aboutPage = new AboutUs();
+    this.login = new Login();
+    this.footer = new Footer();
+    this.tasksMenu = new ShowTestMenu();
+
+    //this.aboutPage = new AboutUs();
+    this.student = new Student();
+    console.log("student", this.student.name);
 
     // Show the navbar and the bootstrapSizeTool
     this.navbar.display('body');
     this.bootstrapSizeTool.display('body');
+   // this.bootstrapSizeTool.display('body');
+    this.footer.display('body');
 
     // Add a page-content area in the DOM
     $('body').append('<div class="page-content"/>');
 
+   
     // Some routes
     var router = new Router({
-      '/': ()=>{ this.showPage(this.startPage); },
-      '/petowners': ()=> { this.showPage(this.petOwnerView); },
-      '/about-us': ()=> { this.showPage(this.aboutPage); }
+      '/': ()=>{ 
+        $('.page-content').empty();
+      this.login.display('.page-content');
+      this.navbar.setActiveLink();
+      },
+      '/tasksMenu': ()=> { 
+        $('.page-content').empty();
+      this.tasksMenu.display('.page-content');
+      this.navbar.setActiveLink();
+      },
+      '/student': ()=> {
+        $("#bs-example-navbar-collapse-1 .navbar-nav .tasksMenu").remove();
+      $('.page-content').empty();
+      this.student.display('.page-content');
+      //this.navbar.setActiveLink();
+      //this.testView.display('.page-content');
+        },
+      '/about-us': ()=> {
+      $('.page-content').empty();
+      this.aboutPage.display('.page-content');
+      this.navbar.setActiveLink();
+        }
     });
+    // ****** Change to the new router below ******
+     /*
+    var router = new Router({
+    '/': ()=>{ 
+        //... this route should always exsist... 
+    },
+    '/about/': ()=>{
+      // my logic to change views etc
+      // and show an about page
+    },
+    '/student/:id/view/:viewname': (params)=>{
+      console.log(params.id, params.viewname);
+      // do different things depending on id and viewname
+     }
+    });
+    */
 
   }
 

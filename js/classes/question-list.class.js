@@ -3,7 +3,6 @@ class QuestionList extends List {
 	constructor(items){
 		super(Question,items);
 		this.db.createTableIfNeeded();
-		this.db.createTestsWithQuestionsView();
 	}
 
 	writeToDb(callback){
@@ -24,51 +23,6 @@ class QuestionList extends List {
 		});
 	}
 
-	readAllFromDBWithOptions(callback){
-    this.db.readAllWithOptions((data)=>{
-      console.log('DATA question-list',data);
-
-      // collect all questions in a new array
-      var questionsById = [];
-      var i = 0;
-      
-      for(let item of data){
-
-        // create question and store by id
-        if(questionsById.length > 0 && questionsById[i].test_id != item.question_id){
-        	console.log('HEJEHJ');
-        	i++;
-        }
-        questionsById[i] = questionsById[i] || {
-          question_id: item.question_id,
-          imageURL: item.imageURL,
-          test_id: item.test_id,
-          question_text: item.text,
-          isOpen: item.isOpen,
-          options: []
-        }
-        // add the current option
-        if(item.option_id){
-          questionsById[i].options.push({
-            option_id: item.option_id,
-            option_text: item.option_text,
-            question_id: item.question_id,
-            points: item.points
-          });
-        }
-
-      }
-
-      // Loop through questionsById
-      // and push the question to this list
-      for(let id in questionsById){
-        this.push(questionsById[id]);
-      }
-
-      callback();
-    });
-  }
-
 	static get sqlQueries() {
 		return {
 			createTableIfNeeded: `
@@ -84,27 +38,8 @@ class QuestionList extends List {
 		  	ON DELETE NO ACTION ON UPDATE NO ACTION
 			)
 			`,
-			createTestsWithQuestionsView: `
-			CREATE OR REPLACE VIEW testsWithQuestions 
-			AS SELECT 
-			tests.test_id,
-			tests.test_name,
-			tests.startingTime,
-			tests.endingTime,
-			tests.allowedTime,
-			questions.question_id,
-			questions.imageURL,
-			questions.question_text,
-			questions.isOpen 
-			FROM tests
-			LEFT JOIN questions 
-			ON tests.test_id = questions.tests_test_id
-			`,
 			readAll: `
 			SELECT * FROM questions
-			`,
-			readAllWithOptions: `
-			SELECT * FROM questionsWithOptions
 			`
 		}
 	}  
