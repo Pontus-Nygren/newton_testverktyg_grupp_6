@@ -29,4 +29,23 @@ class ShowTestMenu extends Base {
 			callback(testsFromDb);
 		})
 	}
+
+	showListOfTests(){
+		var listOfTests = new TeacherView();
+		listOfTests.getTests(()=>{
+			listOfTests.display('body');
+		});
+	}
+
+	showStudentResults(){
+		var result = new StudentResultList();
+        result.load((studentResults)=>{
+        	studentResults.display('body');
+        	/*for(var studentResults of result)
+        	{
+        		studentResults.display('body');
+        	}*/
+        	
+		});
+	}
 }

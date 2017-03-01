@@ -35,6 +35,7 @@ class Result extends Base {
 		});
 	}
 
+
 	static get sqlQueries(){
 		return {
 			createTableIfNeeded: `
@@ -67,7 +68,14 @@ class Result extends Base {
 			calc: `
 			select sum(points) AS sum from responseoptionquestion
 			where user_id = ? AND test_id = ?
-			`
+			`,
+			createStudentResultView: `
+			create or replace view usersResultView as
+			select users.user_id, users.firstName, users.lastName, results.finalResult
+			from users
+			inner join results
+			on users.user_id = results.users_user_id
+			`,
 		}
 	}
 }
