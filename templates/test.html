@@ -2,7 +2,7 @@ Test.addTemplate('default', function(){return `
 <div class="container space-above">
 	<div class="row">
 		<div class="col-sm-12 col-md-8">
-			<div class="choise-question">
+			<div class="question-container">
 				<div class="question-img"><img src="${this.question.imageURL}" alt=""></div>
 				<div class="question">
 				<!-- ${this.question.question_id} -->
@@ -15,9 +15,10 @@ Test.addTemplate('default', function(){return `
 					</div>
 				</div>
 			</div>
-			<div class="btn-group pull-right" role="group" aria-label="...">
+			<div class="btn-group pull-right questions-nav" role="group" aria-label="...">
 				<button data-click="prevQuestion" type="button" id="back" class="btn btn-default">Back</button>
 		    	<button data-click="nextQuestion" type="button" id="next" class="btn btn-default">Next</button>
+		    	<button data-click="submitTest" type="button" id="submitTest" class="btn btn-default">Submit</button>
 			</div>
 		</div>
 	</div>

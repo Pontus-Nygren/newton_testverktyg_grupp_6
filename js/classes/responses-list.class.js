@@ -28,16 +28,14 @@ class ResponsesList extends List {
 static get sqlQueries() {
 		return {
 			createTableIfNeeded: `
-			CREATE TABLE IF NOT EXISTS response (
-     		  users_user_id int(11) NOT NULL,
+			CREATE TABLE responses (
+			  users_user_id int(11) NOT NULL,
 			  options_option_id int(11) NOT NULL,
-			  response_text longtext,
-              PRIMARY KEY (users_user_id,options_option_id),
-              KEY fk_responses_users1_idx (users_user_id),
-              KEY fk_responses_options1_idx (options_option_id),
-              CONSTRAINT fk_responses_options1 FOREIGN KEY (options_option_id) REFERENCES options (option_id) ON DELETE NO ACTION ON UPDATE NO ACTION,
-              CONSTRAINT fk_responses_users1 FOREIGN KEY (users_user_id) REFERENCES users (user_id) ON DELETE NO ACTION ON UPDATE NO ACTION
-
+			  PRIMARY KEY (users_user_id,options_option_id),
+			  KEY fk_responses_users1_idx (users_user_id),
+			  KEY fk_responses_options1_idx (options_option_id),
+			  CONSTRAINT option_id FOREIGN KEY (options_option_id) REFERENCES options (option_id) ON DELETE NO ACTION ON UPDATE NO ACTION,
+			  CONSTRAINT user_id FOREIGN KEY (users_user_id) REFERENCES users (user_id) ON DELETE NO ACTION ON UPDATE NO ACTION
 			)
 			`,
 			createUsersWithResponsesView: `
@@ -62,8 +60,4 @@ static get sqlQueries() {
 			`
 		}
 	}  
-
-
-
-
 }

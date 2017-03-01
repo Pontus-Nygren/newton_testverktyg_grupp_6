@@ -2,8 +2,7 @@ class Response extends Base {
 	static defaultPropertyValues(){
 		return {
 			users_user_id: 0,
-			options_option_id: 0,
-			response_text:"responses"
+			options_option_id: 0
 		}
 	}
 
@@ -14,15 +13,14 @@ class Response extends Base {
 	insertInDb(callback){
 		this.db.newResponse({
 			users_user_id: this.users_user_id,
-			options_option_id: this.options_option_id,
-			response_text: this.response_text
+			options_option_id: this.options_option_id
 		},callback);
 	}
 
 	static get sqlQueries(){
 		return {
 			newResponse: `
-			INSERT response SET ?
+			INSERT responses SET ?
 			` 
 		}
 	}

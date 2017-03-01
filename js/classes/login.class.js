@@ -4,55 +4,32 @@ class Login extends Base {
     super(propertyValues);
   }
 
-validate() {
+  validate() {
 
-  //there is no username column in my table and used firstname as a username
-var email = document.getElementById("email").value;
-var passworded = document.getElementById("password").value;
+    var usernamed = document.getElementById("email").value;
+    var passworded = document.getElementById("password").value;
 
-//this.db.usernameCheck([email, passworded],(data));
-var users = new UserList();
-users.readAllFromDb(()=>{
-  for(var list of users)
-  {
-    console.log("user logged in ", list.firstName);
-    if(email.toLowerCase()===list.email.toLowerCase() && passworded.toLowerCase() === list.password.toLowerCase()){
-      if(list.role.toLowerCase() ==='teacher'){
-        window.location = "/tasksMenu"; // Redirecting to other page.
+    //this.db.usernameCheck([email, passworded],(data));
+    var users = new UserList();
+    users.readAllFromDb(()=>{
+      for(var user of users){
+        console.log("user logged in ", user.firstName);
+        if(usernamed.toLowerCase()===user.email.toLowerCase() && passworded.toLowerCase() === user.password.toLowerCase()){
+          if(user.role.toLowerCase() ==='teacher'){
+            window.location.href = "/tasksMenu"; // Redirecting to other page.
+          }
+          else if(user.role.toLowerCase() ==='student') {
+            window.location.href = "/tasksMenu";
+          }
+          else{
+            return false;
+          }
+          var userAsStr = JSON.stringify(user);
+          localStorage.setItem('user', userAsStr);
+          console.log("*********************", user)
+          break;
+        }
       }
-      else if(list.role.toLowerCase() ==='student') {
-         console.log("************"  + $('#bs-example-navbar-collapse-1').attr('class'));
-          window.location = "/student";
-   
-//$("#bs-example-navbar-collapse-1 .navbar-nav .taskMenu").hide()
-
-      }
-      else{
-        return false;
-      }
-
-    }
-    }
-  });
-
-/*if ( email == "abc" && passworded == "123")
-   {
-alert ("Login successfully");
-window.location = "http://localhost:3000/tasksMenu"; // Redirecting to other page.
-return false;
-   }*/
-                   }
-
-
-  /*static get sqlQueries(){
-
-return {
-
-	usernameCheck: `
-	     SELECT users WHERE firstName = ? AND password = ?
-	     `,
-
+    });
   }
-
-  }*/
 }

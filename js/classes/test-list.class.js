@@ -23,23 +23,25 @@ writeToDb(callback){
     });
   }
 
-  readAllFromDBWithQuestions(callback){
-    this.db.readAllWithQuestions((data)=>{
+  readAllFromDBWithQuestionsAndOptions(callback){
+    this.db.readAllWithQuestionsAndOptions((data)=>{
       console.log(data);
 
       // collect all tests in a new array
       var testsById = [];
       var i = 0;
+      var j = 0;
       if(data[0] !== undefined){
         for(let item of data){
 
         // create test and store by id
         if(testsById.length > 0 && testsById[i].test_id != item.test_id){
-          console.log('HEJEHJ');
           i++;
+          j = 0;
         }
         testsById[i] = testsById[i] || {
           test_id: item.test_id,
+          test_name: item.test_name,
           startingTime: item.startingTime,
           endingTime: item.endingTime,
           allowedTime: item.allowedTime,
@@ -47,12 +49,23 @@ writeToDb(callback){
         }
         // add the current question
         if(item.question_id){
-          testsById[i].questions.push({
+          if(testsById[i].questions.length > 0 && testsById[i].questions[j].question_id != item.question_id){
+            j++
+          }
+          testsById[i].questions[j] = testsById[i].questions[j] || {
             question_id: item.question_id,
             imageURL: item.imageURL,
             test_id: item.test_id,
             question_text: item.question_text,
-            isOpen: item.isOpen
+            isOpen: item.isOpen,
+            options: []
+          }
+        }
+        if(item.option_id){
+          testsById[i].questions[j].options.push({
+            option_id: item.option_id,
+            option_text: item.option_text,
+            points: item.points
           });
         }
 
@@ -75,9 +88,6 @@ writeToDb(callback){
   }
 
   static get sqlQueries(){
-  	/*
-  		
-  	*/
     return {
       createTableIfNeeded: `
         CREATE TABLE IF NOT EXISTS tests (
@@ -91,8 +101,8 @@ writeToDb(callback){
       readAll: `
         SELECT * FROM tests
       `,
-      readAllWithQuestions: `
-        SELECT * FROM testsWithQuestions
+      readAllWithQuestionsAndOptions: `
+        SELECT * FROM testsWithQuestionsAndOptions
       `
     }
   }

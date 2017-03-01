@@ -10,7 +10,6 @@
     pet-owner-list.class.js
     pet-owner-view.class.js
     test-data-generator.class.js
-    app.class.js
     navbar.class.js
     startpage.class.js
     about-us.class.js
@@ -49,6 +48,7 @@ window.load = `
     router.class.js
   
   js/classes/
+    app.class.js
     login.class.js
     test-list.class.js
     test-view.class.js
@@ -69,8 +69,9 @@ window.load = `
     responses-list.class.js
     student.class.js
     footer.class.js
-    
-    
+    about-us.class.js
+    result.class.js
+    result-list.class.js
 
   templates/
     login.html
@@ -81,7 +82,9 @@ window.load = `
     bootstrap-size.html
     show-test-menu.html
     student.html
+    about-us.html
     footer.html
+    result.html
 
   js/main.js
 

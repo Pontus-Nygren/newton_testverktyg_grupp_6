@@ -2,7 +2,8 @@ class TestView extends Base {
 
   defaultPropertyValues(){
     return {
-      tests: new TestList()
+      availableTests: new TestCustomList(),
+      completedTests: new TestCustomList()
     }
   }
 
