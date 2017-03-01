@@ -2,13 +2,14 @@ Test.addTemplate('default', function(){return `
 <div class="container space-above">
 	<div class="row">
 		<div class="col-sm-12 col-md-8">
+			<h3>${this.test_name}</h3>
 			<div class="question-container">
 				<div class="question-img"><img src="${this.question.imageURL}" alt=""></div>
 				<div class="question">
-				<!-- ${this.question.question_id} -->
+				
 					<h3>Fråga ${this.questions.indexOf(this.question) + 1} av ${this.questions.length}</h3>
 					<p>
-						Fråga: ${this.question.question_text}
+						${this.question.question_text}
 					</p>
 					<div class="row">
 						${this.question.options.display()}

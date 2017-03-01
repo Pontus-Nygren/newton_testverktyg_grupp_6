@@ -10,7 +10,10 @@ class ShowTestMenu extends Base {
 		// sen kan man använda index från när man klickar på test från en lista
 		this.getTestFromDB(0,(test)=>{
 			$('.page-content').html('');
+			console.log('test',test);
 			test.display('.page-content');
+			//var testView = new TestView({test:test});
+			//testView.display('.page-content');
 		});
 	}
 

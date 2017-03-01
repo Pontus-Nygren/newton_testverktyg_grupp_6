@@ -105,7 +105,7 @@ label{
   border: 0px solid grey;
   
 }
-.choise-question .question >h3,p {
+.choise-question .question >h3 {
 	background-color: #ededed;
 	padding: 10px 10px;
 	margin: 0px 20px;

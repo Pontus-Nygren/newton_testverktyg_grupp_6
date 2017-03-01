@@ -58,7 +58,10 @@ class App {
 
     // Add a page-content area in the DOM
     $('body').append('<div class="page-content"/>');
-
+    /*
+    this.teacherView = new TeacherView();
+    teacherView.display('.page-content');
+  */
    
     // Some routes
     var router = new Router({
