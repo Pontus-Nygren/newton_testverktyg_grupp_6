@@ -26,4 +26,16 @@ class ShowTestMenu extends Base {
 			callback(testsFromDb);
 		})
 	}
+
+	showStudentResults(){
+		var result = new StudentResults();
+        result.load((studentResults)=>{
+        	studentResults.display('body');
+        	/*for(var studentResults of result)
+        	{
+        		studentResults.display('body');
+        	}*/
+        	
+		});
+	}
 }
