@@ -1,4 +1,4 @@
-class ShowTestMenu extends Base {
+class TeacherPage extends Base {
 
 	constructor(propertyValues){
 		super(propertyValues);
