@@ -87,9 +87,22 @@ class App {
      
     var router = new Router({
     '/': ()=>{ 
+      var user = JSON.parse(localStorage.getItem('user'));
+      if(user){
+        if(user.role == 'student'){
+          $('.page-content').empty();
+          this.studentPage.display('.page-content');
+          this.navbar.setActiveLink();
+        }else if(user.role == 'teacher'){
+          $('.page-content').empty();
+          this.teacherPage.display('.page-content');
+          this.navbar.setActiveLink();
+        }
+      }else{
         $('.page-content').empty();
         this.login.display('.page-content');
         this.navbar.setActiveLink();
+      }
     },
     '/about-us/': ()=>{
       $('.page-content').empty();
