@@ -3,11 +3,11 @@ class Test extends Base {
     return {
 	      test_id: 0,
 	      test_name: '',
-	      currentQuestionIndex: 0,
 	      startingTime: '2017-01-01 09:00',
 	      endingTime: '2017-01-01 16:00',
 	      allowedTime: 0,
-	      questions: new QuestionList()
+	      questions: new QuestionList(),
+	      currentQuestionIndex: 0
     	}
   	}
 
@@ -156,11 +156,7 @@ class Test extends Base {
 		}
 	}
 
-    submit(){
-		if(this.questions.length !== this.currentQuestionIndex){
 
-		}
-	}
 	insertInDb(callback){
 		this.db.newTest({
 			test_name: this.test_name,

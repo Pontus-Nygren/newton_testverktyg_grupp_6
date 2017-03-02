@@ -105,7 +105,7 @@ label{
   border: 0px solid grey;
   
 }
-.choise-question .question >h3,p {
+.choise-question .question >h3 {
 	background-color: #ededed;
 	padding: 10px 10px;
 	margin: 0px 20px;
@@ -122,7 +122,7 @@ label{
 
 }
 
-.below-row .btn-group > #back,#next,#submitTest {
+.questions-nav> #back,#next,#submitTest {
     border-radius: 10px;
     padding: 12px 28px;
     margin-left: 5px;

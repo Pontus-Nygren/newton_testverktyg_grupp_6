@@ -22,8 +22,10 @@ Navbar.addTemplate('default', function(){return `
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
-         <li class = "studentName" >${this.firstName}</li>
-         <li class = "logOut" ><a href="/#">Logout</a></li>
+        <li class="loggedInUser" data-bind="${this.loggedInUser}"><a href="/tasksMenu">${this.loggedInUser}</a></li>
+        <li data-click="toggleLogin" data-bind="${this.toggleLoginText}">
+          <a href="/#">${this.toggleLoginText}</a>
+        </li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
