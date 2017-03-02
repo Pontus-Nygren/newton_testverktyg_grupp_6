@@ -34,6 +34,13 @@ class Result extends Base {
 			callback && callback(this);
 		});
 	}
+	selectUser(test_id, callback){
+	this.db.userSelect([test_id],(data)=>{
+		console.log('data', data, 'test_id', test_id, 'this',this);
+		this.doneBy = new UserList(data);
+		callback && callback(this);
+	})
+}
 
 	static get sqlQueries(){
 		return {
@@ -67,6 +74,9 @@ class Result extends Base {
 			calc: `
 			select sum(points) AS sum from responseoptionquestion
 			where user_id = ? AND test_id = ?
+			`,
+			userSelect: `
+			SELECT User_user_id FROM results WHERE tests_test_id = ?
 			`
 		}
 	}
