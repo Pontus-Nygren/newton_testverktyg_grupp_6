@@ -40,8 +40,10 @@ class ResultList extends List {
 			`,
 			readAll: `
 			SELECT * FROM results
+			`,
+			readAllStudentsresults: `
+			SELECT * FROM usersResultView
 			`
-
 		}
 	} 
 }

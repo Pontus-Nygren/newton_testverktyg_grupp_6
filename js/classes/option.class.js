@@ -16,20 +16,25 @@ class Option extends Base {
 
 	pointCalculate(){
    		var user = JSON.parse(localStorage.getItem('user'));
-		var u_id = user.user_id;
-		console.log("u_id", u_id);
+   		if(user){
+   			var u_id = user.user_id;
+			console.log("u_id", u_id);
 
-		//this.users_user_id = user_id;
-		console.log(this.option_text);
-		//This algorithm is to insert the student's options to db, for every question there is
-		//a connection with db which is a bad design.
-		//Another method can be, saving an object of the options in to an array(text, user_id and option_id) 
-		var response = new Response({
-			users_user_id: u_id,
-			options_option_id: this.option_id
-		});
+			//this.users_user_id = user_id;
+			console.log(this.option_text);
+			//This algorithm is to insert the student's options to db, for every question there is
+			//a connection with db which is a bad design.
+			//Another method can be, saving an object of the options in to an array(text, user_id and option_id) 
+			var response = new Response({
+				users_user_id: u_id,
+				options_option_id: this.option_id
+			});
 
-		response.insertInDb(console.log);
+			response.insertInDb(console.log);
+   		} else {
+   			$('.question-container').append('<div class="alert alert-warning" role="alert">You are not logged in. Please log in to take a test.</div>')
+   		}
+		
 	}	
 
 		

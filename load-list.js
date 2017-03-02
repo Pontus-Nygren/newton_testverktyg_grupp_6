@@ -72,6 +72,9 @@ window.load = `
     about-us.class.js
     result.class.js
     result-list.class.js
+    teacher-view.class.js
+    student-result-list.class.js
+    student-result.class.js
 
   templates/
     login.html
@@ -85,6 +88,8 @@ window.load = `
     about-us.html
     footer.html
     result.html
+    teacher-view.html
+    student-result.html
 
   js/main.js
 

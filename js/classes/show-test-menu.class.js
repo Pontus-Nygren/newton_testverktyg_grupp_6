@@ -10,7 +10,10 @@ class ShowTestMenu extends Base {
 		// sen kan man använda index från när man klickar på test från en lista
 		this.getTestFromDB(0,(test)=>{
 			$('.page-content').html('');
+			console.log('test',test);
 			test.display('.page-content');
+			//var testView = new TestView({test:test});
+			//testView.display('.page-content');
 		});
 	}
 
@@ -25,5 +28,24 @@ class ShowTestMenu extends Base {
 		testsFromDb.readAllFromDBWithQuestionsAndOptions(()=>{
 			callback(testsFromDb);
 		})
+	}
+
+	showListOfTests(){
+		var listOfTests = new TeacherView();
+		listOfTests.getTests(()=>{
+			listOfTests.display('body');
+		});
+	}
+
+	showStudentResults(){
+		var result = new StudentResultList();
+        result.load((studentResults)=>{
+        	studentResults.display('body');
+        	/*for(var studentResults of result)
+        	{
+        		studentResults.display('body');
+        	}*/
+        	
+		});
 	}
 }

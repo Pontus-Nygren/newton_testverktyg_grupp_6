@@ -24,6 +24,9 @@ class Login extends Base {
           else{
             return false;
           }
+          this.loggedInUser = user.firstName + ' ' + user.lastName;
+          $('.navbar-right').html(`<li class = "loggedInUser" >${this.loggedInUser}</li>`);
+
           var userAsStr = JSON.stringify(user);
           localStorage.setItem('user', userAsStr);
           console.log("*********************", user)
