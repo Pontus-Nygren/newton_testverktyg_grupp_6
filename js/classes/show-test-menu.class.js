@@ -33,14 +33,16 @@ class ShowTestMenu extends Base {
 	showListOfTests(){
 		var listOfTests = new TeacherView();
 		listOfTests.getTests(()=>{
-			listOfTests.display('body');
+			$('.page-content').html('');
+			listOfTests.display('.page-content');
 		});
 	}
 
 	showStudentResults(){
 		var result = new StudentResultList();
         result.load((studentResults)=>{
-        	studentResults.display('body');
+        	$('.page-content').html('');
+			studentResults.display('.page-content');
         	/*for(var studentResults of result)
         	{
         		studentResults.display('body');
