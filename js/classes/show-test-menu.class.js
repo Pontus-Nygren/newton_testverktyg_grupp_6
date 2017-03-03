@@ -38,11 +38,22 @@ class ShowTestMenu extends Base {
 		});
 	}
 
+	showCourses(){
+		var course = new CoursesList();
+		course.load((courses)=>{
+			$('.page-content').html('');
+			courses.display('.page-content');
+		});
+	}
+
 	showStudentResults(){
 		var result = new StudentResultList();
-        result.load((studentResults)=>{
+        result.load(1,'SYSJ2',(studentResults)=>{
+        	console.log(result);
+        	var testing = new StudentResultPage()
+            testing.studentResultList = studentResults
         	$('.page-content').html('');
-			studentResults.display('.page-content');
+			testing.display('.page-content');
         	/*for(var studentResults of result)
         	{
         		studentResults.display('body');

@@ -77,6 +77,9 @@ window.load = `
     student-result.class.js
     test-custom-list.class.js
     test-custom.class.js
+    course-list.class.js
+    course.class.js
+    student-result-page.class.js
 
   templates/
     login.html
@@ -93,6 +96,8 @@ window.load = `
     teacher-view.html
     student-result.html
     test-custom.html
+    course.html
+    student-result-page.html
 
   js/main.js
 
