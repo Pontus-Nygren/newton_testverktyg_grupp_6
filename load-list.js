@@ -63,7 +63,8 @@ window.load = `
     response.class.js
     bootstrap-size.js
     navbar.class.js
-    show-test-menu.class.js
+    teacher-page.class.js
+    student-page.class.js
     user-list.class.js
     user.class.js
     responses-list.class.js
@@ -80,6 +81,7 @@ window.load = `
     course-list.class.js
     course.class.js
     student-result-page.class.js
+    testFromDb.class.js
 
   templates/
     login.html
@@ -88,7 +90,7 @@ window.load = `
     option.html
     navbar.html
     bootstrap-size.html
-    show-test-menu.html
+    teacher-page.html
     student.html
     about-us.html
     footer.html
@@ -98,6 +100,9 @@ window.load = `
     test-custom.html
     course.html
     student-result-page.html
+    test-from-db.html
+    student-page.html
+
 
   js/main.js
 

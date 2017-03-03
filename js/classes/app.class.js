@@ -43,10 +43,9 @@ class App {
     this.navbar = new Navbar();
     this.login = new Login();
     this.footer = new Footer();
-    this.tasksMenu = new ShowTestMenu();
+    this.teacherPage = new TeacherPage();
+    this.studentPage = new StudentPage();
     this.aboutPage = new AboutUs();
-
-    //this.aboutPage = new AboutUs();
     this.student = new Student();
     console.log("student", this.student.name);
 
@@ -62,7 +61,7 @@ class App {
     this.teacherView = new TeacherView();
     teacherView.display('.page-content');
   */
-   
+   /*
     // Some routes
     var router = new Router({
       '/': ()=>{ 
@@ -83,22 +82,73 @@ class App {
         this.navbar.setActiveLink();
       }
     });
+    */
     // ****** Change to the new router below ******
-     /*
+     
     var router = new Router({
     '/': ()=>{ 
-        //... this route should always exsist... 
+      var user = JSON.parse(localStorage.getItem('user'));
+      if(user){
+        if(user.role == 'student'){
+          $('.page-content').empty();
+          this.studentPage.display('.page-content');
+          this.navbar.setActiveLink();
+        }else if(user.role == 'teacher'){
+          $('.page-content').empty();
+          this.teacherPage.display('.page-content');
+          this.navbar.setActiveLink();
+        }
+      }else{
+        $('.page-content').empty();
+        this.login.display('.page-content');
+        this.navbar.setActiveLink();
+      }
     },
-    '/about/': ()=>{
-      // my logic to change views etc
-      // and show an about page
+    '/about-us/': ()=>{
+      $('.page-content').empty();
+        this.aboutPage.display('.page-content');
+        this.navbar.setActiveLink();
     },
-    '/student/:id/view/:viewname': (params)=>{
-      console.log(params.id, params.viewname);
+    '/teacher': ()=> { 
+        $('.page-content').empty();
+        this.teacherPage.display('.page-content');
+        this.navbar.setActiveLink();
+    },
+    '/student': ()=> { 
+        $('.page-content').empty();
+        this.studentPage.display('.page-content');
+        this.navbar.setActiveLink();
+    },
+    '/test/:id': (props)=> {
+      console.log('props',props);
+      var testView = new TestView(props, this.showPage);
+      console.log('TestView.test', testView.test);
+    }
+      
+    /*
+      this.testList.readAllFromDBWithQuestionsAndOptions(()=>{
+      var test = this.testList[0]; 
+      console.log('TJAJTJA');
+      new TestView(test, ()=>{console.log('HEJEHEJEHJ'); this.showPage});
+      // do different things depending on id and viewname
+     });
+    */
+
+    /*
+    '/test/:id': this.testList.readAllFromDBWithQuestionsAndOptions(()=>{
+      var test = testList[0]; 
+      new TestView(test, this.showPage);
+      // do different things depending on id and viewname
+     });
+    */
+    /*
+    '/test/:id': (props)=>{
+      new TestView(props, this.showPage);
       // do different things depending on id and viewname
      }
+    }*/
+    
     });
-    */
 
   }
 
