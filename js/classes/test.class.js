@@ -51,7 +51,8 @@ class Test extends Base {
 			result.users_user_id = u_id;
 			result.tests_test_id = this.test_id;
 			result.insertInDb(console.log);
-			result.display('body');
+			$('.page-content').html('');
+			result.display('.page-content');
 		});		
 	}
 
