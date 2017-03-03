@@ -16,10 +16,10 @@ class Login extends Base {
         console.log("user logged in ", user.firstName);
         if(usernamed.toLowerCase()===user.email.toLowerCase() && passworded.toLowerCase() === user.password.toLowerCase()){
           if(user.role.toLowerCase() ==='teacher'){
-            window.location.href = "/tasksMenu"; // Redirecting to other page.
+            window.location.href = "/teacher"; // Redirecting to other page.
           }
           else if(user.role.toLowerCase() ==='student') {
-            window.location.href = "/tasksMenu";
+            window.location.href = "/student";
           }
           else{
             return false;

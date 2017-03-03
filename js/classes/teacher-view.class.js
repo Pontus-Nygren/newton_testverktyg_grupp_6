@@ -1,7 +1,7 @@
 class TeacherView extends Base { 
 	static defaultPropertyValues(){
     return {
-	      tests: new TestList()
+	      tests: new TestCustomList()
     	}
   	}
 

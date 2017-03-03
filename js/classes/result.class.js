@@ -34,6 +34,13 @@ class Result extends Base {
 			callback && callback(this);
 		});
 	}
+	selectUser(test_id, callback){
+	this.db.userSelect([test_id],(data)=>{
+		console.log('data', data, 'test_id', test_id, 'this',this);
+		this.doneBy = new UserList(data);
+		callback && callback(this);
+	})
+}
 
 
 	static get sqlQueries(){

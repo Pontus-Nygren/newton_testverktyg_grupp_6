@@ -63,7 +63,8 @@ window.load = `
     response.class.js
     bootstrap-size.js
     navbar.class.js
-    show-test-menu.class.js
+    teacher-page.class.js
+    student-page.class.js
     user-list.class.js
     user.class.js
     responses-list.class.js
@@ -75,6 +76,12 @@ window.load = `
     teacher-view.class.js
     student-result-list.class.js
     student-result.class.js
+    test-custom-list.class.js
+    test-custom.class.js
+    course-list.class.js
+    course.class.js
+    student-result-page.class.js
+    testFromDb.class.js
     dropdown-test.class.js
     dropdown-test-list.class.js
 
@@ -85,15 +92,21 @@ window.load = `
     option.html
     navbar.html
     bootstrap-size.html
-    show-test-menu.html
+    teacher-page.html
     student.html
     about-us.html
     footer.html
     result.html
     teacher-view.html
     student-result.html
+    test-custom.html
+    course.html
+    student-result-page.html
+    test-from-db.html
+    student-page.html
     add-question.html
     dropdown-test.html
+
 
   js/main.js
 

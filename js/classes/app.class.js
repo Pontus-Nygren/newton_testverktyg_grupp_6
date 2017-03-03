@@ -43,11 +43,9 @@ class App {
     this.navbar = new Navbar();
     this.login = new Login();
     this.footer = new Footer();
-    this.tasksMenu = new ShowTestMenu();
+    this.teacherPage = new TeacherPage();
+    this.studentPage = new StudentPage();
     this.aboutPage = new AboutUs();
-    this.test = new TestList();
-
-    //this.aboutPage = new AboutUs();
     this.student = new Student();
     console.log("student", this.student.name);
 

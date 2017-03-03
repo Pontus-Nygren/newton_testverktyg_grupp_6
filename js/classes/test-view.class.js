@@ -6,9 +6,14 @@ class TestView extends Base {
     }
   }
 
-  constructor(propertyValues = {}){
+  constructor(propertyValues = {}, callback){
     super(propertyValues);
     this.currentQuestionIndex = 0;
+    this.test = new TestFromDb(propertyValues, ()=>{
+    	console.log('this.test',this.test.test);
+    	callback(this.test.test);
+    });
+    
   }
 
 	submitTest(){
