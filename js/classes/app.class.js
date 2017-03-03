@@ -45,6 +45,7 @@ class App {
     this.footer = new Footer();
     this.tasksMenu = new ShowTestMenu();
     this.aboutPage = new AboutUs();
+    this.test = new TestList();
 
     //this.aboutPage = new AboutUs();
     this.student = new Student();
@@ -58,47 +59,24 @@ class App {
 
     // Add a page-content area in the DOM
     $('body').append('<div class="page-content"/>');
-    /*
-    this.teacherView = new TeacherView();
-    teacherView.display('.page-content');
-  */
+
    
-    // Some routes
-    var router = new Router({
-      '/': ()=>{ 
-        $('.page-content').empty();
-        this.login.display('.page-content');
-        this.navbar.setActiveLink();
-      },
-
-      '/tasksMenu': ()=> { 
-        $('.page-content').empty();
-        this.tasksMenu.display('.page-content');
-        this.navbar.setActiveLink();
-      },
-
-      '/about-us': ()=> {
-        $('.page-content').empty();
-        this.aboutPage.display('.page-content');
-        this.navbar.setActiveLink();
-      }
-    });
     // ****** Change to the new router below ******
-     /*
     var router = new Router({
-    '/': ()=>{ 
-        //... this route should always exsist... 
-    },
-    '/about/': ()=>{
-      // my logic to change views etc
-      // and show an about page
-    },
-    '/student/:id/view/:viewname': (params)=>{
-      console.log(params.id, params.viewname);
-      // do different things depending on id and viewname
-     }
+
+      '/': ()=>{ this.showPage(this.login);},
+
+      '/tasksMenu': ()=> { this.showPage(this.tasksMenu);},
+
+     // '/test/:test_id': (props)=>{ new ShowTestMenu(props, this.showPage); },
+        // do different things depending on id and viewname
+       
+
+      '/about-us': ()=> {this.showPage(this.aboutPage);}
+      
     });
-    */
+    
+
 
   }
 
@@ -111,3 +89,5 @@ class App {
   
 
 }
+
+  
