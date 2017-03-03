@@ -134,7 +134,7 @@ class Test extends Base {
 	}
 
 	nextQuestion(){
-		var atLeastOneIsChecked = $('input[name="chk[]"]:checked').length > 0;
+		var atLeastOneIsChecked = $('input[name="radio-option"]:checked').length > 0;
 		console.log('atLeastOneIsChecked',atLeastOneIsChecked);
 
 		if(this.questions.length > this.currentQuestionIndex && atLeastOneIsChecked){

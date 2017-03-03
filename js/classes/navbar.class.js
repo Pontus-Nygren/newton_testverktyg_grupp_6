@@ -5,7 +5,11 @@
     super(propertyValues);
     this.loggedIn = false;
     this.toggleLogin();
-   }
+    this.toggleMenuText = '';
+    this.menuItemId = 'visitor-page-menu-item';
+    this.toggleMenu();
+    this.route = '';
+  }
 
 
   setActiveLink(){
@@ -13,26 +17,40 @@
     this.$.find('.active').removeClass();
     this.$.find(
       'li a[href="' + location.pathname + '"]'
-    ).parent().addClass('active');
+      ).parent().addClass('active');
+  }
+
+  toggleMenu(){
+    var user = JSON.parse(localStorage.getItem('user'));
+    if(user && user.role == 'student'){
+      this.menuItemId = 'student-page-menu-item';
+      this.route = '/teacher';
+      this.toggleMenuText = `Student`;
+    } else if(user && user.role == 'teacher'){
+      this.menuItemId = 'teacher-page-menu-item';
+      this.route = '/teacher';
+      this.toggleMenuText = `Teacher`;
+    }
   }
 
   toggleLogin(){
     var user = JSON.parse(localStorage.getItem('user'));
     if(user){
+      $('.loggedInUser').css('display','block');
       this.loggedInUser = user.firstName + ' ' + user.lastName;
     }else{
       this.loggedInUser = '';
-      $('.loggedInUser').html('');
     }
     if(!this.loggedIn && localStorage.getItem('user') || this.loggedIn){
       if(this.loggedIn && localStorage.getItem('user')){
         localStorage.removeItem('user');
+        window.location.href = "/";
       }
-    this.loggedIn = !this.loggedIn;    
+      this.loggedIn = !this.loggedIn;    
     }
     this.toggleLoginText = this.loggedIn? 'Logga ut' : 'Logga in';
   }
-    
+
     /*
     var user = JSON.parse(localStorage.getItem('user'));
     console.log(user);
@@ -49,5 +67,5 @@
           `);
     }
     */
-  
-}
+
+  }

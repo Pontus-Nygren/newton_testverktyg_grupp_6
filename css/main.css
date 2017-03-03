@@ -27,6 +27,14 @@ body {
   border: 1px solid rgba(0,0,0,0.1);  
 }
 
+#visitor-page-menu-item{
+  display: none;
+}
+
+#logged-in-false{
+  display: none;
+}
+
 .form-signin-heading,
 .checkbox {
   margin-bottom: 30px;
