@@ -1,4 +1,4 @@
-class ShowTestMenu extends Base {
+class TeacherPage extends Base {
 
 	constructor(propertyValues){
 		super(propertyValues);
@@ -38,15 +38,7 @@ class ShowTestMenu extends Base {
 		});
 	}
 
-	showCourses(){
-		var course = new CoursesList();
-		course.load((courses)=>{
-			$('.page-content').html('');
-			courses.display('.page-content');
-		});
-	}
-
-	showStudentResults(){
+		showStudentResults(){
 		var result = new StudentResultList();
         result.load(1,'SYSJ2',(studentResults)=>{
         	console.log(result);

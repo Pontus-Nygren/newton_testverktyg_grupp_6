@@ -4,16 +4,16 @@ TestView.addTemplate('default', function(){return `
 		<div class="col-sm-12 col-md-8">
 			<div class="question-container">
 			${console.log('this',this)}
-			${this.test.display()}
-				<div class="question-img"><img src="${this.question.imageURL}" alt=""></div>
+			<h3>${this.test.test_name}</h3>
+				<div class="question-img"><img src="${this.test.question.imageURL}" alt=""></div>
 				<div class="question">
 				
-					<h3>Fråga ${this.test.questions.indexOf(this.question) + 1} av ${this.test.questions.length}</h3>
+					<h3>Fråga ${this.test.questions.indexOf(this.test.question) + 1} av ${this.test.questions.length}</h3>
 					<p>
-						Fråga: ${this.question.question_text}
+						Fråga: ${this.test.question.question_text}
 					</p>
 					<div class="row">
-						${this.question.options.display()}
+						${this.test.question.options.display()}
 					</div>
 				</div>
 			</div>
