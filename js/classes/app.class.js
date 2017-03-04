@@ -61,28 +61,7 @@ console.log("student", this.student.name);
     this.teacherView = new TeacherView();
     teacherView.display('.page-content');
     */
-   /*
-    // Some routes
-    var router = new Router({
-      '/': ()=>{ 
-        $('.page-content').empty();
-        this.login.display('.page-content');
-        this.navbar.setActiveLink();
-      },
 
-      '/tasksMenu': ()=> { 
-        $('.page-content').empty();
-        this.tasksMenu.display('.page-content');
-        this.navbar.setActiveLink();
-      },
-
-      '/about-us': ()=> {
-        $('.page-content').empty();
-        this.aboutPage.display('.page-content');
-        this.navbar.setActiveLink();
-      }
-    });
-    */
     // ****** Change to the new router below ******
     var router;
     var user = JSON.parse(localStorage.getItem('user'));
@@ -125,79 +104,38 @@ console.log("student", this.student.name);
 
     }else if(user && user.role == 'student'){
       router = new Router({
-    '/': ()=>{ 
+        '/': ()=>{ 
           $('.page-content').empty();
           this.studentPage.display('.page-content');
           this.navbar.setActiveLink();
-    },
-    '/about-us/': ()=>{
-      $('.page-content').empty();
-        this.aboutPage.display('.page-content');
-        this.navbar.setActiveLink();
-    },
-    '/student': ()=> { 
-        $('.page-content').empty();
-        this.studentPage.display('.page-content');
-        this.navbar.setActiveLink();
-    },
-    '/test/:id': (props)=> {
-      console.log('props',props);
-      var testView = new TestView(props, this.showPage);
-      console.log('TestView.test', testView.test);
-    }
-    });
+        },
+        '/about-us/': ()=>{
+          $('.page-content').empty();
+          this.aboutPage.display('.page-content');
+          this.navbar.setActiveLink();
+        },
+        '/student': ()=> { 
+          $('.page-content').empty();
+          this.studentPage.display('.page-content');
+          this.navbar.setActiveLink();
+        },
+        '/test/:id': (props)=> {
+          console.log('props',props);
+          var testView = new TestView(props, this.showPage);
+          console.log('TestView.test', testView.test);
+        }
+      });
 
+    }
   }
+
+  showPage(page){
+    $('.page-content').empty();
+    page.display('.page-content');
+    this.navbar.setActiveLink();
+  }
+
+
+
 }
 
-    /*
-    var router = new Router({
-    '/': ()=>{ 
-      var user = JSON.parse(localStorage.getItem('user'));
-      if(user){
-        if(user.role == 'student'){
-          $('.page-content').empty();
-          this.studentPage.display('.page-content');
-          this.navbar.setActiveLink();
-        }else if(user.role == 'teacher'){
-          $('.page-content').empty();
-          this.teacherPage.display('.page-content');
-          this.navbar.setActiveLink();
-        }
-      }else{
-        $('.page-content').empty();
-        this.login.display('.page-content');
-        this.navbar.setActiveLink();
-      }
-    },
-    '/about-us/': ()=>{
-      $('.page-content').empty();
-        this.aboutPage.display('.page-content');
-        this.navbar.setActiveLink();
-    },
-    '/teacher': ()=> { 
-        $('.page-content').empty();
-        this.teacherPage.display('.page-content');
-        this.navbar.setActiveLink();
-    },
-    '/student': ()=> { 
-        $('.page-content').empty();
-        this.studentPage.display('.page-content');
-        this.navbar.setActiveLink();
-    },
-    '/test/:id': (props)=> {
-      console.log('props',props);
-      var testView = new TestView(props, this.showPage);
-      console.log('TestView.test', testView.test);
-    }
-    */
-
-    showPage(page){
-      $('.page-content').empty();
-      page.display('.page-content');
-      this.navbar.setActiveLink();
-    }
-
-
-
-  }

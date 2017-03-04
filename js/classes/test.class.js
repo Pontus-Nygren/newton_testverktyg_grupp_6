@@ -31,12 +31,27 @@ class Test extends Base {
 
 	    if(!(this.questions instanceof QuestionList)){
 	      this.questions = new QuestionList(this.questions);
-
-	     
 	    }
+	    this.timer = new Timer(this.endingTime);
 	}
 
 
+	startTimer(){
+		console.log('TJENA');
+		$('#clockdiv').css('display','block');
+		this.timer.startTimer();
+		/*$(document).ready(function() {
+		  checkContainer();
+		});
+
+		function checkContainer () {
+		  if($('.clockdiv').is(':visible')){ //if the container is visible on the page
+		    this.timer = new Timer(new Date(this.endingTime));
+		  } else {
+		    setTimeout(checkContainer, 50); //wait 50 ms, then try again
+		  }
+		}*/
+	}
 
 	submitTest(){
 		$('.page-content').empty();
@@ -51,7 +66,8 @@ class Test extends Base {
 			result.users_user_id = u_id;
 			result.tests_test_id = this.test_id;
 			result.insertInDb(console.log);
-			result.display('body');
+			$('.page-content').html('');
+			result.display('.page-content');
 		});		
 	}
 

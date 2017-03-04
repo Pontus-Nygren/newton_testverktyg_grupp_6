@@ -13,6 +13,9 @@ body {
   border: 20px solid #000;
 }
 
+#clockdiv{
+  display: none;
+}
 
 .wrapper {	
 	margin-top: 80px;

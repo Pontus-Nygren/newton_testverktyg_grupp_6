@@ -29,7 +29,7 @@ class TestView extends Base {
 			result.users_user_id = u_id;
 			result.tests_test_id = this.test.test_id;
 			result.insertInDb(console.log);
-			result.display('body');
+			result.display('.page-content');
 		});		
 	}
 

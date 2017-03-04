@@ -40,14 +40,14 @@ class StudentPage extends Base {
 
 	showStudentResults(){
 		var result = new StudentResultList();
-        result.load((studentResults)=>{
-        	$('.page-content').html('');
+		result.load((studentResults)=>{
+			$('.page-content').html('');
 			studentResults.display('.page-content');
         	/*for(var studentResults of result)
         	{
         		studentResults.display('body');
         	}*/
         	
-		});
+        });
 	}
 }

@@ -1,21 +1,19 @@
-class TeacherPage extends Base {
+class ShowTestMenu extends Base {
 
 	constructor(propertyValues){
 		super(propertyValues);
-	}
 
+	}
 	takeTest(index){
-		$('.page-content').empty();
 		// Skriver in indexet på testet man vill visa manuellt än så länge,
 		// sen kan man använda index från när man klickar på test från en lista
+
 		this.getTestFromDB(0,(test)=>{
 			$('.page-content').html('');
-			console.log('test',test);
 			test.display('.page-content');
-			//var testView = new TestView({test:test});
-			//testView.display('.page-content');
 		});
 	}
+
 
 	getTestFromDB(index, callback){
 		this.getTestListFromDB((testList)=>{
@@ -38,9 +36,17 @@ class TeacherPage extends Base {
 		});
 	}
 
-		showStudentResults(){
+	showCourses(){
+		var course = new CoursesList();
+		course.load((courses)=>{
+			$('.page-content').html('');
+			courses.display('.page-content');
+		});
+	}
+
+	showStudentResults(){
 		var result = new StudentResultList();
-        result.load(1,'oop',(studentResults)=>{
+        result.load(1,'SYSJ2',(studentResults)=>{
         	console.log(result);
         	var testing = new StudentResultPage()
             testing.studentResultList = studentResults
@@ -54,7 +60,7 @@ class TeacherPage extends Base {
 		});
 	}
 
-		CreateQuestion(){
+	CreateQuestion(){
 		var addQuestion = new Question();
 		$('.page-content').html('');
 		addQuestion.display('.page-content');

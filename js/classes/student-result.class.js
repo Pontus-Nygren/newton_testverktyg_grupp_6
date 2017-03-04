@@ -11,7 +11,6 @@ class StudentResult extends Base {
 
   constructor(propertyValues){
     super(propertyValues);
-    this.db.createStudentResultView();
 
   }
 
