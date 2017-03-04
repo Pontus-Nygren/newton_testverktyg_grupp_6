@@ -5,45 +5,7 @@ Question.addTemplate('default', function(){return `
 			<h1>Add question </h1>
 
 			<form data-submit="saveResponse">
-             <p style = "display: inline-block;margin-right: 10px" class = "addingQuestion" >Add question</p>
-             <input  style = " width: 80%" id = "addQn" type="text"data-bind="value"> <br/>            
              
-             <p style = "display: inline-block;margin-right: 10px" >Add option 1 </p>
-             <input style = " width: 50%" class = "addOption" type="text" data-bind="value">  
-             <input class = "radio-options" id="radio-option1" type="radio" name="options" value=1>
-             <br/>
-
-             <p style = "display: inline-block;margin-right: 10px" >Add Option 2</p>
-             <input style = " width: 50%" class = "addOption" type="text" data-bind="value"> 
-             <input class = "radio-options" id="radio-option2" type="radio" name="options" value=1>
-             <br/>
-
-              <p style = "display: inline-block;margin-right: 10px" >Add option 3</p>
-             <input style = " width: 50%" class = "addOption" type="text" data-bind="value"> 
-             <input class = "radio-options" id="radio-option3" type="radio" name="options" value=1>
-             <br/>  
-
-              <p style = "display: inline-block;margin-right: 10px" >Add option 4</p>
-              <input style = " width: 50%" class = "addOption" type="text" data-bind="value">
-              <input class = "radio-options" id="radio-option4" type="radio" name="options" value=1> <br/>  
-
-              <p style = "display: inline-block;margin-right: 10px" >Add Picture </p>
-              <input style = " width: 50%" id = "add_pic" type="text" data-bind="value"> <br/>
-
-             <div>
-              <p style = "display: inline-block;margin-right: 10px" >Test name </p>
-              <select id="select_test_name">
-                  <option class= "dropdown_option" value="" name="dropdown">Select one...</option>
-                   <option id="dropdown1" class= "dropdown_option" value="OOP" name="dropdown">OOP</option>
-                    <option id="dropdown2" class= "dropdown_option" value="Java" name="dropdown">Java</option>
-                 
-                 <!-- ${this.dropdownTests.display()}-->
- 
-              </select>
-
-            </div>
-
-             </form>
 
 <!--             <form> <p style = "display: inline-block;margin-right: 15px" >Is open?</p>
                <input class = "open" id="open" type="radio" name="open" value=1> <label for="open">Yes</label>
@@ -52,8 +14,68 @@ Question.addTemplate('default', function(){return `
 
 
 -->
+           
 
-             <button data-click= "addQuestion" type="submit" class="btn btn-default">Skicka</button>
+            <div class="table-responsive">
+               <table class="table">
+               <tbody>
+                      <tr>
+                        <td><p class = "addingQuestion" >Add question</p></td>
+                        <td><input style ="width: 100%;" id = "addQn" type="text"data-bind="value"></td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td><p >Add option 1</p></td>
+                        <td><input class = "addOption" type="text" data-bind="value"></td>
+                        <td><input class = "radio-options" id="radio-option1" type="radio" name="options" value=1></td>
+                      </tr>
+                      <tr>
+                        <td><p >Add Option 2</p></td>
+                        <td><input class = "addOption" type="text" data-bind="value"></td>
+                        <td><input class = "radio-options" id="radio-option2" type="radio" name="options" value=1></td>
+                      </tr>
+
+                      <tr>
+                        <td><p>Add option 3</p></td>
+                        <td><input class = "addOption" type="text" data-bind="value"></td>
+                        <td><input class = "radio-options" id="radio-option3" type="radio" name="options" value=1></td>
+                      </tr>
+                      <tr>
+                        <td><p>Add option 4</p></td>
+                        <td><input class = "addOption" type="text" data-bind="value"></td>
+                        <td><input class = "radio-options" id="radio-option3" type="radio" name="options" value=1></td>
+                      </tr>
+
+                      <tr>
+                        <td><p>Add Picture</p></td>
+                        <td><input id = "add_pic" type="text" data-bind="value"></td>
+                        <td></td>
+                      </tr>
+
+                      <tr>
+                        <td><p>Test name</p></td>
+                        <td>
+                            <div>             
+                                <select id="select_test_name">
+                                    <option class= "dropdown_option" value="" name="dropdown">Select one...</option>
+                                     <option id="dropdown1" class= "dropdown_option" value="OOP" name="dropdown">OOP</option>
+                                      <option id="dropdown2" class= "dropdown_option" value="Java" name="dropdown">Java</option>
+                                   
+                                   <!-- ${this.dropdownTests.display()}-->
+                   
+                                </select>
+                             </div>
+                         </td>
+                        <td></td>
+                      </tr>
+                  </tbody>
+    
+              </table>
+            </div>
+            <button data-click= "addQuestion" type="submit" class="btn btn-default">Skicka</button>
+      </form>
+
+
 		</div>
 	</div>
 </div>
