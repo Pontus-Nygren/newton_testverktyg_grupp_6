@@ -15,8 +15,14 @@ class TestCustom extends Base {
 	    if(!(this.questions instanceof QuestionList)){
 	      this.questions = new QuestionList(this.questions);	     
 	    }
-	   
-	    this.prettyStartingTime = dateTimeForMySQL(this.startingTime);
-	    this.prettyEndingTime = dateTimeForMySQL(this.endingTime);
+	   	
+
+	    let niceStartingTime = new Date(this.startingTime);
+	    let niceEndingTime = new Date(this.endingTime);
+
+		var options = { year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit', hour12: false };
+		
+	    this.prettyStartingTime = niceStartingTime.toLocaleString('en-US', options);
+	    this.prettyEndingTime = niceEndingTime.toLocaleString('en-US', options);
 	}
 }

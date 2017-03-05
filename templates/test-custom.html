@@ -1,7 +1,9 @@
 TestCustom.addTemplate('default', function(){return `
-<a href="/test/${this.test_id}" class="list-group-item">
+<a href="/test/${this.test_id}" class="list-group-item test-item">
 	<h4>${this.test_name}</h4>
-	<p>Starting: ${this.prettyStartingTime} - ending: ${this.prettyEndingTime}</p>
+	<p>${this.prettyStartingTime}</p>
+	<p>-	</p> 
+	<p>${this.prettyEndingTime}</p>
 <!-- <span class="glyphicon glyphicon-stats pull-right"></span>-->
 </a>
 `});

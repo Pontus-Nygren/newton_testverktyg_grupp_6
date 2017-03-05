@@ -28,6 +28,14 @@ body {
   width: 100%;
 }
 
+.test-item>p{
+  margin:0;
+}
+
+.test-item>p:last-child{
+  margin-bottom: 7px;
+}
+
 @media(max-width: 376px){
 .page-content>.jumbotron{
   margin:0;
