@@ -8,12 +8,13 @@ Test.addTemplate('default', function(){return `
   		
 
 	<div class="question-container">
+		${this.timer.display()}
 		<div class="question-img">
 				<img src="${this.question.imageURL}" alt="">
 		</div>
 
 		<div class="question">
-		${this.timer.display()}
+		
 					<!---
 					<h3>Fråga ${this.questions.indexOf(this.question) + 1} av ${this.questions.length}</h3>-->
 					<h2 class="questiontext">
@@ -31,6 +32,7 @@ Test.addTemplate('default', function(){return `
 		</div>
 	</div>	
 	<div id = "testindex">
+
 			<h3 id="questionindex">Fråga ${this.questions.indexOf(this.question) + 1} av ${this.questions.length}</h3>
 	</div>
 </div>

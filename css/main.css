@@ -188,8 +188,8 @@ input[type="password"] {
 
 /* Addquestion */ 
 tr{
-  border-bottom: 1px dashed #385A7E;
-  margin: 5%;
+  border-bottom: 1px dashed #222222;
+  
 }
 .submitquestionbtn {
     border-radius: 10px;
