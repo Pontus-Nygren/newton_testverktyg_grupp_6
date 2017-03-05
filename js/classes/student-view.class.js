@@ -10,7 +10,7 @@ class StudentView extends Base {
 	}
 
 	getTests(callback){
-		this.tests.readAllFromDBWithQuestionsAndOptions(()=>{
+		this.tests.readOnlyActiveTests(()=>{
 			callback();
 		});
 	}
