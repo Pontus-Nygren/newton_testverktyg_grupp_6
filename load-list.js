@@ -27,7 +27,7 @@
 window.load = `
 
   css/libs/
-    cerulean.bootstrap.min.css
+    darkly.bootstrap.min.css
     bootstrap-tricks.css
 
   css/main.css

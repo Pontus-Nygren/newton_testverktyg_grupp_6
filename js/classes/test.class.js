@@ -35,9 +35,19 @@ class Test extends Base {
 	    this.timer = new Timer(this.endingTime);
 	}
 
+		load(callback){		 
+		    this.db.compare((data)=>{console.log(data[0].active);
+		    var row = data[0]; 
+            for(var name in row){
+            this[name] = row[name];
+
+             }
+            callback && callback(this);
+		    });
+		    }
+
 
 	startTimer(){
-		console.log('TJENA');
 		$('#clockdiv').css('display','block');
 		this.timer.startTimer();
 		/*$(document).ready(function() {
@@ -186,7 +196,10 @@ class Test extends Base {
 		return {
 			newTest: `
 			INSERT tests SET ?
-			` 
+			`,
+			compare: `
+			SELECT IF(endingTime >= now() and startingTime <= now(),'true','false') AS active from tests
+			`
 		}
 	}
 }

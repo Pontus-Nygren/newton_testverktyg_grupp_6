@@ -1,18 +1,10 @@
 TeacherPage.addTemplate('default', function(){return `
-<div class="container space-above">
-	<div class="row">
-		<div class="col-sm-12 col-md-8">
-			<div class="choise-task">
-				<div class="tasks">
-					<h3 data-click="showStudentResults">See students' results</h3>
-					<h3 data-click ="takeTest">Test 1</h3>
-					<h3 data-click="showListOfTestsTwo">See students' results
-					</h3>
-					<h3 data-click="showListOfTests">See all tests</h3>
-					<h3 data-click="CreateQuestion">Create question</h3>
-				</div>
-			</div>
-		</div>
-	</div>
+<div class="list-group">
+	<a data-click="showStudentResults" class="list-group-item">See students' results</a>
+ 	<a data-click ="takeTest" class="list-group-item">Test 1</a>
+ 	<a data-click="showStudentResults" class="list-group-item">See students' results</a>
+  	<a data-click="showListOfTests" class="list-group-item">See all tests</a>
+	<a data-click="CreateQuestion" class="list-group-item">Create question</a>
 </div>
 `});
+

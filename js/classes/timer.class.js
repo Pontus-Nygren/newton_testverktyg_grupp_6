@@ -46,6 +46,7 @@ class Timer extends Base {
 
         if (t.total <= 0) {
           clearInterval(timeinterval);
+          window.location.href = "/student";
         }
       }
 

@@ -1,33 +1,42 @@
 Test.addTemplate('default', function(){return `
-<div class="container space-above" data-click="startTimer">
-	<div class="row">
-		<div class="col-xs-12 col-md-8">
-			<div class="row">
-			<div class="col-xs-6">
-			<h3>${this.test_name}</h3>
-			</div>
-				${this.timer.display()}
-			</div>
-			<div class="question-container">
-				<div class="question-img"><img src="${this.question.imageURL}" alt=""></div>
-				<div class="question">
+<div class="panel panel-primary test-area">
+		 <div class="panel-heading">
+    		<h3 class="panel-title">${this.test_name}</h3>
+  		</div>
+
+
+  		
+
+	<div class="question-container">
+		${this.timer.display()}
+		<div class="question-img">
+				<img src="${this.question.imageURL}" alt="">
+		</div>
+		<div class="question">
+					<!---
+					<h3>Fråga ${this.questions.indexOf(this.question) + 1} av ${this.questions.length}</h3>-->
+					<h2 class="questiontext">
 				
-					<h3>Fråga ${this.questions.indexOf(this.question) + 1} av ${this.questions.length}</h3>
-					<p>
 						${this.question.question_text}
-					</p>
+					</h2>
 					<div class="row">
 						${this.question.options.display()}
 					</div>
-				</div>
-			</div>
-			<div class="btn-group pull-right questions-nav" role="group" aria-label="...">
-				<button data-click="prevQuestion" type="button" id="back" class="btn btn-default">Back</button>
-		    	<button data-click="nextQuestion" type="button" id="next" class="btn btn-default">Next</button>
-		    	<button data-click="submitTest" type="button" id="submitTest" class="btn btn-default">Submit</button>
-			</div>
 		</div>
+		<div class="questions-nav" role="group" aria-label="...">
+				<button data-click="prevQuestion" type="button" id="back" class="btn btn-primary">Back</button>
+		    	<button data-click="nextQuestion" type="button" id="next" class="btn btn-primary">Next</button>
+		    	<button data-click="submitTest" type="button" id="submitTest" class="btn btn-primary">Submit</button>
+		</div>
+	</div>	
+	<div id = "testindex">
+			<h3 id="questionindex">Fråga ${this.questions.indexOf(this.question) + 1} av ${this.questions.length}</h3>
 	</div>
+	<p class="hidden">
+	${$(()=>{
+		this.startTimer();
+	})}
+	</p>
 </div>
 
 `});
