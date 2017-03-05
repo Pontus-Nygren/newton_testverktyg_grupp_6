@@ -6,7 +6,7 @@ html {
 }
 
 body {
-	background: #eee !important;	
+	padding-bottom: 40px;
 }
 
 .big-border {
@@ -59,17 +59,6 @@ body {
 	}
 }
 
-input[type="text"] {
-  margin-bottom: -1px;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-}
-
-input[type="password"] {
-  margin-bottom: 20px;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-}
 
 footer {
   position: absolute;
@@ -81,19 +70,8 @@ footer {
   height: 40px;
 }
 
-.question-img {
-	width: 100%;
-	max-width: 500px;
-}
 
-.question-img>img{
-	max-width: 100%;
-	display: inline-block;	
-}
 
-.option-container{
-	margin-left: 10px;
-}
 
 .questions-nav{
 	margin-bottom: 10px;
@@ -102,40 +80,109 @@ footer {
 label{
 	font-weight: normal;
 }
-
+/* navbar */
 #bs-example-navbar-collapse-1 .navbar-nav >.studentName {
     position: relative;
     display: block;
     position: relative;
     text-align: -webkit-match-parent;
 }
-
+/*
 .below-row {
   background-color: white;
   padding: : 10px;
   border: 0px solid grey;
   
 }
-.choise-question .question >h3 {
-	background-color: #ededed;
-	padding: 10px 10px;
-	margin: 0px 20px;
-	border-radius: 8px 8px 0px 0px;
-}
-.choise-question .question > p {
-	background-color: #f6f6f6;
-	border-radius: 0px 0px 8px 8px;
-	font-size: 18px;
-}
-.choise-question .question >  .row {
-	padding: 10px 0px;
-	margin: 20px 20px;
 
-}
-
+*/
 .questions-nav> #back,#next,#submitTest {
     border-radius: 10px;
     padding: 12px 28px;
     margin-left: 5px;
     margin-bottom: 5px;
 }
+
+/* login */
+
+.loginbox{
+  display: block;
+  
+}
+.loginlabels{
+  margin-top: 2%;
+}
+.jumbotron{
+  text-align: center;
+  margin: 30%;
+  margin-top: 2%;
+  margin-bottom: auto;
+  border-radius: 10px;
+}
+
+/* test.html */
+.panel{
+  width: 60%;
+  margin-right: 20%;
+  margin-left: 20%;
+  max-height: 100%;
+  text-align: center;
+}
+
+#testindex{
+  margin-top: 0;
+  padding: 5px;
+  text-align: center;
+}
+#questionindex{
+  padding: 2px;
+  font-size: 14px;
+  font-style: italic;
+  opacity: 0.6;
+}
+.question-img {
+  margin-top: 5%;
+  max-width: 100%;
+}
+
+.question-img>img{
+  max-width: 40%;
+  margin-left:30%;
+  margin-right: 30%; 
+  }
+.question{
+  margin:2%;
+  border: solid 1px grey;
+  border-radius: 10px;
+}
+.questiontext{
+  padding:2%;
+  
+}
+input[type="text"] {
+  margin-bottom: -1px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+input[type="password"] {
+  margin-bottom: 20px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+#email{
+  max-width: 80%;
+}
+#password{
+  max-width: 80%;
+}
+
+/* Option*/
+.option-container{
+  margin-left: 10px;
+  width: 100%;
+}
+.panel-body{
+  text-align:left;
+}
+
