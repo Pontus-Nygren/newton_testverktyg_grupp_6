@@ -4,8 +4,8 @@ class Option extends Base {
 
     return {
 	      option_id: 0,
-	      question_id: 0,
 	      option_text: 'No',
+	      questions_question_id: 0,	      
 	      points: 0
     	}
   	}
@@ -21,7 +21,7 @@ class Option extends Base {
 			console.log("u_id", u_id);
 
 			//this.users_user_id = user_id;
-			console.log(this.option_text);
+			console.log(this.option_id,u_id);
 			//This algorithm is to insert the student's options to db, for every question there is
 			//a connection with db which is a bad design.
 			//Another method can be, saving an object of the options in to an array(text, user_id and option_id) 
@@ -37,12 +37,13 @@ class Option extends Base {
 		
 	}	
 
+
 		
 	insertInDb(callback){
 		this.db.newOption({
 			option_id: this.option_id,
 			option_text: this.option_text,
-			questions_question_id: this.question_id,
+			questions_question_id: this.questions_question_id,
 			points: this.points
 		},callback);
 	}

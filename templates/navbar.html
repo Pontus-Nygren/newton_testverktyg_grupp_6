@@ -16,14 +16,15 @@ Navbar.addTemplate('default', function(){return `
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li class="active"><a href="/">Start page<span class="sr-only">(current)</span></a></li>
-       <li data-show="${this.showTests}" class = "teacher-page" ><a href="/teacher">Teacher<span class="sr-only">(current)</span></a></li>
-        <li><a href="/student">Student</a></li>
+       <!-- <li data-show="${this.showTests}" class = "teacher-page" ><a href="/teacher">Teacher<span class="sr-only">(current)</span></a></li> -->
+        <li id="${this.menuItemId}" data-click="toggleMenu" data-bind="${this.toggleMenuText}"><a href="${this.route}">${this.toggleMenuText}</a></li>
+        <!-- <a href="/student">Student</a> -->
         <li><a href="/about-us">About us</a></li>
         
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
-        <li class="loggedInUser" data-bind="${this.loggedInUser}"><a href="/tasksMenu">${this.loggedInUser}</a></li>
+        <li id="logged-in-${this.loggedIn}" data-bind="${this.loggedInUser}"><a>${this.loggedInUser}</a></li>
         <li data-click="toggleLogin" data-bind="${this.toggleLoginText}">
           <a href="/#">${this.toggleLoginText}</a>
         </li>

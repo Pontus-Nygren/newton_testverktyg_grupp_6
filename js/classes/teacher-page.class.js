@@ -40,7 +40,7 @@ class TeacherPage extends Base {
 
 		showStudentResults(){
 		var result = new StudentResultList();
-        result.load(1,'SYSJ2',(studentResults)=>{
+        result.load(1,'oop',(studentResults)=>{
         	console.log(result);
         	var testing = new StudentResultPage()
             testing.studentResultList = studentResults
@@ -52,5 +52,11 @@ class TeacherPage extends Base {
         	}*/
         	
 		});
+	}
+
+		CreateQuestion(){
+		var addQuestion = new Question();
+		$('.page-content').html('');
+		addQuestion.display('.page-content');
 	}
 }

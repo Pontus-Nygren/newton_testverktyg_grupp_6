@@ -82,6 +82,9 @@ window.load = `
     course.class.js
     student-result-page.class.js
     testFromDb.class.js
+    dropdown-test.class.js
+    dropdown-test-list.class.js
+    timer.class.js
 
   templates/
     login.html
@@ -102,6 +105,9 @@ window.load = `
     student-result-page.html
     test-from-db.html
     student-page.html
+    add-question.html
+    dropdown-test.html
+    timer.html
 
 
   js/main.js

@@ -16,6 +16,7 @@ Test.addTemplate('default', function(){return `
 					<!---
 					<h3>Fråga ${this.questions.indexOf(this.question) + 1} av ${this.questions.length}</h3>-->
 					<h2 class="questiontext">
+				${this.timer.display()}
 						${this.question.question_text}
 					</h2>
 					<div class="row">
@@ -32,4 +33,5 @@ Test.addTemplate('default', function(){return `
 			<h3 id="questionindex">Fråga ${this.questions.indexOf(this.question) + 1} av ${this.questions.length}</h3>
 	</div>
 </div>
+
 `});
