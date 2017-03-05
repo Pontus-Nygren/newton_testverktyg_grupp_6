@@ -19,6 +19,33 @@ body {
   width: 100%;
 }
 
+.test-container{
+  width: 100%;
+}
+@media(max-width: 667px){
+  .panel.test-area{
+     width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+  }
+  #test-list>.test-list-all{
+  width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+}
+}
+@media(min-width: 668px){
+  .list-group{
+    width: 60%;
+    margin-left: 20%;
+}
+  .margin-left-22{
+    margin-left: 22%;
+  }
+}
+
+
+
 .wrapper {	
 	margin-top: 80px;
   margin-bottom: 80px;
