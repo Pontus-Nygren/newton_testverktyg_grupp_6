@@ -19,6 +19,10 @@ body {
   width: 100%;
 }
 
+button#back, button#next, button#submitTest{
+  display: none;
+}
+
 .fake-a{
   display: block;
   padding-top: 19.5px;
