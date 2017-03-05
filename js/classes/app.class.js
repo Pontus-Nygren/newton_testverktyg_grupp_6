@@ -46,21 +46,16 @@ this.footer = new Footer();
 this.teacherPage = new TeacherPage();
 this.studentPage = new StudentPage();
 this.aboutPage = new AboutUs();
-this.student = new Student();
-console.log("student", this.student.name);
+
 
     // Show the navbar and the bootstrapSizeTool
     this.navbar.display('body');
     this.bootstrapSizeTool.display('body');
-   // this.bootstrapSizeTool.display('body');
-   this.footer.display('body');
 
     // Add a page-content area in the DOM
     $('body').append('<div class="page-content"/>');
-    /*
-    this.teacherView = new TeacherView();
-    teacherView.display('.page-content');
-    */
+    this.footer.display('body');
+
 
     // ****** Change to the new router below ******
     var router;

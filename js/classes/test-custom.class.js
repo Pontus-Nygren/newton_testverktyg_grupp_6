@@ -15,6 +15,7 @@ class TestCustom extends Base {
 	    if(!(this.questions instanceof QuestionList)){
 	      this.questions = new QuestionList(this.questions);	     
 	    }
+	   
 	    this.prettyStartingTime = dateTimeForMySQL(this.startingTime);
 	    this.prettyEndingTime = dateTimeForMySQL(this.endingTime);
 	}
