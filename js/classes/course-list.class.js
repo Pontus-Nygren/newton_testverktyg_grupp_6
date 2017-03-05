@@ -5,8 +5,8 @@ class CoursesList extends List {
 		this.db.createCourseView();
 	}
 
-	 load(callback){
-  	this.db.load((data)=>{
+	 load(test_id,callback){
+  	this.db.load([test_id],(data)=>{
   		console.log("course-result", data);
   		this.push.apply(this,data);
   		callback && callback(this);
@@ -21,7 +21,7 @@ class CoursesList extends List {
 			from users
 			`,
 		    load: `
-		    select course from users WHERE course IS NOT null
+		    SELECT DISTINCT test_id,course from usersresultview WHERE test_id = ? AND course IS NOT null
             `
 
 		}

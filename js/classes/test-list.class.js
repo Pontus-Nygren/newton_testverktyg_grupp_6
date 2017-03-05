@@ -86,7 +86,6 @@ writeToDb(callback){
       
     });
   }
-
   static get sqlQueries(){
     return {
       createTableIfNeeded: `

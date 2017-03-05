@@ -1,6 +1,5 @@
 Course.addTemplate('default', function(){return `
-<a href="#" class="list-group-item">
-	<h4>${this.course.name}</h4>
-<!-- <span class="glyphicon glyphicon-stats pull-right"></span>-->
-</a>
+<ul class="list-group">
+  <li class="list-group-item"><h3 data-click="showStudentResults">${this.course}</h3></li>
+</ul>
 `});
