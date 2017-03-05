@@ -27,7 +27,6 @@
       this.menuItemId = 'student-page-menu-item';
       this.route = '/teacher';
       this.toggleMenuText = `Student`;
-      
     } else if(user && user.role.toLowerCase() == 'teacher'){
       this.menuItemId = 'teacher-page-menu-item';
       this.route = '/teacher';

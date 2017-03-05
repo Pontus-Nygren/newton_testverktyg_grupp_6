@@ -31,7 +31,7 @@ class StudentPage extends Base {
 	}
 
 	showListOfTests(){
-		var listOfTests = new TeacherView();
+		var listOfTests = new StudentView();
 		listOfTests.getTests(()=>{
 			$('.page-content').html('');
 			listOfTests.display('.page-content');
