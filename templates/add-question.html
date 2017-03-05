@@ -1,9 +1,8 @@
 Question.addTemplate('default', function(){return `
-<div class="container space-above">
-	<div class="row">
-		<div class="col-sm-12 col-md-8 col-lg-12">
-			<h1>Add question </h1>
-
+<div class="panel panel-primary">
+  <div class="panel-heading">
+			<h3 class="panel-title">Add question </h3>
+</div>
 			<form data-submit="saveResponse">
              
 
@@ -72,11 +71,9 @@ Question.addTemplate('default', function(){return `
     
               </table>
             </div>
-            <button data-click= "addQuestion" type="submit" class="btn btn-default">Skicka</button>
+            <button data-click= "addQuestion" type="submit" class="submitquestionbtn btn btn-primary">Skicka</button>
       </form>
-
-
-		</div>
-	</div>
 </div>
+
+
 `});
