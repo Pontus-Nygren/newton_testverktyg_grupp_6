@@ -78,7 +78,7 @@ console.log("student", this.student.name);
           this.navbar.setActiveLink();
         }
       });
-    }else if(user && user.role == 'teacher'){
+    }else if(user && user.role.toLowerCase() == 'teacher'){
       router = new Router({
         '/': ()=>{ 
           $('.page-content').empty();
@@ -102,7 +102,7 @@ console.log("student", this.student.name);
         }
       }); 
 
-    }else if(user && user.role == 'student'){
+    }else if(user && user.role.toLowerCase() == 'student'){
       router = new Router({
         '/': ()=>{ 
           $('.page-content').empty();

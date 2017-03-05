@@ -48,7 +48,6 @@ class Test extends Base {
 
 
 	startTimer(){
-		console.log('TJENA');
 		$('#clockdiv').css('display','block');
 		this.timer.startTimer();
 		/*$(document).ready(function() {

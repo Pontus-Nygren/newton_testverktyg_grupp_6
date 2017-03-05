@@ -1,0 +1,12 @@
+StudentView.addTemplate('default',function(){return `
+<div class="container">
+  <div class="test-container col-xs-12 col-md-8">
+    <div class="margin-left-22"><h3>All tests</h3></div>
+    <div id="test-list" class="col-xs-12">
+      <div class="panel list-group test-list-all">
+      ${this.tests.display()}
+     </div>
+   </div>
+ </div>
+</div>
+`});
