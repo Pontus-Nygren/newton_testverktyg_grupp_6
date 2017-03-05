@@ -1,18 +1,24 @@
 Login.addTemplate('default', function(){return `
-<div class="container">
+<div class="jumbotron">
    <div class="main">
-      <h2>Javascript Login Form Validation</h2>
+      <h2>Login</h2>
       <form id="form_id" method="post" name="myform">
-         <label>Email :</label>
+      <label class ="loginlabels">Email</label>
+      <div class="loginbox">
+         
          <input type="text" name="email" id="email"/>
-         <label>Password :</label>
+         </div>
+         <label class="loginlabels">Password</label>
+         <div class="loginbox">
+         
          <input type="password" name="password" id="password"/>
-
+         </div>
       </form>
      <input data-click="validate" 
         type="button" 
         value="Login" 
-        id="loginSubmit" />
+        id="loginSubmit" 
+        class = "btn btn-primary"/>
    </div>
 </div>
 `});
