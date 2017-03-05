@@ -40,7 +40,7 @@ class ShowTestMenu extends Base {
 		var course = new CoursesList();
 		course.load((courses)=>{
 			$('.page-content').html('');
-			courses.display('.page-content');
+			course.display('.page-content');
 		});
 	}
 

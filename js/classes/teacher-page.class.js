@@ -29,7 +29,6 @@ class TeacherPage extends Base {
 			callback(testsFromDb);
 		})
 	}
-
 	showListOfTests(){
 		var listOfTests = new TeacherView();
 		listOfTests.getTests(()=>{
@@ -37,22 +36,14 @@ class TeacherPage extends Base {
 			listOfTests.display('.page-content');
 		});
 	}
-
-		showStudentResults(){
-		var result = new StudentResultList();
-        result.load(1,'oop',(studentResults)=>{
-        	console.log(result);
-        	var testing = new StudentResultPage()
-            testing.studentResultList = studentResults
-        	$('.page-content').html('');
-			testing.display('.page-content');
-        	/*for(var studentResults of result)
-        	{
-        		studentResults.display('body');
-        	}*/
-        	
+		showListOfTestsTwo(){
+		var listOfTestsTwo = new TeacherTestView();
+		listOfTestsTwo.showTests((tests)=>{
+			$('.page-content').html('');
+			listOfTestsTwo.display('.page-content');
 		});
 	}
+
 
 		CreateQuestion(){
 		var addQuestion = new Question();

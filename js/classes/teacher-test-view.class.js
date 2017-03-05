@@ -1,8 +1,8 @@
-class Course extends Base {
+class TeacherTestView extends Base { 
 
-	static defaultPropertyValues(){
+static defaultPropertyValues(){
 		return {
-			course: " "
+			test_id: 0
     	}
   	}
 
@@ -10,14 +10,20 @@ class Course extends Base {
 		super(propertyValues);
 	}
 
-		showStudentResults(){
-		var result = new StudentResultList();
-        result.load(this.test_id,this.course,(studentResults)=>{
+	showCourses(){
+		var course = new CoursesList();
+		course.load(this.test_id,(courses)=>{
+			$('.page-content').html('');
+			course.display('.page-content');
+		});
+	}
+
+		showTests(){
+		var result = new TeacherTestViewList();
+        result.load((allTests)=>{
         	console.log(result);
-        	var testing = new StudentResultPage()
-            testing.studentResultList = studentResults
         	$('.page-content').html('');
-			testing.display('.page-content');
+			result.display('.page-content');
         	/*for(var studentResults of result)
         	{
         		studentResults.display('body');

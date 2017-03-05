@@ -86,6 +86,8 @@ window.load = `
     dropdown-test-list.class.js
     timer.class.js
     student-view.class.js
+    teacher-test-view.class.js
+    teacher-test-view-list.class.js
 
   templates/
     login.html
@@ -110,6 +112,7 @@ window.load = `
     dropdown-test.html
     timer.html
     student-view.html
+    teacher-test-view.html
 
 
   js/main.js
