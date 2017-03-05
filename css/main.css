@@ -22,6 +22,14 @@ body {
 .test-container{
   width: 100%;
 }
+
+@media(max-width: 376px){
+.page-content>.jumbotron{
+  margin:0;
+  margin-top: 2%;
+}
+}
+
 @media(max-width: 667px){
   .panel.test-area{
      width: 100%;
@@ -32,6 +40,10 @@ body {
   width: 100%;
   margin-left: 0;
   margin-right: 0;
+}
+.page-content>.jumbotron{
+  margin:20%;
+  margin-top: 2%;
 }
 }
 @media(min-width: 668px){
