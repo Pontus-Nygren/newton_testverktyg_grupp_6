@@ -21,17 +21,18 @@
   }
 
   toggleMenu(){
+    
     var user = JSON.parse(localStorage.getItem('user'));
-    if(user && user.role == 'student'){
     if(user && user.role.toLowerCase() == 'student'){
       this.menuItemId = 'student-page-menu-item';
       this.route = '/teacher';
       this.toggleMenuText = `Student`;
-    } else if(user && user.role == 'teacher'){
+      
     } else if(user && user.role.toLowerCase() == 'teacher'){
       this.menuItemId = 'teacher-page-menu-item';
       this.route = '/teacher';
       this.toggleMenuText = `Teacher`;
+      
     }
   }
 

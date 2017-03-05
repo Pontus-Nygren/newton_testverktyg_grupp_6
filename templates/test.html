@@ -13,10 +13,11 @@ Test.addTemplate('default', function(){return `
 		</div>
 
 		<div class="question">
+		${this.timer.display()}
 					<!---
 					<h3>Fråga ${this.questions.indexOf(this.question) + 1} av ${this.questions.length}</h3>-->
 					<h2 class="questiontext">
-				${this.timer.display()}
+				
 						${this.question.question_text}
 					</h2>
 					<div class="row">
