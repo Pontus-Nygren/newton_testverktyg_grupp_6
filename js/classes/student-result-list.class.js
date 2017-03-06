@@ -7,18 +7,30 @@ class StudentResultList extends List {
 
 
    selectUserResult(test_id, course, callback){
-    this.db.selectUserResult([test_id,course],(result)=>{
+   	console.log(test_id)
+   		this.db.calcMaxPoints([test_id],(data)=>{
+   			console.log("maximumPoints",data[0]);
+   			this.db.setMaxPoints([data[0].sum,test_id],(data2)=>{
+   				this.db.selectUserResult([test_id,course],(result)=>{
     	 console.log("student-result", result);
-    this.push.apply(this,result);
-      callback && callback(this);
-    });
+    	 this.push.apply(this,result);
+         callback && callback(this);
+   			});
+   		});
+   	});
   }
   selectMyResult(user_id, test_id, callback){
-    this.db.selectMyResult([user_id,test_id],(result)=>{
+  	console.log(test_id);
+   		this.db.calcMaxPoints([test_id],(data)=>{
+   			console.log("maximumPoints",data[0]);
+   			this.db.setMaxPoints([data[0].sum,test_id],(data2)=>{
+   				this.db.selectMyResult([user_id,test_id],(result)=>{
     	 console.log("student-result", result);
-    this.push.apply(this,result);
-      callback && callback(this);
-    });
+    	 this.push.apply(this,result);
+         callback && callback(this);
+   			});
+   		});
+   	});
   }
  
 
@@ -26,7 +38,7 @@ class StudentResultList extends List {
 		return {
 			createStudentResultView: `
 			create or replace view usersResultView as
-			select tests.test_id,users.user_id, users.firstName, users.lastName,users.course, results.finalResult
+			select tests.test_id,users.user_id, users.firstName, users.lastName,users.course, results.finalResult,tests.maximumPoints
 			from users
 			inner join results
 			on users.user_id = results.users_user_id
@@ -38,6 +50,12 @@ class StudentResultList extends List {
 			`,
 			selectMyResult: `
 			SELECT * FROM usersResultView WHERE user_id = ? and test_id = ?
+			`,
+			calcMaxPoints: `
+			select SUM(points) as sum from testswithquestionsandoptions WHERE test_id = ?
+			`,
+			setMaxPoints: `
+		    UPDATE tests SET maximumPoints= ? WHERE test_id= ?
 			`
 		}
 	}

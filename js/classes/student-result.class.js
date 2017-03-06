@@ -5,7 +5,8 @@ class StudentResult extends Base {
 			user_id: 0,
 			firstName: " ",
 			lastName:" ",
-			finalResult: 0
+			finalResult: 0,
+			maximumPoints: 0
     	}
   	}
 

@@ -6,6 +6,7 @@ class Test extends Base {
 			startingTime: '2017-01-01 09:00',
 			endingTime: '2017-01-01 16:00',
 			allowedTime: 0,
+			maxmimumPoints: 0,
 			questions: new QuestionList(),
 			currentQuestionIndex: 0
 		}
@@ -13,6 +14,11 @@ class Test extends Base {
 
 	constructor(propertyValues = {}){ 
 		super(propertyValues);
+		this.maxmimumPoints = this.db.calcMaxPoints([1],(data)=>{
+           console.log("max points",data);
+
+		});
+		
 
 		$(function () {
 			if (window.opener != null && !window.opener.closed) {
@@ -234,13 +240,14 @@ class Test extends Base {
 			$("input[name='radio-option'][value=" + this.responseListRaw[this.currentQuestionIndex] + "]").prop('checked', true);
 		}
 	}
-
 	insertInDb(callback){
+		
 		this.db.newTest({
 			test_name: this.test_name,
 			startingTime: this.startingTime,
 			endingTime: this.endingTime,
-			allowedTime: this.allowedTime
+			allowedTime: this.allowedTime,
+			maxmimumPoints: this.maxmimumPoints
 		},callback);
 	}
 
@@ -251,6 +258,9 @@ class Test extends Base {
 			`,
 			compare: `
 			SELECT IF(endingTime >= now() and startingTime <= now(),'true','false') AS active from tests
+			`,
+			calcMaxPoints: `
+			select SUM(points) as sum from testswithquestionsandoptions WHERE test_id = ?
 			`
 		}
 	}
