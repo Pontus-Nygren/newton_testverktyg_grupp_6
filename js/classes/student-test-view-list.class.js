@@ -14,7 +14,8 @@ class StudentTestViewList extends List {
   		static get sqlQueries(){
 		return{
 		    selectTestId: `
-		    SELECT DISTINCT tests.test_id,user_id,test_name from usersResultView,tests WHERE user_id = ? 
+		    SELECT DISTINCT tests.test_id,user_id,test_name from
+		     usersResultView,tests WHERE user_id = ? AND tests.test_id = usersResultView.test_id
             `
 
 		}

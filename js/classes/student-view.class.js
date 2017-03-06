@@ -10,12 +10,26 @@ class StudentView extends Base {
 	}
 
 	getTests(callback){
-		this.tests.readOnlyActiveTests(()=>{
-			callback();
+		var testList = new TestCustomList();
+		testList.readOnlyActiveTests(()=>{
+			var resultList = new ResultList();
+			resultList.readAllFromDb(()=>{
+				var indexes = [];
+				for(let row of resultList){
+					console.log('row', row);
+					if(row.finalResult == null){
+						for(let test of testList){
+							if(test.test_id == row.tests_test_id){
+								this.tests.push(test);
+							}
+						}
+					}
+				}
+				/*for(let index of indexes){
+					this.tests.splice(index, 1);
+				}*/
+				callback();
+			});
 		});
 	}
-	
-
-
-
 }

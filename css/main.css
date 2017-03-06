@@ -8,6 +8,9 @@ html {
 body {
 	padding-bottom: 40px;
 }
+h3{
+  text-align: center;
+}
 
 .big-border {
   border: 20px solid #000;
@@ -26,7 +29,14 @@ button#back, button#next, button#submitTest{
 .fake-a{
   display: block;
   padding-top: 19.5px;
+  color: #0ce3ac;
+  cursor:pointer;
+
 }
+.fake-a:hover{
+  background-color: #222222;
+}
+
 
 .test-container{
   width: 100%;

@@ -17,12 +17,13 @@ Navbar.addTemplate('default', function(){return `
       <ul class="nav navbar-nav">
         <li class="active"><a href="/">Start page<span class="sr-only">(current)</span></a></li>
         <li id="${this.menuItemId}" data-click="toggleMenu" data-bind="${this.toggleMenuText}"><a href="${this.route}">${this.toggleMenuText}</a></li>
-        <li><a href="/about-us">About us</a></li>
+        <li data-click="toggleExit" data-bind="${this.toggleExitText}">${this.toggleMenuExit}</a></li>
+ 
         
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
-        <li id="logged-in-${this.loggedIn}" data-bind="${this.loggedInUser}"><p class="fake-a">${this.loggedInUser}</p></li>
+        <li id="logged-in-${this.loggedIn}" data-bind="${this.loggedInUser}"><a href="/#">${this.loggedInUser}</a></li>
         <li data-click="toggleLogin" data-bind="${this.toggleLoginText}">
           <a href="/#">${this.toggleLoginText}</a>
         </li>
