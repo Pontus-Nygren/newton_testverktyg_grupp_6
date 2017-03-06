@@ -6,6 +6,7 @@ class Test extends Base {
 			startingTime: '2017-01-01 09:00',
 			endingTime: '2017-01-01 16:00',
 			allowedTime: 0,
+			maxmimumPoints: 0,
 			questions: new QuestionList(),
 			currentQuestionIndex: 0
 		}
@@ -245,12 +246,20 @@ class Test extends Base {
 		}
 	}
 
+	calcMaxPoints(){
+		this.db.calcMaxPoints([this.test_id],(data)=>{
+             this.maxmimumPoints = data;
+		});
+	}
+
 	insertInDb(callback){
+		
 		this.db.newTest({
 			test_name: this.test_name,
 			startingTime: this.startingTime,
 			endingTime: this.endingTime,
-			allowedTime: this.allowedTime
+			allowedTime: this.allowedTime,
+			maxmimumPoints: this.maxmimumPoints
 		},callback);
 	}
 
@@ -258,6 +267,9 @@ class Test extends Base {
 		return {
 			newTest: `
 			INSERT tests SET ?
+			`,
+			calcMaxPoints: `
+			select SUM(points) from testswithquestionsandoptions WHERE  points IS NOT null AND test_id = ?
 			`,
 			compare: `
 			SELECT IF(endingTime >= now() and startingTime <= now(),'true','false') AS active from tests

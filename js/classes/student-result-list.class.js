@@ -26,7 +26,7 @@ class StudentResultList extends List {
 		return {
 			createStudentResultView: `
 			create or replace view usersResultView as
-			select tests.test_id,users.user_id, users.firstName, users.lastName,users.course, results.finalResult
+			select tests.test_id,users.user_id, users.firstName, users.lastName,users.course, results.finalResult,tests.maximumPoints
 			from users
 			inner join results
 			on users.user_id = results.users_user_id
