@@ -70,7 +70,7 @@ window.load = `
     responses-list.class.js
     student.class.js
     footer.class.js
-    about-us.class.js
+    time-is-up.class.js
     result.class.js
     result-list.class.js
     teacher-view.class.js
@@ -98,7 +98,7 @@ window.load = `
     bootstrap-size.html
     teacher-page.html
     student.html
-    about-us.html
+    time-is-up.html
     footer.html
     result.html
     teacher-view.html
