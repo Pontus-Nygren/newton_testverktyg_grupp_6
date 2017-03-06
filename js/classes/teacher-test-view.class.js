@@ -2,7 +2,8 @@ class TeacherTestView extends Base {
 
 static defaultPropertyValues(){
 		return {
-			test_id: 0
+			test_id: 0,
+			test_name: " "
     	}
   	}
 
@@ -12,7 +13,7 @@ static defaultPropertyValues(){
 
 	showCourses(){
 		var course = new CoursesList();
-		course.load(this.test_id,(courses)=>{
+		course.selectAllCourses(this.test_id,(courses)=>{
 			$('.page-content').html('');
 			course.display('.page-content');
 		});
@@ -20,15 +21,10 @@ static defaultPropertyValues(){
 
 		showTests(){
 		var result = new TeacherTestViewList();
-        result.load((allTests)=>{
+        result.selectTestId((allTests)=>{
         	console.log(result);
         	$('.page-content').html('');
 			result.display('.page-content');
-        	/*for(var studentResults of result)
-        	{
-        		studentResults.display('body');
-        	}*/
-        	
 		});
 	}
 

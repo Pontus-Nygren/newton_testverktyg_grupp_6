@@ -50,7 +50,7 @@
       }
       this.loggedIn = !this.loggedIn;    
     }
-    this.toggleLoginText = this.loggedIn? 'Logga ut' : 'Logga in';
+    this.toggleLoginText = this.loggedIn? 'Sign out' : 'Sign in';
   }
 
     /*

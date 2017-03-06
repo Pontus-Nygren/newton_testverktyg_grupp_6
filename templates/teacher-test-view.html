@@ -1,5 +1,6 @@
 TeacherTestView.addTemplate('default', function(){return `
-<ul class="list-group">
-  <li class="list-group-item"><h3 data-click="showCourses">Test ${this.test_id}</h3></li>
-</ul>
+ <div class="list-group">
+    <a data-click="showCourses" class="list-group-item"> ${this.test_name}</a>
+     
+</div>
  `});

@@ -8,9 +8,9 @@ TestView.addTemplate('default', function(){return `
 				<div class="question-img"><img src="${this.test.question.imageURL}" alt=""></div>
 				<div class="question">
 				
-					<h3>Fråga ${this.test.questions.indexOf(this.test.question) + 1} av ${this.test.questions.length}</h3>
+					<h3>Question ${this.test.questions.indexOf(this.test.question) + 1} of ${this.test.questions.length}</h3>
 					<p>
-						Fråga: ${this.test.question.question_text}
+						Question: ${this.test.question.question_text}
 					</p>
 					<div class="row">
 						${this.test.question.options.display()}
