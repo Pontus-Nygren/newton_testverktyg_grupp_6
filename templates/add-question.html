@@ -57,12 +57,7 @@ Question.addTemplate('default', function(){return `
                         <td>
                             <div>             
                                 <select id="select_test_name">
-                                    <option class= "dropdown_option" value="" name="dropdown">Select one...</option>
-                                     <option id="dropdown1" class= "dropdown_option" value="OOP" name="dropdown">OOP</option>
-                                      <option id="dropdown2" class= "dropdown_option" value="Java" name="dropdown">Java</option>
-                                   
-                                   <!-- ${this.dropdownTests.display()}-->
-                   
+                                    <option class= "dropdown_prompt" value="" name="dropdown">Select one...</option>
                                 </select>
                              </div>
                          </td>
@@ -78,5 +73,10 @@ Question.addTemplate('default', function(){return `
 
 		</div>
 	</div>
+  <p class="hidden">
+  ${$(()=>{
+    this.getTests();
+  })}
+  </p>
 </div>
 `});

@@ -15,10 +15,10 @@ class Question extends Base {
 	constructor(propertyValues = {}){ 
 		super(propertyValues);	
 
-		    $('#select_test_name').on('click', '.dropdown_option', function(){
+		    /*$('#select_test_name').on('click', '.dropdown_option', function(){
 			console.log("****************");
 
-		});	
+		});	*/
 		// If needed convert the options property 
 	    // from Array to OptionList
 	    if(!(this.options instanceof OptionList)){
@@ -39,44 +39,51 @@ class Question extends Base {
 		},callback);
 	}
 
-	addQuestion(test_id){
+	getTests(){
+		if ( !$( ".dropdown_option" ).length ) {
+		var testNames = new DropdownTestList();    //to make the dropdown dynamic
+		 testNames.loadTestNames(()=>{
+		 	console.log('testNames',testNames);
+		 	this.dropdownTests = testNames.tests;
+		 	for(let test of this.dropdownTests){
+		 		test.display('#select_test_name');
+		 	}
+		 	
+		 });
+		}
+	}
+
+	addQuestion(){
 		 event.preventDefault();//the default action of the event will not be triggered.
 
    //	 this.imageURL =  document.getElementById("add_pic").value;
    //	 this.question_text = document.getElementById("addQn").value;
 
-		/* var testNames = new DropdownTestList();    //to make the dropdown dynamic
-		 testNames.loadTestNames(()=>{
-		 		console.log("testNames",i, testNames.tests);
-		 	 this.test_id = testNames[0].test_id;
-		 	this.dropdownTests = testNames.tests;
-
-		 });*/
+		
 
        //Adding the question
-        this.db.readLatestId((data)=>{  //sql code to see the last question id, that is needed to be filled in the options table in the db
-        	var testObject= new TestList();
+          //sql code to see the last question id, that is needed to be filled in the options table in the db
+        	//var testObject= new TestList();
    
             //Getting the test names from the database and then compare the name with the dropdown selection
-			testObject.readAllFromDb(()=>{ 
-				for(var i = 0; i< testObject.length; i++){ 				
-					var pulldownButton= $('option[name=dropdown]:checked').val(); //the selected test name from the dropdown menu	
-					if(pulldownButton ==testObject[i].test_name){
-						this.test_id = testObject[i].test_id;
-						break;
-					}
+			//testObject.readAllFromDb(()=>{ 
+				//for(var i = 0; i< testObject.length; i++){ 				
+					//var pulldownButton= $("option[class='dropdown_option']:checked").val(); //the selected test name from the dropdown menu	
+					//if(pulldownButton ==testObject[i].test_name){
+						this.test_id = $("option[class='dropdown_option']:checked").val(); //testObject[i].test_id;
+						//break;
+					//}
 					
-				}
+				//}
 
 				this.imageURL =  document.getElementById("add_pic").value;
 				this.question_text = document.getElementById("addQn").value;
 
 				//Inserting the question in the database
-				//this.insertInDb(()=>{});    
-			     this.insertInDb(console.log);
-				});
 
-			//To get the options and the correct answer set by the teacher for the question to be added
+				this.insertInDb(()=>{
+					this.db.readLatestId((data)=>{
+						//To get the options and the correct answer set by the teacher for the question to be added
 			var radioButtonId= $('input[name=options]:checked').attr('id');
 			var optionNew = document.getElementsByClassName('addOption');//class name for the input text area
 			var option_points=0;
@@ -107,7 +114,7 @@ class Question extends Base {
     	    	else{
     	    		option_points = 0;
     	    	}
-
+    	    	if(option_text.length > 0){
     	    	/** Inserting the options for the specific question */
     	    	var options = new Option({			
     	    		option_text: option_text,
@@ -118,9 +125,17 @@ class Question extends Base {
 
                 options.insertInDb(console.log);  //inserting the options
                 option_points=0;
-            }
 
-        });
+			     }
+            }
+					});
+				});
+
+				//});
+
+			
+
+        
 
 
 
