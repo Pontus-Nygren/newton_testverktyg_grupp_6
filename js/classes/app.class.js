@@ -50,7 +50,7 @@ this.timeIsUp = new TimeIsUp();
 
     // Show the navbar and the bootstrapSizeTool
     this.navbar.display('body');
-    this.bootstrapSizeTool.display('body');
+    //this.bootstrapSizeTool.display('body');
 
     // Add a page-content area in the DOM
     $('body').append('<div class="page-content"/>');

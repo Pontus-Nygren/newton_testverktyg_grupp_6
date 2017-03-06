@@ -50,10 +50,17 @@ button#back, button#next, button#submitTest{
   margin-bottom: 7px;
 }
 
+#test-list{
+  margin-bottom: 30px;
+}
+
 @media(max-width: 376px){
 .page-content>.jumbotron{
-  margin:0;
+  margin:0 10% !important;
   margin-top: 2%;
+}
+table.table.table-striped{
+  font-size:smaller;
 }
 }
 
