@@ -163,13 +163,13 @@ addQuestion(){
 				//$(".addOption").val('');
 				$('.radio-options').prop('checked', false);
 				$('.alert-danger').remove();
-				$('body').append('<div style = "background-color:green;"class="alert alert-danger no-active-tests" role="alert">The question is added successfully</div>');
+				$('.page-content').append('<div style = "background-color:green;"class="alert alert-danger no-active-tests" role="alert">The question is added successfully</div>');
 
 				}
 
 				else{
 					$('.alert-danger').remove();
-					$('body').append('<div class="alert alert-danger no-active-tests" role="alert">Please fill the question or options box or you might have forgotten to select the test name</div>');
+					$('.page-content').append('<div class="alert alert-danger no-active-tests" role="alert">Please fill the question or options box or you might have forgotten to select the test name</div>');
 				}
 
 
