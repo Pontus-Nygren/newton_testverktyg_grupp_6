@@ -98,7 +98,7 @@ this.aboutPage = new AboutUs();
       }); 
 
     }else if(user && user.role.toLowerCase() == 'student'){
-      router = new Router({
+     router = new Router({
         '/': ()=>{ 
           $('.page-content').empty();
           this.studentPage.display('.page-content');

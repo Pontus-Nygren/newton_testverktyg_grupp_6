@@ -36,7 +36,8 @@ class TeacherPage extends Base {
 			listOfTests.display('.page-content');
 		});
 	}
-		showListOfTestsTwo(){
+	
+	showListOfTestsTwo(){
 		var listOfTestsTwo = new TeacherTestView();
 		listOfTestsTwo.showTests((tests)=>{
 			$('.page-content').html('');
@@ -45,7 +46,7 @@ class TeacherPage extends Base {
 	}
 
 
-		CreateQuestion(){
+	createQuestion(){
 		var addQuestion = new Question();
 		$('.page-content').html('');
 		addQuestion.display('.page-content');
