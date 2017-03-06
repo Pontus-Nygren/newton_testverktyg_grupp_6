@@ -45,7 +45,7 @@ this.login = new Login();
 this.footer = new Footer();
 this.teacherPage = new TeacherPage();
 this.studentPage = new StudentPage();
-this.aboutPage = new AboutUs();
+this.timeIsUp = new TimeIsUp();
 
 
     // Show the navbar and the bootstrapSizeTool
@@ -66,11 +66,6 @@ this.aboutPage = new AboutUs();
           $('.page-content').empty();
           this.login.display('.page-content');
           this.navbar.setActiveLink();
-        },
-        '/about-us/': ()=>{
-          $('.page-content').empty();
-          this.aboutPage.display('.page-content');
-          this.navbar.setActiveLink();
         }
       });
     }else if(user && user.role.toLowerCase() == 'teacher'){
@@ -78,11 +73,6 @@ this.aboutPage = new AboutUs();
         '/': ()=>{ 
           $('.page-content').empty();
           this.teacherPage.display('.page-content');
-          this.navbar.setActiveLink();
-        },
-        '/about-us/': ()=>{
-          $('.page-content').empty();
-          this.aboutPage.display('.page-content');
           this.navbar.setActiveLink();
         },
         '/teacher': ()=> { 
@@ -104,11 +94,6 @@ this.aboutPage = new AboutUs();
           this.studentPage.display('.page-content');
           this.navbar.setActiveLink();
         },
-        '/about-us/': ()=>{
-          $('.page-content').empty();
-          this.aboutPage.display('.page-content');
-          this.navbar.setActiveLink();
-        },
         '/student': ()=> { 
           $('.page-content').empty();
           this.studentPage.display('.page-content');
@@ -118,6 +103,11 @@ this.aboutPage = new AboutUs();
           console.log('props',props);
           var testView = new TestView(props, this.showPage);
           console.log('TestView.test', testView.test);
+        },
+        '/time-is-up': ()=>{
+          $('.page-content').empty();
+          this.timeIsUp.display('.page-content');
+          this.navbar.setActiveLink();
         }
       });
 
@@ -127,7 +117,6 @@ this.aboutPage = new AboutUs();
   showPage(page){
     $('.page-content').empty();
     page.display('.page-content');
-    this.navbar.setActiveLink();
   }
 
 

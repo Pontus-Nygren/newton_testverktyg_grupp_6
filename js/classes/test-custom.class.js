@@ -15,6 +15,7 @@ class TestCustom extends Base {
 	    if(!(this.questions instanceof QuestionList)){
 	      this.questions = new QuestionList(this.questions);	     
 	    }
+
 	   	
 
 	    let niceStartingTime = new Date(this.startingTime);
