@@ -17,7 +17,8 @@ Navbar.addTemplate('default', function(){return `
       <ul class="nav navbar-nav">
         <li class="active"><a href="/">Start page<span class="sr-only">(current)</span></a></li>
         <li id="${this.menuItemId}" data-click="toggleMenu" data-bind="${this.toggleMenuText}"><a href="${this.route}">${this.toggleMenuText}</a></li>
-        <li><a href="/about-us">About us</a></li>
+        <li data-click="toggleExit" data-bind="${this.toggleExitText}">${this.toggleMenuExit}</a></li>
+ 
         
       </ul>
 
