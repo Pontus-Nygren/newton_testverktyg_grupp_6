@@ -35,7 +35,7 @@ class Test extends Base {
 	    this.timer = new Timer(this.endingTime);
 
 	    // ResponseList to save responses before sending it to DB
-	    this.responseList = new ResponsesList();
+	    this.responseListRaw = [];
 	}
 
 	load(callback){		 
@@ -65,6 +65,30 @@ class Test extends Base {
 		  }
 		}*/
 	}
+	submit(){
+		this.saveSelected();
+		var responseList = new ResponsesList();
+		var user = JSON.parse(localStorage.getItem('user'));
+		var u_id = user.user_id;
+		for(let response of this.responseListRaw){
+			responseList.push(new Response({users_user_id: u_id, options_option_id: response}));
+		}
+		console.log('responseList',responseList);
+		responseList.writeToDb(()=>{
+			var responseArray = [];
+			for(let i = 0; i < responseList.length; i++){ 
+	  		   //Putting the 'response_id' in array, the new arrays values to be compared with 
+	  		   //the option_id later to get the points.
+	  		   responseArray.push(responseList[i].options_option_id);
+	  		   // console.log();
+	  		}
+	  		this.readOptionsFromDb(responseArray,(result)=>{
+		  		$('.page-content').empty();
+				result.display('.page-content');
+			});		
+	  	});
+	}
+
 
 	submitTest(){
 		$('.page-content').empty();
@@ -87,26 +111,26 @@ class Test extends Base {
 	readResponseFromDB(callback){
 		var i;  		
 		var responseArray = [];
-		var StudentsResponse = new ResponsesList();
+		var studentsResponse = new ResponsesList();
 
 	 //The student responses
-	 StudentsResponse.readAllFromDb(()=>{
+	 studentsResponse.readAllFromDb(()=>{
 	 	
   		/*Loop through the response table to get the options_option_id then
   		  it would be easier to get the points for every question from the 'options' table
   		  option_id(option table) === options_option_id(in response table)
   		  */
-  		  for(i = 0; i < StudentsResponse.length; i++){ 
+  		  for(i = 0; i < studentsResponse.length; i++){ 
   		   //Putting the 'response_id' in array, the new arrays values to be compared with 
   		   //the option_id later to get the points.
-  		   responseArray.push(StudentsResponse[i].options_option_id);
+  		   responseArray.push(studentsResponse[i].options_option_id);
   		   // console.log();
   		}
   		this.readOptionsFromDb(responseArray);
   	});
 	}
 
-	readOptionsFromDb(responseArray){  
+	readOptionsFromDb(responseArray, callback){  
 		var j;		
 		var newArray = [];
 		var sum = 0;
@@ -120,11 +144,10 @@ class Test extends Base {
        	  			for(var response_option_id of responseArray){
   		       //Loop through option table 
 
-  		       for(j = 0; j< optionTable.length;j++){
-
+  		       for(let j = 0; j < optionTable.length;j++){
                   //If the option_id(response table) === optionTable[j].option_id(options table)
                   //and get the point inside the option table
-                  if( response_option_id === optionTable[j].option_id){
+                  if( response_option_id == optionTable[j].option_id){
                   	sum = sum + optionTable[j].points; 	   		     
 
                   }
@@ -146,6 +169,7 @@ class Test extends Base {
           resultWrite.insertInDb(console.log);
 
           console.log(sum);
+          callback(resultWrite);
       });
 
 
@@ -166,10 +190,13 @@ class Test extends Base {
 		if(this.currentQuestionIndex !== 0){
 			console.log('första');
 			$('button#back').css('display','inline-block');
+		} else {
+			$('button#back').css('display','none');
 		}
 		if(this.questions.length -1 !== this.currentQuestionIndex){
 			console.log('andra');
 			$('button#next').css('display','inline-block');
+			$('button#submitTest').css('display','none');
 		} else if(this.questions.length -1 === this.currentQuestionIndex){
 			console.log('tredje');
 			$('button#next').css('display','none');
@@ -182,10 +209,12 @@ class Test extends Base {
 		console.log('atLeastOneIsChecked',atLeastOneIsChecked);
 
 		if(this.questions.length > this.currentQuestionIndex && atLeastOneIsChecked){
+			this.saveSelected();
 			$('.alert').remove();
 			$('.optionPoint').prop('checked', false);
 			console.log(this.questions.length, this.currentQuestionIndex )
 			this.currentQuestionIndex++;
+			this.checkIfChecked();
 		} else if(!atLeastOneIsChecked){
 			$('.alert').remove();
 			$('.question-container').append('<div class="alert alert-warning" role="alert">You need to select at least one option. Remember - you can always go back and change your answer before you submit.</div>')
@@ -193,13 +222,28 @@ class Test extends Base {
 	}
 	prevQuestion(){
 		if(this.currentQuestionIndex > 0){
+			this.saveSelected();
 			$('.alert').remove();
 			$('.optionPoint').prop('checked', false);
 			console.log( this.currentQuestionIndex )
 			this.currentQuestionIndex--;
+			this.checkIfChecked();
 		}
 	}
 
+	saveSelected(){
+		var selected = $("input[name='radio-option']:checked").val();
+		console.log('selected',selected,'currentQuestionIndex',this.currentQuestionIndex);
+		this.responseListRaw[this.currentQuestionIndex] = selected;
+	}
+
+	checkIfChecked(){
+		console.log('responseListRaw',this.responseListRaw[this.currentQuestionIndex]);
+		if(this.responseListRaw[this.currentQuestionIndex]){
+			console.log('Checking');
+			$("input[name='radio-option'][value=" + this.responseListRaw[this.currentQuestionIndex] + "]").prop('checked', true);
+		}
+	}
 
 	insertInDb(callback){
 		this.db.newTest({

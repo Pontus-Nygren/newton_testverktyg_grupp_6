@@ -3,7 +3,7 @@ Option.addTemplate('default', function(){return `
 	<div class="input-group option-container">
 		<div class="panel panel-default optionPoint">
 			<div class="panel-body">
-				<input data-click = "pointCalculate" id="${this.option_text}" class = "optionPoint" name="radio-option" type="radio" aria-label="...">
+				<input id="${this.option_text}" value="${this.option_id}" class = "optionPoint" name="radio-option" type="radio" aria-label="...">
 			    <label for="${this.option_text}">${this.option_text}</label>
 			</div>
 		</div>
