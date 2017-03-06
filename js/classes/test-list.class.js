@@ -80,8 +80,8 @@ writeToDb(callback){
       callback();
       }
       else{
-        // Only for testing
-        $('body').append('<div class="alert alert-danger" role="alert">There are no tests in the database. Uncomment the section in main that initializes the data generator. Only run it once and then comment the section out again.</div>');
+        $('.no-active-tests').remove();
+        $('body').append('<div class="alert alert-danger no-active-tests" role="alert">There are no tests in the database. Uncomment the section in main that initializes the data generator. Only run it once and then comment the section out again.</div>');
       }
       
     });

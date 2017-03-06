@@ -12,11 +12,8 @@ this.test = new DropdownTest();
     loadTestNames(callback){
     this.db.showTestNames((data)=>{
       for(let row of data)
-      {console.log("**********", row);
-      for(var name in row){
-        this.test[name] = row[name];
-      }
-      this.tests.push(this.test);
+      {/*console.log("**********", row);*/
+      this.tests.push(new DropdownTest({test_id: row.test_id, test_name: row.test_name}));
       }
       callback && callback(this.tests);
     });
