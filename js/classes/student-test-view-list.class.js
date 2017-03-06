@@ -15,7 +15,7 @@ class StudentTestViewList extends List {
 		return{
 		    selectTestId: `
 		    SELECT DISTINCT tests.test_id,user_id,test_name from
-		     usersResultView,tests WHERE user_id = ? AND tests.test_id = usersResultView.test_id
+		     usersResultView,tests WHERE user_id = ? AND tests.test_id = usersResultView.test_id AND finalResult IS NOT null
             `
 
 		}

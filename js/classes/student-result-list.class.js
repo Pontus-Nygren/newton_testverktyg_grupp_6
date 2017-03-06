@@ -54,7 +54,7 @@ class StudentResultList extends List {
 			SELECT * FROM usersResultView WHERE test_id = ? and course = ? order by firstName
 			`,
 			selectMyResult: `
-			SELECT * FROM usersResultView WHERE user_id = ? and test_id = ?
+			SELECT * FROM usersResultView WHERE user_id = ? and test_id = ? and finalResult IS NOT null
 			`,
 			calcMaxPoints: `
 			select SUM(points) as sum from testswithquestionsandoptions WHERE test_id = ?
