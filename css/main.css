@@ -62,6 +62,10 @@ button#back, button#next, button#submitTest{
   margin:20%;
   margin-top: 2%;
 }
+.fake-a{
+  padding-left: 15px;
+}
+
 }
 @media(min-width: 668px){
   .list-group{
@@ -71,6 +75,7 @@ button#back, button#next, button#submitTest{
   .margin-left-22{
     margin-left: 22%;
   }
+
 }
 
 
@@ -244,3 +249,24 @@ input[type="password"] {
   text-align:left;
 }
 
+/* ADD QUESTION */
+
+.submitquestionbtn{
+margin-bottom: 5px;
+}
+
+@media(max-width: 376px){
+
+
+@media(max-width: 667px){
+.panel{
+  width: 90%;
+  margin-right: 5%;
+  margin-left: 5%;
+
+}
+
+/* RESULT BOX*/
+.resultbox{
+  text-align: center;
+}
