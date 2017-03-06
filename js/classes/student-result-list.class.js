@@ -7,11 +7,17 @@ class StudentResultList extends List {
 
 
    selectUserResult(test_id, course, callback){
-    this.db.selectUserResult([test_id,course],(result)=>{
+   	console.log(test_id)
+   		this.db.calcMaxPoints([test_id],(data)=>{
+   			console.log("maximumPoints",data);
+   			this.db.setMaxPoints([data[0],test_id],(data2)=>{
+   				this.db.selectUserResult([test_id,course],(result)=>{
     	 console.log("student-result", result);
-    this.push.apply(this,result);
-      callback && callback(this);
-    });
+    	 this.push.apply(this,result);
+         callback && callback(this);
+   			});
+   		});
+   	});
   }
   selectMyResult(user_id, test_id, callback){
     this.db.selectMyResult([user_id,test_id],(result)=>{
@@ -38,6 +44,12 @@ class StudentResultList extends List {
 			`,
 			selectMyResult: `
 			SELECT * FROM usersResultView WHERE user_id = ? and test_id = ?
+			`,
+			calcMaxPoints: `
+			select SUM(points) as sum from testswithquestionsandoptions WHERE test_id = ?
+			`,
+			setMaxPoints: `
+		    UPDATE tests SET maximumPoints= ? WHERE test_id= ?
 			`
 		}
 	}
