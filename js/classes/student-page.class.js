@@ -34,7 +34,13 @@ class StudentPage extends Base {
 		var listOfTests = new StudentView();
 		listOfTests.getTests(()=>{
 			$('.page-content').html('');
-			listOfTests.display('.page-content');
+			console.log('listOfTests',listOfTests);
+			if(listOfTests.tests.length > 0){
+				listOfTests.display('.page-content');
+			}else{
+				$('.no-active-tests').remove();
+        		$('body').append('<div class="alert alert-warning no-active-tests" role="alert">You have no tests to take right now.</div>');
+			}
 		});
 	}
 	showMyTests(){
