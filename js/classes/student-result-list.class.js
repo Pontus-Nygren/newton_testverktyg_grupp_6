@@ -13,6 +13,13 @@ class StudentResultList extends List {
       callback && callback(this);
     });
   }
+  selectMyResult(user_id, test_id, callback){
+    this.db.selectMyResult([user_id,test_id],(result)=>{
+    	 console.log("student-result", result);
+    this.push.apply(this,result);
+      callback && callback(this);
+    });
+  }
  
 
 	static get sqlQueries(){
@@ -28,6 +35,9 @@ class StudentResultList extends List {
 			`,
 			selectUserResult: `
 			SELECT * FROM usersResultView WHERE test_id = ? and course = ? order by firstName
+			`,
+			selectMyResult: `
+			SELECT * FROM usersResultView WHERE user_id = ? and test_id = ?
 			`
 		}
 	}

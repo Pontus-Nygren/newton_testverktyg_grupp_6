@@ -88,6 +88,8 @@ window.load = `
     student-view.class.js
     teacher-test-view.class.js
     teacher-test-view-list.class.js
+    student-test-view.class.js
+    student-test-view-list.class.js
 
   templates/
     login.html
@@ -113,6 +115,7 @@ window.load = `
     timer.html
     student-view.html
     teacher-test-view.html
+    student-test-view.html
 
 
   js/main.js

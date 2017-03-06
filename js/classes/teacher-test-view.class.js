@@ -2,7 +2,8 @@ class TeacherTestView extends Base {
 
 static defaultPropertyValues(){
 		return {
-			test_id: 0
+			test_id: 0,
+			test_name: " "
     	}
   	}
 
@@ -24,11 +25,6 @@ static defaultPropertyValues(){
         	console.log(result);
         	$('.page-content').html('');
 			result.display('.page-content');
-        	/*for(var studentResults of result)
-        	{
-        		studentResults.display('body');
-        	}*/
-        	
 		});
 	}
 

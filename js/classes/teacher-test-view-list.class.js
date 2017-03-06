@@ -15,7 +15,7 @@ class TeacherTestViewList extends List {
 		static get sqlQueries(){
 		return{
 		    selectTestId: `
-		    SELECT test_id from tests
+		    SELECT test_id,test_name from tests
             `
 
 		}
