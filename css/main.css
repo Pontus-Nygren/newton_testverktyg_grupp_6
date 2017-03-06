@@ -76,6 +76,10 @@ button#back, button#next, button#submitTest{
   padding-left: 15px;
 }
 
+.listgroup>a.list-group-item.test-item{
+  text-align: center;
+}
+
 }
 @media(min-width: 668px){
   .list-group{

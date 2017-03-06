@@ -10,6 +10,7 @@ class StudentView extends Base {
 	}
 
 	getTests(callback){
+		var user = JSON.parse(localStorage.getItem('user'));
 		var testList = new TestCustomList();
 		testList.readOnlyActiveTests(()=>{
 			var resultList = new ResultList();
@@ -19,7 +20,7 @@ class StudentView extends Base {
 					console.log('row', row);
 					if(row.finalResult == null){
 						for(let test of testList){
-							if(test.test_id == row.tests_test_id){
+							if(test.test_id == row.tests_test_id && user.user_id == row.users_user_id){
 								this.tests.push(test);
 							}
 						}
