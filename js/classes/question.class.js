@@ -1,16 +1,16 @@
 class Question extends Base { 
 
 	static defaultPropertyValues(){
-    return {
-	      question_id: 0,
-	      imageURL: '',
-	      test_id: 0,
-	      question_text: 'What is a question?',
-	      isOpen: 0,
-	      value:'',
-	      options: new OptionList()
-    	}
-  	}
+		return {
+			question_id: 0,
+			imageURL: '',
+			test_id: 0,
+			question_text: 'What is a question?',
+			isOpen: 0,
+			value:'',
+			options: new OptionList()
+		}
+	}
 
 	constructor(propertyValues = {}){ 
 		super(propertyValues);	
@@ -79,16 +79,16 @@ addQuestion(){
 				var matches = 0;
 				
 				$(":input.addOption").each(function(i) {
-				
-				  if ($(this).val() != '') {
-				    matches++;
-				  }
+
+					if ($(this).val() != '') {
+						matches++;
+					}
 				});
 				if(matches<2){ //if no option entered 
-				               checkOptionEntered=false;
+					checkOptionEntered=false;
 				}
 
-			if(this.question_text.length>0 && $("input[name=options]:checked").length > 0
+				if(this.question_text.length>0 && $("input[name=options]:checked").length > 0
 					&& $("option[class='dropdown_option']:checked").length>0
 					&& checkOptionEntered) {
 
@@ -139,7 +139,7 @@ addQuestion(){
 
     	    	if(option_text.length > 0){
     	    		/** Inserting the options for the question */
-    	    		    var options = new Option({			
+    	    		var options = new Option({			
     	    			option_text: option_text,
     	    			questions_question_id: question_id,	        
     	    			points: option_points
@@ -149,14 +149,14 @@ addQuestion(){
 
                 options.insertInDb(console.log);  //inserting the options
                 option_points=0;
-                $(".addOption").val('');
-                       
+                
+
+            }
+
         }
-
-    }
-});
+        $(".addOption").val('');
+    });
 				});
-
 
 				$('#addQn').val('');
 				$("#add_pic").val('');
@@ -165,18 +165,18 @@ addQuestion(){
 				$('.alert-danger').remove();
 				$('.page-content').append('<div style = "background-color:green;"class="alert alert-danger no-active-tests" role="alert">The question is added successfully</div>');
 
-				}
+			}
 
-				else{
-					$('.alert-danger').remove();
-					$('.page-content').append('<div class="alert alert-danger no-active-tests" role="alert">Please fill the question or options box or you might have forgotten to select the test name</div>');
-				}
-
-
+			else{
+				$('.alert-danger').remove();
+				$('.page-content').append('<div class="alert alert-danger no-active-tests" role="alert">Please fill the question or options box or you might have forgotten to select the test name</div>');
+			}
 
 
 
-}
+
+
+		}
 
 		static get sqlQueries(){
 			return {
