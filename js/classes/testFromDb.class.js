@@ -13,12 +13,22 @@ class TestFromDb extends Base {
 
 	constructor(propertyValues = {}, callback){ 
 		super(propertyValues);
-	    this.load(propertyValues.id, callback);
+	  this.load(propertyValues.id, callback);
 	}
 
 	load(id, callback){
 	    this.db.load([id],(data)=>{
-
+          var user = JSON.parse(localStorage.getItem('user'));
+          var resultList = new ResultList();
+          resultList.readAllFromDb(()=>{
+            var flag = true;
+            for(let row of resultList){
+              if(user.user_id == row.users_user_id && data[0].test_id == row.tests_test_id && row.finalResult != null){
+                 flag = false;
+              }
+            }
+          
+            if(flag){
 	      	var testsById = [];
       		var i = 0;
       		var j = 0;
@@ -82,7 +92,12 @@ class TestFromDb extends Base {
         $('.no-active-tests').remove();
         $('body').append('<div class="alert alert-danger no-active-tests" role="alert">This test is not complete, sorry about that.</div>');
       }
-      
+      } else{
+        $('.no-active-tests').remove();
+        $('body').append('<div class="alert alert-danger no-active-tests" role="alert">You are not allowed to take this test.</div>');
+      }
+    });
+
     });
   	}
 

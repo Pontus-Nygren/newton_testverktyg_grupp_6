@@ -6,6 +6,7 @@
     this.loggedIn = false;
     this.toggleLogin();
     this.toggleMenuText = '';
+    this.toggleMenuExit = ''; 
     this.menuItemId = 'visitor-page-menu-item';
     this.toggleMenu();
     this.route = '';
@@ -34,6 +35,19 @@
       
     }
   }
+
+     toggleExit(){    
+ 
+    var user = JSON.parse(localStorage.getItem('user')); 
+    if(user && user.role.toLowerCase() == 'student'){ 
+      this.menuItemId = 'student-page-menu-item'; 
+      this.route = '/student'; 
+      this.toggleMenuExit = `Exit`;
+ 
+    } 
+ 
+  }
+ 
 
   toggleLogin(){
     var user = JSON.parse(localStorage.getItem('user'));

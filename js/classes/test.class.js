@@ -57,19 +57,9 @@ class Test extends Base {
 
 
 	startTimer(){
+		$('.no-active-tests').remove();
 		$('#clockdiv').css('display','block');
 		this.timer.startTimer();
-		/*$(document).ready(function() {
-		  checkContainer();
-		});
-
-		function checkContainer () {
-		  if($('.clockdiv').is(':visible')){ //if the container is visible on the page
-		    this.timer = new Timer(new Date(this.endingTime));
-		  } else {
-		    setTimeout(checkContainer, 50); //wait 50 ms, then try again
-		  }
-		}*/
 	}
 	submit(){
 		this.saveSelected();

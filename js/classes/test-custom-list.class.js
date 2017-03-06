@@ -92,7 +92,7 @@ class TestCustomList extends List {
         SELECT * FROM tests
       `,
       readOnlyActiveTests: `
-      SELECT * FROM tests WHERE (endingTime >= now() and startingTime <= now())
+      SELECT test_id, test_name, startingTime, endingTime FROM tests INNER JOIN questions ON test_id = tests_test_id WHERE (endingTime >= now() and startingTime <= now()) GROUP BY test_id
       `
     }
   }

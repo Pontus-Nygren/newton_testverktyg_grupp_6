@@ -29,6 +29,7 @@ class TeacherPage extends Base {
 			callback(testsFromDb);
 		})
 	}
+	
 	showListOfTests(){
 		var listOfTests = new TeacherView();
 		listOfTests.getTests(()=>{
