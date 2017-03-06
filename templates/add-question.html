@@ -20,7 +20,7 @@ Question.addTemplate('default', function(){return `
                <tbody>
                       <tr>
                         <td><p class = "addingQuestion">Add question</p></td>
-                        <td><input style ="width: 100%;" id = "addQn" type="text" data-bind="value"></td>
+                        <td><textarea id = "addQn" type="textarea" data-bind="value"></textarea></td>
                         <td></td>
                       </tr>
                       <tr>
@@ -55,7 +55,7 @@ Question.addTemplate('default', function(){return `
                         <td><p>Test name</p></td>
                         <td>
                             <div>             
-                                <select id="select_test_name">
+                                <select class="form-control" id="select_test_name">
                                     <option class= "dropdown_option" value="" name="dropdown">Select one...</option>
                                      <option id="dropdown1" class= "dropdown_option" value="OOP" name="dropdown">OOP</option>
                                       <option id="dropdown2" class= "dropdown_option" value="Java" name="dropdown">Java</option>

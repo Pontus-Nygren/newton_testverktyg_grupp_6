@@ -122,7 +122,7 @@ button#back, button#next, button#submitTest{
 	}
 }
 
-
+/* FOOTER CSS */
 footer {
   position: absolute;
   bottom: 0;
@@ -252,10 +252,25 @@ input[type="password"] {
 /* ADD QUESTION */
 
 .submitquestionbtn{
-margin-bottom: 5px;
+margin-bottom: 10px;
+
 }
 
-@media(max-width: 376px){
+
+.table>thead>tr>th, .table>tbody>tr>th, .table>tfoot>tr>th, .table>thead>tr>td, .table>tbody>tr>td, .table>tfoot>tr>td{
+  vertical-align: middle;
+  top: 50%;
+
+}  
+#select_test_name{
+  width: 169px;
+  
+  margin: auto;
+  border-radius: unset;
+}
+textarea{
+  max-width: 169px;
+}
 
 
 @media(max-width: 667px){
@@ -265,8 +280,11 @@ margin-bottom: 5px;
   margin-left: 5%;
 
 }
-
+ }
 /* RESULT BOX*/
 .resultbox{
   text-align: center;
 }
+
+
+
