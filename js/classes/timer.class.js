@@ -46,7 +46,6 @@ class Timer extends Base {
 
         if (t.total <= 0) { 
           clearInterval(timeinterval); 
-          window.location.href = "/student"; 
           var user = JSON.parse(localStorage.getItem('user')); 
           var u_role = user.role; 
           if(u_role == 'student'){ 
