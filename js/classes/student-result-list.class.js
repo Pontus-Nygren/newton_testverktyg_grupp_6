@@ -9,8 +9,8 @@ class StudentResultList extends List {
    selectUserResult(test_id, course, callback){
    	console.log(test_id)
    		this.db.calcMaxPoints([test_id],(data)=>{
-   			console.log("maximumPoints",data);
-   			this.db.setMaxPoints([data[0],test_id],(data2)=>{
+   			console.log("maximumPoints",data[0]);
+   			this.db.setMaxPoints([data[0].sum,test_id],(data2)=>{
    				this.db.selectUserResult([test_id,course],(result)=>{
     	 console.log("student-result", result);
     	 this.push.apply(this,result);
@@ -20,11 +20,17 @@ class StudentResultList extends List {
    	});
   }
   selectMyResult(user_id, test_id, callback){
-    this.db.selectMyResult([user_id,test_id],(result)=>{
+  	console.log(test_id);
+   		this.db.calcMaxPoints([test_id],(data)=>{
+   			console.log("maximumPoints",data[0]);
+   			this.db.setMaxPoints([data[0].sum,test_id],(data2)=>{
+   				this.db.selectMyResult([user_id,test_id],(result)=>{
     	 console.log("student-result", result);
-    this.push.apply(this,result);
-      callback && callback(this);
-    });
+    	 this.push.apply(this,result);
+         callback && callback(this);
+   			});
+   		});
+   	});
   }
  
 
