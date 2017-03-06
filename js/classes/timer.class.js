@@ -44,14 +44,9 @@ class Timer extends Base {
         minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
         secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
 
-        if (t.total <= 0) { 
-          clearInterval(timeinterval); 
-          window.location.href = "/student"; 
-          var user = JSON.parse(localStorage.getItem('user')); 
-          var u_role = user.role; 
-          if(u_role == 'student'){ 
-          window.location.href = "/time-is-up"; 
-          } 
+        if (t.total <= 0) {
+          clearInterval(timeinterval);
+          window.location.href = "/student";
         }
       }
 
