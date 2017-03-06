@@ -1,5 +1,6 @@
 Course.addTemplate('default', function(){return `
-<ul class="list-group">
-  <li class="list-group-item"><h3 data-click="showStudentResults">${this.course}</h3></li>
-</ul>
+ <div class="list-group">
+    <a data-click="showStudentResults" class="list-group-item"> ${this.course}</a>
+     
+</div>
 `});

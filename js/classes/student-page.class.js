@@ -37,17 +37,12 @@ class StudentPage extends Base {
 			listOfTests.display('.page-content');
 		});
 	}
+	showMyTests(){
+				var myTests = new StudentTestView();
+		myTests.selectMyTests(this.u_id,(data)=>{
+$('.page-content').html('');
+			myTests.display('.page-content');
 
-	showStudentResults(){
-		var result = new StudentResultList();
-		result.load((studentResults)=>{
-			$('.page-content').html('');
-			studentResults.display('.page-content');
-        	/*for(var studentResults of result)
-        	{
-        		studentResults.display('body');
-        	}*/
-        	
-        });
+		})
 	}
 }
