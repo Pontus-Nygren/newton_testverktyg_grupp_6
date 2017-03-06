@@ -27,7 +27,7 @@ class StudentPage extends Base {
 		var testsFromDb = new TestList();
 		testsFromDb.readAllFromDBWithQuestionsAndOptions(()=>{
 			callback(testsFromDb);
-		})
+		});
 	}
 
 	showListOfTests(){
@@ -38,9 +38,9 @@ class StudentPage extends Base {
 		});
 	}
 	showMyTests(){
-				var myTests = new StudentTestView();
+		var myTests = new StudentTestView();
 		myTests.selectMyTests(this.u_id,(data)=>{
-$('.page-content').html('');
+			$('.page-content').html('');
 			myTests.display('.page-content');
 
 		})
