@@ -12,7 +12,7 @@ static defaultPropertyValues(){
 
 	showCourses(){
 		var course = new CoursesList();
-		course.load(this.test_id,(courses)=>{
+		course.selectAllCourses(this.test_id,(courses)=>{
 			$('.page-content').html('');
 			course.display('.page-content');
 		});
@@ -20,7 +20,7 @@ static defaultPropertyValues(){
 
 		showTests(){
 		var result = new TeacherTestViewList();
-        result.load((allTests)=>{
+        result.selectTestId((allTests)=>{
         	console.log(result);
         	$('.page-content').html('');
 			result.display('.page-content');

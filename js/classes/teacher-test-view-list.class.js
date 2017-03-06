@@ -4,8 +4,8 @@ class TeacherTestViewList extends List {
 		super(TeacherTestView, items);
 	}
 
-	 load(callback){
-  	this.db.load((data)=>{
+	 selectTestId(callback){
+  	this.db.selectTestId((data)=>{
   		console.log("test result", data);
   		this.push.apply(this,data);
   		callback && callback(this);
@@ -14,7 +14,7 @@ class TeacherTestViewList extends List {
 
 		static get sqlQueries(){
 		return{
-		    load: `
+		    selectTestId: `
 		    SELECT test_id from tests
             `
 

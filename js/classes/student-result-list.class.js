@@ -6,8 +6,8 @@ class StudentResultList extends List {
 	}	
 
 
-   load(test_id, course, callback){
-    this.db.load([test_id,course],(result)=>{
+   selectUserResult(test_id, course, callback){
+    this.db.selectUserResult([test_id,course],(result)=>{
     	 console.log("student-result", result);
     this.push.apply(this,result);
       callback && callback(this);
@@ -26,7 +26,7 @@ class StudentResultList extends List {
 			inner join tests
 			on tests.test_id = results.tests_test_id
 			`,
-			load: `
+			selectUserResult: `
 			SELECT * FROM usersResultView WHERE test_id = ? and course = ? order by firstName
 			`
 		}
