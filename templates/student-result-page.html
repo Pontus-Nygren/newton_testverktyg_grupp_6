@@ -1,9 +1,10 @@
 StudentResultPage.addTemplate('default', function(){return `
-  <div class="container space-above">
-    <div class="row">
-      <div class="col-sm-12 col-md-8">
-        <div class="question-container">
-          <table class="table">
+  <div class="panel panel-primary">
+  <div class="panel-heading">
+    <h3 class="panel-title">Student results</h3>
+  </div>
+  <div class="panel-body">
+          <table class= "table table-striped">
             <thead>
               <tr>
                 <th>First Name</th>
@@ -14,11 +15,10 @@ StudentResultPage.addTemplate('default', function(){return `
               </tr>
             </thead>
             <tbody>
-<td>${this.studentResultList.display()}</td>
+${this.studentResultList.display()}
             </tbody>
           </table>
-        </div> <!-- notera att det saknades en div i den kod du skickade mig :) -->
-      </div>
-    </div>
-  </div>
+</div>
+</div>
+
 `});
